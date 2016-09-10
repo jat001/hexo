@@ -16,7 +16,7 @@ date: 2012-12-18 11:08:00
 
 </span></span>
 
-![](http://img.sinosky.org/2012/www.aleng.net_wp-content_uploads_2012_04_cloudflare.jpg)
+![](//www.sinosky.org/uploads/2012/www.aleng.net_wp-content_uploads_2012_04_cloudflare.jpg)
 
 <span style="font-size: 16px; font-family: 'Microsoft YaHei';"><span style="font-size: 14px;">以前一直</span><span style="font-size: 14px;">在用</span></span><span style="font-size: 14px; font-family: 'Microsoft YaHei';">CloudFlare</span><span style="font-size: 14px; font-family: 'Microsoft YaHei';">，不过自从把博客放在GAE上后就没再用了，斯巴达前国内访问GAE的速度还是很理想的。</span>
 
@@ -34,7 +34,7 @@ date: 2012-12-18 11:08:00
 
 </span></span></span>
 
-<span style="font-size: 14px; font-family: 'Microsoft YaHei';">![](http://img.sinosky.org/2012/logo.jpg)后来我尝试了CDNZZ，一家新兴的提供全球互联网加速的云服务提供商。</span>
+<span style="font-size: 14px; font-family: 'Microsoft YaHei';">![](//www.sinosky.org/uploads/2012/logo.jpg)后来我尝试了CDNZZ，一家新兴的提供全球互联网加速的云服务提供商。</span>
 
 <span style="font-size: 14px; font-family: 'Microsoft YaHei';">CDNZZ提供的加速节点有大陆、香港、美国、新加坡，其中大陆节点包括：河北电信，河北联通，河北移动，贵州电信，江西联通，广东电信，广东移动（即将上线）。</span>
 

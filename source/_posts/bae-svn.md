@@ -31,7 +31,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![49.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_49.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_49.jpg "49.jpg")
+[![49.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_49.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_49.jpg "49.jpg")
 
 图1.1 安装TortoiseSVN成功
 
@@ -44,7 +44,7 @@ date: 2012-12-18 19:36:49
 *   选择相应托管在BAE上的应用，点击“管理”，即可进入待操作程序的版本管理页面
 <div>
 
-[![16.jpg](http://img.sinosky.org/2012/developer.baidu.com_wiki_static_image_BAE_16.jpg)](http://img.sinosky.org/2012/developer.baidu.com_wiki_static_image_BAE_16.jpg "16.jpg")
+[![16.jpg](//www.sinosky.org/uploads/2012/developer.baidu.com_wiki_static_image_BAE_16.jpg)](//www.sinosky.org/uploads/2012/developer.baidu.com_wiki_static_image_BAE_16.jpg "16.jpg")
 
 图2.1：管理中心“我的应用”页
 
@@ -55,7 +55,7 @@ date: 2012-12-18 19:36:49
 *   点击待操作的版本，看到页面下方的SVN地址，点击“复制SVN地址”，即可获得对应版本的SVN地址
 <div>
 
-[![17.jpg](http://img.sinosky.org/2012/developer.baidu.com_wiki_static_image_BAE_17.jpg)](http://img.sinosky.org/2012/developer.baidu.com_wiki_static_image_BAE_17.jpg "17.jpg")
+[![17.jpg](//www.sinosky.org/uploads/2012/developer.baidu.com_wiki_static_image_BAE_17.jpg)](//www.sinosky.org/uploads/2012/developer.baidu.com_wiki_static_image_BAE_17.jpg "17.jpg")
 
 图2.2：管理中心应用列表页
 
@@ -67,7 +67,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![52.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_52.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_52.jpg "52.jpg")
+[![52.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_52.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_52.jpg "52.jpg")
 
 图3.1 创建本地目录
 
@@ -77,7 +77,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![53.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_53.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_53.jpg "53.jpg")
+[![53.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_53.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_53.jpg "53.jpg")
 
 图3.2 SVN Checkout操作
 
@@ -87,7 +87,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![54.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_54.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_54.jpg "54.jpg")
+[![54.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_54.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_54.jpg "54.jpg")
 
 图3.3 填写信息
 
@@ -97,7 +97,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![55.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_55.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_55.jpg "55.jpg")
+[![55.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_55.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_55.jpg "55.jpg")
 
 图3.4 用户信息验证
 
@@ -107,7 +107,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![56.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_56.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_56.jpg "56.jpg")
+[![56.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_56.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_56.jpg "56.jpg")
 
 图3.5代码checkout成功
 
@@ -125,7 +125,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![57.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_57.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_57.jpg "57.jpg")
+[![57.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_57.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_57.jpg "57.jpg")
 
 图4.0.1 本地新增文件和目录
 
@@ -135,7 +135,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![58.jpg](http://img.sinosky.org/2012/58.jpg)](http://img.sinosky.org/2012/58.jpg "58.jpg")
+[![58.jpg](//www.sinosky.org/uploads/2012/58.jpg)](//www.sinosky.org/uploads/2012/58.jpg "58.jpg")
 
 图4.0.2 增加操作
 
@@ -145,7 +145,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![59.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_59.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_59.jpg "59.jpg")
+[![59.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_59.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_59.jpg "59.jpg")
 
 图4.0.3 增加目录以及目录内文件
 
@@ -159,7 +159,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![60.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_60.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_60.jpg "60.jpg")
+[![60.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_60.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_60.jpg "60.jpg")
 
 图4.1.1 删除文件
 
@@ -171,7 +171,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![61.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_61.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_61.jpg "61.jpg")
+[![61.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_61.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_61.jpg "61.jpg")
 
 图4.2.1 重命名文件
 
@@ -181,7 +181,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![62.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_62.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_62.jpg "62.jpg")
+[![62.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_62.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_62.jpg "62.jpg")
 
 图4.2.2 填写文件名
 
@@ -191,7 +191,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![63.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_63.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_63.jpg "63.jpg")
+[![63.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_63.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_63.jpg "63.jpg")
 
 图4.2.3 重命名文件成功
 
@@ -203,7 +203,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![64.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_64.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_64.jpg "64.jpg")
+[![64.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_64.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_64.jpg "64.jpg")
 
 图4.3.1 commit所有更新
 
@@ -213,7 +213,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![65.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_65.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_65.jpg "65.jpg")
+[![65.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_65.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_65.jpg "65.jpg")
 
 图4.3.2 commit信息框
 
@@ -223,7 +223,7 @@ date: 2012-12-18 19:36:49
 
 <div>
 
-[![66.jpg](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_66.jpg)](http://img.sinosky.org/2012/dev.baidu.com_wiki_static_app_images_developer_66.jpg "66.jpg")
+[![66.jpg](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_66.jpg)](//www.sinosky.org/uploads/2012/dev.baidu.com_wiki_static_app_images_developer_66.jpg "66.jpg")
 
 图4.3.2 commit更新成功
 

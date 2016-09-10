@@ -14,4 +14,4 @@ date: 2013-10-17 10:39:29
 
 老规矩，最少每周一次更新，希望我能坚持下来……
 
-[![购买机票的最佳时间](http://img.sinosky.org/2013/WHEN-TO-BUY5.jpg)](http://img.sinosky.org/2013/WHEN-TO-BUY5.jpg "购买机票的最佳时间")
+[![购买机票的最佳时间](//www.sinosky.org/uploads/2013/WHEN-TO-BUY5.jpg)](//www.sinosky.org/uploads/2013/WHEN-TO-BUY5.jpg "购买机票的最佳时间")

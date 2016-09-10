@@ -40,7 +40,7 @@ date: 2012-11-18 12:43:05
 
 然后选择“标签”类别中的“Mpeg”子类别，推荐大家参照下图设置，将 MP3 标签保存为 ID3v2.3 格式。因为 ID3v2.3 UTF-16 是目前兼容性最佳的 MP3 标签格式，主流音频播放器及 Windows 7的库都支持 ID3v2.3 标签，在 Linux 系统中也不会出现乱码问题。
 
-![mp3tag-tutorial-01](http://img.sinosky.org/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-01.png "mp3tag-tutorial-01")
+![mp3tag-tutorial-01](//www.sinosky.org/uploads/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-01.png "mp3tag-tutorial-01")
 
 现在选择“标签面板”类别，如果大家对 Mp3Tag 主界面左侧的标签面板可编辑的标签字段感到不满意的话，可以在此添加。
 
@@ -67,7 +67,7 @@ date: 2012-11-18 12:43:05
 
 Mp3Tag 主界面如下图所示，左侧为标签面板，在此可对音乐标签进行手动编辑，右侧为文件列表，在此可以选择不同的音频文件（如果打开的是 cue 文件的话，那么此处便为不同的音轨）。
 
-![mp3tag-tutorial-02](http://img.sinosky.org/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-02.png "mp3tag-tutorial-02")
+![mp3tag-tutorial-02](//www.sinosky.org/uploads/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-02.png "mp3tag-tutorial-02")
 
 首先在右侧文件列表选择需要编辑标签的文件（可以选择多个文件进行编辑），然后在左侧标签面板就可以对音乐标签进行编辑了，按下 Tab 键可以切换不同的标签字段。如果之前勾选了“使用光标移动键或鼠标单击时保存标签”选项，在编辑完毕之后就可以按下 Ctrl + N 切换到下一个文件，Mp3Tag 会提示已经保存标签，按下回车键确认即可继续编辑。需要特别注意的是如果之前没有勾选“使用光标移动键或鼠标单击时保存标签”选项的话，Mp3Tag 是不会在切换音乐文件时自动保存标签的，因此所做的修改会全部丢失！
 
@@ -75,7 +75,7 @@ Mp3Tag 主界面如下图所示，左侧为标签面板，在此可对音乐标�
 
 首先是从标签到文件名的转换，首先选择需要转换的文件，然后点击转换菜单中的“标签 – 文件名”选项，弹出如下图所示的对话框。
 
-![mp3tag-tutorial-03](http://img.sinosky.org/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-03.png "mp3tag-tutorial-03")
+![mp3tag-tutorial-03](//www.sinosky.org/uploads/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-03.png "mp3tag-tutorial-03")
 
 在格式串文本框中填入符合自己需要的格式串，可以控制转换后的文件名，右侧的黑色小箭头可以选择常用字段，下面是一些常见字段的含义：
 
@@ -90,7 +90,7 @@ Mp3Tag 主界面如下图所示，左侧为标签面板，在此可对音乐标�
 
 然后是从文件名到标签的转换，首先选择需要转换的文件，然后点击转换菜单中的“文件名 – 标签”选项，弹出如下图所示的对话框。
 
-![mp3tag-tutorial-04](http://img.sinosky.org/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-04.png "mp3tag-tutorial-04")
+![mp3tag-tutorial-04](//www.sinosky.org/uploads/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-04.png "mp3tag-tutorial-04")
 
 与“标签 – 文件名”类似，此处我们也需要填入格式串，格式串文本框下方可以预览转换之后的标签，设置完毕之后点击确定，Mp3Tag 会提示推导出多少文件的标签。
 
@@ -104,19 +104,19 @@ Mp3Tag 内置了 freedb、Amazon、discogs 和 MusicBrainz 几个标签数据源
 
 使用内置标签数据源非常方便。对于 Amazon.com 来说，选择整张专辑的音乐文件，然后选择“标签数据源”菜单中的“Amazon.com”，然后在弹出的对话框中输入搜索关键词（请尽量精确输入），输入完毕之后点击下一步，稍等片刻就会弹出搜索结果列表，选择相应专辑之后点击下一步，进入如下图所示的调整标签信息对话框。
 
-![mp3tag-tutorial-05](http://img.sinosky.org/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-05.png "mp3tag-tutorial-05")
+![mp3tag-tutorial-05](//www.sinosky.org/uploads/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-05.png "mp3tag-tutorial-05")
 
 此处需要调整音轨，也就是把文件和相应的音轨对应起来，在文件列表中用鼠标拖动文件与标签信息相对应即可。因为默认排列的方式是按文件名排列，如果原来的音乐文件有音轨信息，首先使用“标签 – 文件名”将文件名转换成以音轨序号开始的形式就可以省去这一步骤。调整完毕后点击确定即可。
 
 对于 freedb 来说，情况略有不用，选择文件之后点击“标签数据源”菜单中的“freedb”，此时会弹出如下图所示的对话框，选择默认的“根据选定的文件查找信息”即可，点击确定，如果可以找到相应专辑的话稍等片刻就会进入“调整标签信息”对话框，调整方法与上文所述一致。
 
-![mp3tag-tutorial-06](http://img.sinosky.org/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-06.png "mp3tag-tutorial-06")
+![mp3tag-tutorial-06](//www.sinosky.org/uploads/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-06.png "mp3tag-tutorial-06")
 
 如果内置的标签数据源不能满足需求的话，可以添加标签数据源。下面我推荐几个不错的标签数据源：freedb 日本語、豆瓣和 Amazon.co.jp。下面我们来看看如何添加标签数据源：
 
 freedb 日本語属于 freedb 类服务，添加方法与其他标签数据源不同，点击工具菜单，选择选项，或者按下 Ctrl + O 快捷键组合，启动 Mp3Tag 选项设置。选择“标签数据源”类别下的“freedb”子类别，将“地址”文本框修改为freedbtest.dyndns.org，点击确定即可。
 
-![mp3tag-tutorial-07](http://img.sinosky.org/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-07.png "mp3tag-tutorial-07")
+![mp3tag-tutorial-07](//www.sinosky.org/uploads/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-07.png "mp3tag-tutorial-07")
 
 需要注意的是原有的 freedb 服务器会被替换，而 freedb 日本語的服务器上以日语音乐信息为主。如果要恢复到原有的话请点击端口文本框右侧的“当前Internet上可用的freedb服务器列表”按钮即可恢复。
 
@@ -137,28 +137,28 @@ freedb 日本語的使用方法与 freedb 一致，选择“标签数据源”�
 然后开始创建标签列表文件，在标签列表文件中，每一行代表着一个单独的文件，标签列表文件的写法没有硬性要求，此后在转换时通过指定格式串识别，需要注意的是每一行都必须有对应的文件名，不同字段的信息请使用文件名中的非法字符进行分割，如 / * | 等等，以避免与文件名混淆。同一个标签列表文件中必须按照相同的格式编写，例如可以按照“%_filename_ext%|%title%”的格式串编写，下面是以 Eagles 的专辑 Hotel California 为例编写的标签列表文件：
 
 > 01.FLAC|Hotel California
-> 
+>
 > 02.FLAC|New Kid in Town
-> 
+>
 > 03.FLAC|Life in the Fast Lane
-> 
+>
 > 04.FLAC|Wasted Time
-> 
+>
 > 05.FLAC|Wasted Time (Reprise)
-> 
+>
 > 06.FLAC|Victim of Love
-> 
+>
 > 07.FLAC|Pretty Maids All in a Row
-> 
+>
 > 08.FLAC|Try and Love Again
-> 
+>
 > 09.FLAC|The Last Resort
 
 标签列表文件看似复杂，实际编写很简单。我们既可以利用记事本中的替换功能，也可以使用 Excel 编写。
 
 最后进入 Mp3Tag，导入相关音乐文件，按下 Ctrl + S 快捷键组合全选，然后点击转换菜单中的“文件名 – 标签”选项，弹出如下图所示的对话框。
 
-![mp3tag-tutorial-08](http://img.sinosky.org/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-08.png "mp3tag-tutorial-08")
+![mp3tag-tutorial-08](//www.sinosky.org/uploads/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-08.png "mp3tag-tutorial-08")
 
 在“文件名”文本框中填入标签列表文件的路径，或者点击右侧按钮浏览。在“格式串”文本框中输入相应的格式串，如“%_filename_ext%|%title%”，其中“%_filename_ext%”是指文件名，需要手动输入或复制，无法在右侧菜单中选择；“|”则是分隔符，可自行选择其他无法在文件名中使用的特殊符号；“%title%”则是相应的字段，可在右侧菜单中选择。
 
@@ -170,13 +170,13 @@ Mp3Tag 内置了强大的动作功能，可以帮助我们快速进行一些自�
 
 点击“动作”菜单，选择“动作组”，弹出“动作组”对话框，在此处我们可以自定义常见的动作，从而可以快速执行一些重复操作。
 
-![mp3tag-tutorial-09](http://img.sinosky.org/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-09.png "mp3tag-tutorial-09")
+![mp3tag-tutorial-09](//www.sinosky.org/uploads/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-09.png "mp3tag-tutorial-09")
 
 Mp3Tag 已经内置了三个动作组，Case conversion、CD-R 和 Standard，作为动作组的实例，双击相应动作组我们可以查看具体动作组进行了什么样的动作，例如，Case conversion 就包含了将所有以(-_开头的字段转换为大小写混合的动作。
 
 动作组列表右侧的按钮可以对动作组进行管理，我们可以点击新建动作组按钮，输入动作组名称，然后自定义自己的动作组。
 
-![mp3tag-tutorial-10](http://img.sinosky.org/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-10.png "mp3tag-tutorial-10")
+![mp3tag-tutorial-10](//www.sinosky.org/uploads/2012/terrychen.info_wp-content_uploads_mp3tag-tutorial-10.png "mp3tag-tutorial-10")
 
 自定义动作组的对话框与管理动作组的的对话框有些类似，我们可以在此新建适合自己需要的动作，下面介绍Mp3Tag 支持的动作类型：
 

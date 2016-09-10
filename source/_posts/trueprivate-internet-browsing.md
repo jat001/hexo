@@ -26,15 +26,15 @@ date: 2012-12-19 07:56:05
 
 <span style="font-family: arial, helvetica, sans-serif; font-size: small;">        第二步，创建一个新的内存盘，路径和盘符可以随意设置，大小建议为 250 MB，使用 NTFS 文件系统。打开自动加载，但关闭自动保存。<span style="color: #ff0000;">注意：这里的文件路径只做紧急情况保存重要数据使用，通常情况下此文件内容为空。</span></span>
 
-<span style="font-family: arial, helvetica, sans-serif; font-size: small;"><span style="color: #ff0000;">[![内存盘的创建界面](http://img.sinosky.org/Created%20by%20D.Y./TruePrivate_Create.PNG)](http://img.sinosky.org/Created%20by%20D.Y./TruePrivate_Create.PNG "内存盘的创建界面")</span></span>
+<span style="font-family: arial, helvetica, sans-serif; font-size: small;"><span style="color: #ff0000;">[![内存盘的创建界面](//www.sinosky.org/uploads/Created%20by%20D.Y./TruePrivate_Create.PNG)](//www.sinosky.org/uploads/Created%20by%20D.Y./TruePrivate_Create.PNG "内存盘的创建界面")</span></span>
 
 <span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;">        第三步，在资源管理器中确认内存盘已经加载，并尝试在其中新建任意文件测试是否正常使用。</span>
 
 <span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;">        第四步，更改 Internet Explorer 中 Cookie 和临时文件的保存位置，临时文件的最大可用空间需小于虚拟内存盘总大小。<span style="color: #ff0000;">注意：Internet Explorer 10 修改此设置需要注销并重新登录当前用户，无论在 Windows 7 还是 Windows 8 中都需如此操作。</span></span>
 
-<span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;"><span style="color: #ff0000;">[![进入 IE 临时文件设置窗口](http://img.sinosky.org/Created%20by%20D.Y./TruePrivate_IE.PNG)](http://img.sinosky.org/Created%20by%20D.Y./TruePrivate_IE.PNG "进入 IE 临时文件设置窗口")</span></span>
+<span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;"><span style="color: #ff0000;">[![进入 IE 临时文件设置窗口](//www.sinosky.org/uploads/Created%20by%20D.Y./TruePrivate_IE.PNG)](//www.sinosky.org/uploads/Created%20by%20D.Y./TruePrivate_IE.PNG "进入 IE 临时文件设置窗口")</span></span>
 
-<span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;"><span style="color: #ff0000;">[![移动 IE 临时文件目录](http://img.sinosky.org/Created%20by%20D.Y./TruePrivate_Migrate.PNG)](http://img.sinosky.org/Created%20by%20D.Y./TruePrivate_Migrate.PNG "移动 IE 临时文件目录")</span></span>
+<span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;"><span style="color: #ff0000;">[![移动 IE 临时文件目录](//www.sinosky.org/uploads/Created%20by%20D.Y./TruePrivate_Migrate.PNG)](//www.sinosky.org/uploads/Created%20by%20D.Y./TruePrivate_Migrate.PNG "移动 IE 临时文件目录")</span></span>
 
 <span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;"><span style="color: #ff0000;">        <span style="color: #000000;">最后，大功告成。直接打开 Internet Explorer 看看是不是所有功能全部正常，再也不用担心隐私浏览没有扩展程序和加载项了。而如果希望完全删除浏览数据，只要简单重启一下计算机或者刷新内存即可。这才是 TruePrivate！</span></span></span>
 

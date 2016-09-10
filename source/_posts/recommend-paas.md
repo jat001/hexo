@@ -11,9 +11,9 @@ date: 2012-05-18 19:13:53
 ---
 
 > <span style="font-size: small;">_PaaS是Platform as a Service的缩写，意思是平台即服务。 把服务器平台作为一种服务提供的商业模式。通过网络进行程序提供的服务称之为SaaS(Software as a Service)，而云计算时代相应的服务器平台或者开发环境作为服务进行提供就成为了PaaS(Platform as a Service)。_</span>
-> 
+>
 > <span style="font-size: small;">_( copy自百度百科，其实就是我们所说的云平台 )_</span>
-> 
+>
 > <span style="font-size: small;">_ _</span>
 
 <span style="font-size: small;">首先说下为什么不用国内的云平台，国内的那些云平台除 [Sina App Engine](http://sae.sina.com.cn/) 外，像[阿里云](http://www.aliyun.com/)、[盛大云](http://www.grandcloud.cn/)等都价格不菲，虽然有免费试用，但竟然都只能试用几天，毫无诚意，还不如去买虚拟主机呢。而SAE，表面上免费，但实际上当云豆用完了，就得花钱。
@@ -22,7 +22,7 @@ date: 2012-05-18 19:13:53
 
 <span style="font-size: small;">抛开资费问题不说，为什么那么多人都选择国外的空间和域名提供商，还不是因为备案。在国内，无论什么网站，都得备案，不备案，你就等着被封、被墙吧。当然，国外未备案的网站也有可能被墙。</span>
 
-<span style="font-size: small;">[![paas](http://img.sinosky.org/2012/img.sinosky.tk_f_9_)](http://img.sinosky.org/2012/img.sinosky.tk_f_9_) </span>
+<span style="font-size: small;">[![paas](//www.sinosky.org/uploads/2012/img.sinosky.tk_f_9_)](//www.sinosky.org/uploads/2012/img.sinosky.tk_f_9_) </span>
 
 <span style="font-size: small;">好了，废话扯完了，进入正题。说到国外的云平台，就不得不说  [Google App Engine](https://appengine.google.com/) 了，虽然只支持 python java 和 go 3种语言，但搭个博客什么的绰绰有余了，这个博客就是在GAE上搭建的。对于资费问题，也完全不用发愁，GAE的配额是每天下午4点更新，基本上只要流量不大，就不用担心配额问题。</span>
 

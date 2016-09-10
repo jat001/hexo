@@ -9,7 +9,7 @@ categories:
 date: 2012-06-18 19:19:51
 ---
 
-![esc](http://img.sinosky.org/2012/www.3dmgame.com_Article_UploadFiles_201210_20121007194603652.jpg "esc")
+![esc](//www.sinosky.org/uploads/2012/www.3dmgame.com_Article_UploadFiles_201210_20121007194603652.jpg "esc")
 
 <p><span>　　</span>我们早已对键盘上ESC键司空见惯，一旦有需要，我们会不假思索地按下去，但您知道这个按键是怎么来的吗？不久前纽约时报撰文一篇，让我们了解到了ESC键的发明者及其起源。
 

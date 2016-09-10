@@ -23,7 +23,7 @@ date: 2013-03-07 16:42:14
 
 我厂的电子门锁的开门设备是通过一个带弹簧的开关（门内，类似墙面上开灯的开关）控制的，按下开关就能打开门，按下开关的时候能够听到明显的继电器闭合的声音，因此，趁着没人的时候我把开关拆开看了一下，证实的确是通过触电控制的一个继电器。按下开关时，两个金属触电接触，继电器动作，门打开。继电器在动作后延时4秒左右恢复。这样看来，硬件层面的开门实现就非常简单了：跨接一个数字继电器，要开门时，通过电平信号控制继电器闭合并保持2秒即可。
 
-[![IMAG0013](http://img.sinosky.org/2013/www.guanheshan.com_eledoor_IMAG0013.jpg)](http://img.sinosky.org/2013/www.guanheshan.com_eledoor_IMAG0013.jpg "IMAG0013")
+[![IMAG0013](//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_IMAG0013.jpg)](//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_IMAG0013.jpg "IMAG0013")
 
 但要实现远程控制，必须设置一台可以通过TCP或是HTTP协议接受用户命令，并能控制开门硬件（继电器）的设备。最初考虑过Arduino，作为一个开源的硬件平台，Arduino的电平输出非常易于控制和操作。而且Arduino也有RJ45或是无线的接口模块。不过在查看了Arduino的无线模块的操作方式之后，我发现要让Arduino接入一个WPA加密的无线网络并实现一个web server并不容易。所以最终还是选择了树莓派（Raspberry PI），虽然RPI的硬件成本更高一点。
 
@@ -81,7 +81,7 @@ iface default inet dhcp
 
 下图是具体的连接方式，注意连在RPI上的三条线，白色（电源）、黑色（GND）、灰色（信号）分别连接在RPI GPIO的2号、6号与7号针脚上。
 
-[![IMAG0015](http://img.sinosky.org/2013/www.guanheshan.com_eledoor_IMAG0015.jpg)](http://img.sinosky.org/2013/www.guanheshan.com_eledoor_IMAG0015.jpg "IMAG0015")
+[![IMAG0015](//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_IMAG0015.jpg)](//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_IMAG0015.jpg "IMAG0015")
 
 #### 编写代码
 
@@ -169,13 +169,13 @@ if __name__ == "__main__":
 
 为了更方便地应用远程开门（例如，用手机开门显然更cool），可以编写iOS或是Android上运行的开门应用。当然，由于开门只需要发送一个HTTP POST请求，直接写成一个可以在Mac/Linux/Win下运行的命令行也可以。
 
-[![IMAG0011](http://img.sinosky.org/2013/www.guanheshan.com_eledoor_IMAG0011.jpg)](http://img.sinosky.org/2013/www.guanheshan.com_eledoor_IMAG0011.jpg "IMAG0011")部署后的全景
+[![IMAG0011](//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_IMAG0011.jpg)](//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_IMAG0011.jpg "IMAG0011")部署后的全景
 
-[![Screenshot_2012-12-18-16-11-20](http://img.sinosky.org/2013/www.guanheshan.com_eledoor_Screenshot_2012-12-18-16-11-20.png)](http://img.sinosky.org/2013/www.guanheshan.com_eledoor_Screenshot_2012-12-18-16-11-20.png "Screenshot_2012-12-18-16-11-20")
+[![Screenshot_2012-12-18-16-11-20](//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_Screenshot_2012-12-18-16-11-20.png)](//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_Screenshot_2012-12-18-16-11-20.png "Screenshot_2012-12-18-16-11-20")
 
 豆瓣开门
 
-[![Screenshot_2012-12-18-16-11-04](http://img.sinosky.org/2013/www.guanheshan.com_eledoor_Screenshot_2012-12-18-16-11-04.png)](http://img.sinosky.org/2013/www.guanheshan.com_eledoor_Screenshot_2012-12-18-16-11-04.png "Screenshot_2012-12-18-16-11-04")豆瓣开门widget
+[![Screenshot_2012-12-18-16-11-04](//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_Screenshot_2012-12-18-16-11-04.png)](//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_Screenshot_2012-12-18-16-11-04.png "Screenshot_2012-12-18-16-11-04")豆瓣开门widget
 
 ### 后记与感谢：
 

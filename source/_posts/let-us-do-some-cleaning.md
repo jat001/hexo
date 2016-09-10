@@ -17,11 +17,11 @@ CCleaner 是个好东西，喜欢的人也肯定不少。但是说起 CCEnhancer
 
 CCEnhancer 本身只是 269 KB 的下载器（此处是英文版文件体积），与 CCleaner 是一对好基友。CCEnhancer 的唯一作用就是为 CCleaner 更新整合自世界各地用户的清理规则（“你”也是用户之一），截至目前，规则文件大小约为 400 KB。软件界面有中文（简体和台湾正体）汉化，包含在官方多国语言版本中。清理规则和某些警告提示只有英文（会在 CCleaner 而不是 CCEnhancer 中显示）。通过软件新增的非默认清理规则在 CCleaner 里会用星号标出，用户需手动勾选。部分规则可能会清理掉必要但不常用的数据，此类规则选中时会弹出说明窗口。
 
-[![CCEnhancer](http://img.sinosky.org/Created%20by%20D.Y./CCE1.png)](http://img.sinosky.org/Created%20by%20D.Y./CCE1.png "CCEnhancer")
+[![CCEnhancer](//www.sinosky.org/uploads/Created%20by%20D.Y./CCE1.png)](//www.sinosky.org/uploads/Created%20by%20D.Y./CCE1.png "CCEnhancer")
 
 CCEnhancer 主界面
 
-[![CCleaner](http://img.sinosky.org/Created%20by%20D.Y./CCE2.png)](http://img.sinosky.org/Created%20by%20D.Y./CCE2.png "CCleaner")
+[![CCleaner](//www.sinosky.org/uploads/Created%20by%20D.Y./CCE2.png)](//www.sinosky.org/uploads/Created%20by%20D.Y./CCE2.png "CCleaner")
 
 增加规则后的 CCleaner
 

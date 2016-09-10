@@ -21,29 +21,29 @@ Adobe Audition 能够很好地分离人声 (vocal) 与背景音乐 (score)，这
 
 首先准备一首流行歌曲，然后寻找质量较高的伴奏带。伴奏所用的乐器必须与原始歌曲相同，因此 YouTube 和 SoundCloud 上各种由爱好者自己演奏的曲风各异的音频就可以省去了。如果官方在 CD 中提供某首歌曲的 Instrumental 或 Off-vocal 版本，恭喜你，这是最佳选择！为了不破坏原始音频文件，需要在 Audition 的“文件”菜单中选择“追加打开”&gt;“至新文件”：
 
-[![帮助图片](http://img.sinosky.org/2013/Open.png)](http://img.sinosky.org/2013/Open.png)
+[![帮助图片](//www.sinosky.org/uploads/2013/Open.png)](//www.sinosky.org/uploads/2013/Open.png)
 
 然后选取原始演唱音频，随后重复此操作并选取伴奏音频文件。待全部文件载入完成后，点击“复合音轨”按钮新建多轨会话，指定保存名称和路径后确认即可：
 
-[![帮助图片](http://img.sinosky.org/2013/Multitrack.png)](http://img.sinosky.org/2013/Multitrack.png)
+[![帮助图片](//www.sinosky.org/uploads/2013/Multitrack.png)](//www.sinosky.org/uploads/2013/Multitrack.png)
 
 将左侧两个音频分别拖入多轨界面的不同音轨中。考虑到原唱与伴奏在时间上并不一定完全吻合，如有需要，在多轨界面选取曲目中明显音量变化处对其音轨：
 
-[![帮助图片](http://img.sinosky.org/2013/Drag.png)](http://img.sinosky.org/2013/Drag.png)
+[![帮助图片](//www.sinosky.org/uploads/2013/Drag.png)](//www.sinosky.org/uploads/2013/Drag.png)
 
-[![帮助图片](http://img.sinosky.org/2013/Alignment.png)](http://img.sinosky.org/2013/Alignment.png)
+[![帮助图片](//www.sinosky.org/uploads/2013/Alignment.png)](//www.sinosky.org/uploads/2013/Alignment.png)
 
-[![帮助图片](http://img.sinosky.org/2013/Done.png)](http://img.sinosky.org/2013/Done.png)
+[![帮助图片](//www.sinosky.org/uploads/2013/Done.png)](//www.sinosky.org/uploads/2013/Done.png)
 
 试听直至确保音轨几乎完全重合后便进行最关键的一步。双击伴奏音轨，在“效果”菜单中选取“反转”，等待片刻后再次进入多轨界面：
 
-[![帮助图片](http://img.sinosky.org/2013/Invert.png)](http://img.sinosky.org/2013/Invert.png)
+[![帮助图片](//www.sinosky.org/uploads/2013/Invert.png)](//www.sinosky.org/uploads/2013/Invert.png)
 
-[![帮助图片](http://img.sinosky.org/2013/Mirror.png)](http://img.sinosky.org/2013/Mirror.png)
+[![帮助图片](//www.sinosky.org/uploads/2013/Mirror.png)](//www.sinosky.org/uploads/2013/Mirror.png)
 
 此时上下音轨的左右声道分别呈现明显对称趋势。如有需要，再次放大微调至音轨对齐：
 
-[![帮助图片](http://img.sinosky.org/2013/Final.png)](http://img.sinosky.org/2013/Final.png)
+[![帮助图片](//www.sinosky.org/uploads/2013/Final.png)](//www.sinosky.org/uploads/2013/Final.png)
 
 播放歌曲，就只剩下演唱声音了。当然，背景音乐是否能完美消除，还取决于两段音频的背景音匹配程度以及音频质量。
 

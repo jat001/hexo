@@ -173,9 +173,9 @@ Wine的名字是一个有意思的缩写，Wine Is Not an Emulator，如其所�
 
 将常用的Windows程序放置到X11的`应用程序`菜单中，就不需要使用命令行操作了；也可以利用Automator把它们包装成Mac应用。推荐使用Automator，同时启动Fcitx和Windows应用，效果完美，参见如下截图。
 
-[![img](http://img.sinosky.tk/f/m/)](http://img.sinosky.tk/f/m/)
+[![img](//www.sinosky.org/uploads/f/m/)](//www.sinosky.org/uploads/f/m/)
 
-[![img](http://img.sinosky.tk/f/n/)](http://img.sinosky.tk/f/n/)
+[![img](//www.sinosky.org/uploads/f/n/)](//www.sinosky.org/uploads/f/n/)
 
 &nbsp;
 
