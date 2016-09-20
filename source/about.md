@@ -12,6 +12,8 @@ Email： [chat@jat.email](mailto:chat@jat.email)
 
 Github：[https://github.com/jat001](https://github.com/jat001)
 
+[简历](/resume-2016.html)
+
 PGP key ID：11A0C293
 
 PGP public key：<a id="show" href="javascript:;" onclick="$('#pgp').show(); $(this).hide(); $('#hide').show();">显示</a><a id="hide" style="display: none;" href="javascript:;" onclick="$('#pgp').hide(); $(this).hide(); $('#show').show();">隐藏</a>

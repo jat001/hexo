@@ -8,7 +8,6 @@ tags:
   - 文件管理器
 id: 815
 categories:
-  - Linux
   - 小技巧
 date: 2014-01-17 16:37:36
 ---

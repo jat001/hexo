@@ -9,7 +9,6 @@ tags:
   - 迅雷
 id: 839
 categories:
-  - Geek
   - 应用软件
 date: 2014-01-21 10:14:47
 ---

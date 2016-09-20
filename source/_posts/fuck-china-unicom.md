@@ -30,7 +30,7 @@ _应联通要求，改个标题。_
 
 `curl -ivL http://www.amazon.cn`
 
-<pre class="lang:default, highlight:0" >
+```html
 * Adding handle: conn: 0x2087778
 * Adding handle: send: 0
 * Adding handle: recv: 0
@@ -50,7 +50,7 @@ _应联通要求，改个标题。_
 
 > Accept: */*
 
-> 
+>
 
 < HTTP/1.1 302 Found
 
@@ -68,7 +68,7 @@ _应联通要求，改个标题。_
 
 < Location: http://www.shelive.net/slalm/gotoz.html#www.amazon.cn/?tag=nd220034-23
 
-< 
+<
 
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
 * Closing connection 0
@@ -89,7 +89,7 @@ _应联通要求，改个标题。_
 
 > Accept: */*
 
-> 
+>
 
 < HTTP/1.1 200 OK
 
@@ -108,7 +108,7 @@ _应联通要求，改个标题。_
 
 < Accept-Ranges: bytes
 
-< 
+<
 
 { [data not shown]
 
@@ -133,11 +133,11 @@ Accept-Ranges: bytes
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script>location.href="http://hd.baofeng.com/go/aHmDz28.html";</script></head></html>
 
 * Connection #1 to host www.shelive.net left intact
-</pre>
+```
 
 `curl -ivL http://hd.baofeng.com/go/aHmDz28.html`
 
-<pre class="lang:default, highlight:0" >
+```html
 * Adding handle: conn: 0x3ee960
 * Adding handle: send: 0
 * Adding handle: recv: 0
@@ -158,7 +158,7 @@ Accept-Ranges: bytes
 
 > Accept: */*
 
-> 
+>
 
 < HTTP/1.1 200 OK
 
@@ -183,7 +183,7 @@ Accept-Ranges: bytes
 
 < Accept-Ranges: bytes
 
-< 
+<
 
 { [data not shown]
 
@@ -227,7 +227,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 </body>
 </html>
 * Connection #0 to host hd.baofeng.com left intact
-</pre>
+```
 
 [![201312111239](http://bcs.duapp.com/sinosky-blog/2013/12/11/201312111239.png)](http://bcs.duapp.com/sinosky-blog/2013/12/11/201312111239.png)
 
@@ -257,7 +257,7 @@ IP 确实是亚马逊官方的，除了是被运营商劫持了就没有别的�
 
 `curl -ivL http://www.amazon.cn`
 
-<pre class="lang:default, highlight:0" >
+```html
 * Adding handle: conn: 0x71ea80
 * Adding handle: send: 0
 * Adding handle: recv: 0
@@ -277,7 +277,7 @@ IP 确实是亚马逊官方的，除了是被运营商劫持了就没有别的�
 
 > Accept: */*
 
-> 
+>
 
 < HTTP/1.1 302 Found
 
@@ -295,7 +295,7 @@ IP 确实是亚马逊官方的，除了是被运营商劫持了就没有别的�
 
 < Location: http://www.shelive.net/slalm/uusetoz.html#www.amazon.cn/?tag=nd220035-23
 
-< 
+<
 
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
 * Closing connection 0
@@ -317,7 +317,7 @@ IP 确实是亚马逊官方的，除了是被运营商劫持了就没有别的�
 
 > Accept: */*
 
-> 
+>
 
 < HTTP/1.1 200 OK
 
@@ -336,7 +336,7 @@ IP 确实是亚马逊官方的，除了是被运营商劫持了就没有别的�
 
 < Accept-Ranges: bytes
 
-< 
+<
 
 { [data not shown]
 
@@ -361,11 +361,11 @@ Accept-Ranges: bytes
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script>location.href="http://uusee.adsame.com/c?z=uusee&la=0&si=35&ci=46&cg=41&c=421&or=260&l=1038&bg=1038&b=1890&u=http://www.amazon.cn/?tag=nd220035-23";</script></head></html>
 
 * Connection #1 to host www.shelive.net left intact
-</pre>
+```
 
 `curl -ivL "http://uusee.adsame.com/c?z=uusee&la=0&si=35&ci=46&cg=41&c=421&or=260&l=1038&bg=1038&b=1890&u=http://www.amazon.cn/?tag=nd220035-23"`
 
-<pre class="lang:default, highlight:0" >
+```html
 * Adding handle: conn: 0x2307e80
 * Adding handle: send: 0
 * Adding handle: recv: 0
@@ -385,7 +385,7 @@ Accept-Ranges: bytes
 
 > Accept: */*
 
-> 
+>
 
 < HTTP/1.1 302 Found
 
@@ -409,7 +409,7 @@ Accept-Ranges: bytes
 
 < Expires: 0
 
-< 
+<
 
   0     1    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
 * Closing connection 0
@@ -430,7 +430,7 @@ Accept-Ranges: bytes
 
 > Accept: */*
 
-> 
+>
 
 < HTTP/1.1 301 MovedPermanently
 
@@ -471,7 +471,7 @@ Accept-Ranges: bytes
 
 < Transfer-Encoding: chunked
 
-< 
+<
 
 * Ignoring the response-body
 { [data not shown]
@@ -495,7 +495,7 @@ Accept-Ranges: bytes
 
 > Accept: */*
 
-> 
+>
 
 < HTTP/1.1 302 Found
 
@@ -513,7 +513,7 @@ Accept-Ranges: bytes
 
 < Location: http://www.shelive.net/slalm/gotoz.html#www.amazon.cn/?tag=nd220034-23
 
-< 
+<
 
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
 * Closing connection 1
@@ -535,7 +535,7 @@ Accept-Ranges: bytes
 
 > Accept: */*
 
-> 
+>
 
 < HTTP/1.1 200 OK
 
@@ -554,7 +554,7 @@ Accept-Ranges: bytes
 
 < Accept-Ranges: bytes
 
-< 
+<
 
 { [data not shown]
 
@@ -611,7 +611,7 @@ Accept-Ranges: bytes
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script>location.href="http://hd.baofeng.com/go/aHmDz28.html";</script></head></html>
 
 * Connection #2 to host www.shelive.net left intact
-</pre>
+```
 
 [![201312111303](http://bcs.duapp.com/sinosky-blog/2013/12/11/201312111303.png)](http://bcs.duapp.com/sinosky-blog/2013/12/11/201312111303.png)
 

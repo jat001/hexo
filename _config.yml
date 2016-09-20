@@ -47,6 +47,21 @@ highlight:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  Geek: geek
+  Linux: linux
+  Picturmation: picturmation
+  SinoSky: sinosky
+  WordPress: wordpress
+  云平台: cloud-platform
+  互联网: internet
+  信息安全: information-security
+  小技巧: tips
+  应用软件: software
+  教程: tutorial
+  杂文: essay
+  程序员: programmer
+  码农与 IT: programmer-and-it
+
 tag_map:
 
 # Date / Time format

@@ -48,7 +48,7 @@ return trim($this->db()->quote($string), "'");
 
 &nbsp;
 
-### `&lt;script src=&quot;value&quot;&gt;` 的值可以为任意
+### `<script src="value">` 的值可以为任意
 
 前几天在看一个被入侵的网站的源码时，忽然发现一个很有趣的地方：
 

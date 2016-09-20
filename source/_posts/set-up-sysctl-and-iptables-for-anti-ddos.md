@@ -8,7 +8,6 @@ tags:
 id: 882
 categories:
   - Linux
-  - 教程
 date: 2014-02-25 02:03:02
 ---
 
