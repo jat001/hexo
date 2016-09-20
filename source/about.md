@@ -12,7 +12,7 @@ Email： [chat@jat.email](mailto:chat@jat.email)
 
 Github：[https://github.com/jat001](https://github.com/jat001)
 
-[简历](/resume-2016.html)
+[个人简历](/resume-2016.html)
 
 PGP key ID：11A0C293
 
