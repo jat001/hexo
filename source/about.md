@@ -8,11 +8,7 @@ date: 2013-08-27 01:19:21
 
 **联系我**
 
-Email： [chat@jat.email](mailto:chat@jat.email)
-
 Github：[https://github.com/jat001](https://github.com/jat001)
-
-[个人简历](/resume-2016.html)
 
 PGP key ID：11A0C293
 
