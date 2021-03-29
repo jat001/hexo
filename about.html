@@ -53,6 +53,10 @@
 
 <!-- 自定义样式保持在最底部 -->
 
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
@@ -183,16 +187,62 @@
         <div class="py-5" id="board"
           >
           
+            <div class="about-avatar">
+              <img src="/images/avatar.svg" srcset="/img/loading.gif" lazyload
+                   class="img-fluid" alt="avatar">
+            </div>
+          
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<article class="page-content">
-  <p>学习新知，记录心得，分享成果，发现未知。</p>
-<p><strong>联系我</strong></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/jat001">https://github.com/jat001</a></p>
-<p>PGP key ID：11A0C293</p>
+<div class="text-center">
+  <div class="about-info">
+    <div class="about-name">Jat</div>
+    <div class="about-intro">学习新知，记录心得，分享成果，发现未知。</div>
+    <div class="about-icons">
+      
+        
+        
+        
+        <a target="_blank" rel="noopener" href="https://github.com/jat001" class="
+           hint--bottom hint--rounded"
+           aria-label=GitHub
+        >
+          <i class="fab fa-github" aria-hidden="true"></i>
+          
+        </a>
+      
+        
+        
+        
+        <a target="_blank" rel="noopener" href="https://steamcommunity.com/id/jat001" class="
+           hint--bottom hint--rounded"
+           aria-label=Steam
+        >
+          <i class="fab fa-steam" aria-hidden="true"></i>
+          
+        </a>
+      
+        
+        
+        
+        <a target="_blank" rel="noopener" href="https://www.v2ex.com/member/Jat001" class="
+           hint--bottom hint--rounded"
+           aria-label=V2EX
+        >
+          <i class="iconfont icon-iconfont-vex" aria-hidden="true"></i>
+          
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+<article class="about-content page-content mt-5">
+  <div class="markdown-body">
+    <p>PGP key ID：11A0C293</p>
 <p>PGP public key：<a id="show" href="javascript:;" onclick="$('#pgp').show(); $(this).hide(); $('#hide').show();">显示</a><a id="hide" style="display: none;" href="javascript:;" onclick="$('#pgp').hide(); $(this).hide(); $('#show').show();">隐藏</a></p>
 <pre id="pgp" style="display: none;">
 -----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -248,7 +298,38 @@ jwStQS+YrXZlkhSCbxgP
 -----END PGP PUBLIC KEY BLOCK-----
 </pre>
 
+  </div>
 
+  
+    <!-- Comments -->
+    <article class="comments" id="comments" lazyload>
+      
+      
+        
+      
+      
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script>
+        Fluid.utils.lazyComments('disqus_thread', function() {
+          Fluid.utils.createCssLink('https://cdn.jsdelivr.net/npm/disqusjs@1.0/dist/disqusjs.css');
+          Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/disqusjs@1.0/dist/disqus.js', function() {
+            new DisqusJS({
+              shortname: 'sinosky',
+              apikey: 'lbjPXWr4QAaMEwZDtOcqfwBmo2mg6Mzgu5XEKk0FVMX4AFr2QYh5pzcTw49YhRac'
+            });
+          });
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+    </article>
   
 </article>
 
