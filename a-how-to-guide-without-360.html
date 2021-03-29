@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>木有 360，怎么破？ - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="木有 360，怎么破？">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2013-03-04 19:22" pubdate>
+        2013年3月4日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">木有 360，怎么破？</h1>
+            
+            <div class="markdown-body">
+              <p><span style="font-size: small;">         奇虎 360 与其它软件公司发生纠纷不是一天两天、一次两次了。虽说每次都没有得到“孰对孰错”的结果，似乎各方皆无损失，最后被坑的也都是广大用户……但明眼人也能看出，这些事情所折射的中国互联网领域和软件界的业内“良心”问题可谓引人深思的！</span></p>
+<p><span style="font-size: small;">         这次不谈“良心”问题，太大、太复杂，我们也都懂。如果你在经历过如此风波后，依然是“非常安全”的 360 安全卫士之追随者，貌似也没人能把你怎么样……如果你毅然决然弃用国产软件，我在此表示支持并助你一臂之力。“本着为用户负责的精神”这类大话我不敢说，向广大用户推荐一些优秀、免费的国际产品我还是做得到的。</span></p>
+<p><span style="font-size: small;">         据说某数字卫士或某电脑管家等等国内软件能在国内大肆横行的原因之一在于我们都是“傻瓜”，此“傻瓜”非彼傻瓜也。恐怕没有哪个正常人愿意花上一两个小时详细配置一下高深的 Windows 操作系统，也许有吧……于是“自动修复”、“自动优化”就理所当然地成了卖点。首先推荐的是 Microsoft 最新出品的 Fix It 小工具，官方称之为“适用于问题计算机的自动化疑难解答工具”。顾名思义，用途我不必多说，“自动化”、“疑难解答”几个关键词全部被包括了进去。软件分为联机和脱机两个版本，联机版本可以通过访问微软的 <a target="_blank" rel="noopener" href="http://support.microsoft.com/fixit/zh-cn">修复解决方案中心</a> 获得，在打开的页面中选择你所遇到的问题，然后下载一个小于 1MB 的可执行文件，运行后将会自动分析并给出可选方案。联机版本的不足在于，一个可执行文件仅提供一个特定的解决方案，遇到其它问题又需要再次下载新的。考虑到诸多不便，也为了照顾无法连网的用户，Microsoft Fix It 工具同时提供离线版本，集成了所有解决方案和所需组件。官方给出的下载链接我不敢恭维，“最大局域网”访问“最大广域网”的速度实在蛋疼，这里给一个打包好的程序，里面的解决方案更新至 2013 年 1 月。转到 <a target="_blank" rel="noopener" href="http://pan.baidu.com/share/link?shareid=324061&amp;uk=872920308">百度云</a> 下载后运行即可，同样是一个可执行文件，只是体积变大了许多……</span></p>
+<p><span style="font-size: small;">         第二个推荐也是照着“自动化”的关键词去的，来自德国的 TuneUp Utilities 2013 最新版。这是一款优化软件，体积比起 Fix It 稍大，但功能不可同日而语。TuneUp 集分析、优化、清理、调校于一身，既可以呼出主界面进行全手工操作，也可以设置为后台默默干活，包括但不限于整理磁盘和注册表碎片、灵活调整进程优先级、清理 Windows 和浏览器垃圾、根据需求开关各种服务等，一切都可以自动完成。不过，相对于某数字卫士的“完全静默”模式，软件还是有道德水准的，关键操作哪怕自动完成也会通知用户，就算你因为运行全屏程序而看不到，每月底也会有整月的优化报告呈献给你。软件收费，但是按照传统，<a target="_blank" rel="noopener" href="http://pan.baidu.com/share/link?shareid=324056&amp;uk=872920308">下载地址</a> 提供的“特殊版本”可永久免费使用。这回还是一个可执行文件，运行后按照向导一步一步安装，最后切记不要“立即启动”，完成向导会有另一个程序自动弹出，轻点 Patch 即大功告成！</span></p>
+<p><span style="font-size: small;">         作为一款“安全软件”，某数字卫士的另一个卖点无怪乎病毒防护了。不管是“小巧云查杀”也好、“强大本地库”也好，“360 安全卫士 + 360 杀毒”那差一步突破 400MB 的体积是让人心里很不舒服的。有说一些病毒文件利用各种“云杀毒引擎”需要上传文件的弱点，将自身体积增大到超过上传容量限制从而躲过云查杀。看来用 360 的用户没有这个顾虑了，再过几年，360 的肥大体积会使得病毒根本没有机会向容量不够的磁盘写入超大的文件……退一步讲，真的有超大病毒文件生成，360 也不会吝啬用户那点带宽的……第三推荐两款杀毒软件，真正免费的官方杀毒 Microsoft Security Essential 配合 Windows 防火墙将会天衣无缝，而 ESET Smart Security 提供包括杀毒、防火墙、笔记本防盗、社交网络安全在内的全方位保护，唯一不足在于，外国人口中的“社交网络”在国内都是些不存在的网站。前者安装后便完美集成在系统中，不愧是 Microsoft 自家的产品，除了手动扫描和处理外，也提供“傻瓜式”操作给懒惰用户。Microsoft 的系统产品一向区分语言和 Windows 版本，请 <a target="_blank" rel="noopener" href="http://windows.microsoft.com/zh-cn/windows/security-essentials-all-versions">访问此页</a> 自行选择下载。后者曾通过数项国际安全认证，并且号称“被评为占用资源最少的防护软件”，先不追究是真是假，敢在主页亮出所有获奖证书也是很值得信任的。ESET Smart Security 并不完全免费，每一个邮箱地址有一个月试用期，但激活所需用户名和密码可以在 <a target="_blank" rel="noopener" href="http://esetfans.com/">这里</a> 找到（此网站被 ESET 屏蔽，请在安装前访问并记录激活信息，或关闭 ESET Smart Security 防火墙后再次访问）。同样地，需要根据 Windows 版本下载对应安装包，<a target="_blank" rel="noopener" href="http://www.eset.com/us/download/home/detail/family/5/?trl=es#offline">网站</a> 为英文页面（不要选择中国地区，会被转向国内代理购买页面），下载时可选中文语言版本。</span></p>
+<p><span style="font-size: small;">         以上列出的软件可以替代 360 绝大部分功能了，如果发现好其它实用工具，我会及时补充。</span></p>
+<p><span style="font-size: small;">         2013-3-4 20:40 更新</span></p>
+<p><span style="font-size: small;">         两款来自 AnviSoft 的小工具也值得一看：<a target="_blank" rel="noopener" href="http://pan.baidu.com/share/link?shareid=324553&amp;uk=872920308">Browser Repair Tool</a> 能够一键修复被流氓软件更改的浏览器设置、协议关联和映像劫持，目前仅支持 Internet Explorer，FireFox 和 Chrome 修复将在下一个版本中提供；<a target="_blank" rel="noopener" href="http://pan.baidu.com/share/link?shareid=324542&amp;uk=872920308">Windows Update Downloader</a> 能够修复系统自动更新遇到的问题，甚至可以通过它手动下载、安装更新。虽说盗版 Windows 仍然可以使用 Windows Update 功能，但某些用户就是不放心……另外警告，Windows Update Downloader 会将系统版本信息和已安装更新列表上传至 Microsoft 作对比，如果你认为这包含在个人隐私范畴，请不要使用。<span style="line-height: 13px;"><br></span></span></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/software/">应用软件</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/360/">360</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Windows/">Windows</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%92%E8%81%94%E7%BD%91/">互联网</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8/">系统安全</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BD%AF%E4%BB%B6/">软件</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/use-raspberry-pi-to-make-remote-door-opener.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用树莓派制作的远程开门器</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/sinosky-wechat-robot.html">
+                        <span class="hidden-mobile">SinoSky 微信机器人正式上线</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

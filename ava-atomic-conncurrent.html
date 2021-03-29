@@ -1,0 +1,601 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>Java 原子操作与并发 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Java 原子操作与并发">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2012-09-18 00:00" pubdate>
+        2012年9月18日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java 原子操作与并发</h1>
+            
+            <div class="markdown-body">
+              <p>由一个简单的例子引出并发处理时容易被忽视的陷阱，用来作为面试问题应该很适合。</p>
+<p>某日，工作了 4 年多的 Java 程序员小 K 跳槽，面试时碰到这样一个题目&#8230;.</p>
+<p>&nbsp;</p>
+<pre class="lang:java decode:1 " >
+public class P1 {
+
+    private long b = 0;
+
+    public void set1() {
+        b = 0;
+    }
+
+    public void set2() {
+        b = -1;
+    }
+
+    public void check() {
+        System.out.println(b);
+
+        if (0 != b &amp;amp;&amp;amp; -1 != b) {
+            System.err.println(&quot;Error&quot;);
+        }
+    }
+}
+</pre>
+
+<p>** **** **</p>
+<p><strong>问题</strong></p>
+<p>调用 set1()、set2()、check()，会打印出 Error 么？</p>
+<p>** **</p>
+<p><strong>小K 的推理</strong></p>
+<p>“无论如何调用 set1()、set2() -&gt; b 的值只可能是 0 或 -1 -&gt; 在 check() 里面的判断条件（b 既不为 0 也不为 -1）永远不成立 -&gt; 不打印 Error”</p>
+<p>&nbsp;</p>
+<p>小 K 觉得有坑：这题目应该不会这么简单，再考虑一下多线程环境。</p>
+<p>&nbsp;</p>
+<p>思前想后，小 K 得出结论：“在多线程环境下也不会打印 Error。这题目很简单，就是考察一下推理吧。”，K 暗自窃喜。</p>
+<p>&nbsp;</p>
+<p>后来小 K 陆续又被问了几个多线程和 JVM 的问题。</p>
+<p>后来，就没有后来了&#8230;.</p>
+<p>&nbsp;</p>
+<p><strong>后来</strong></p>
+<p>后来还是有的。到家后，不甘心的小 K 验证了这道秒杀他的面试题。</p>
+<pre class="lang:java decode:1 " >
+public static void main(final String[] args) {
+    final P1 v = new P1();
+
+    // 线程 1：设置 b = 0
+    final Thread t1 = new Thread() {
+        public void run() {
+            while (true) {
+                v.set1();
+            }
+        };
+    };
+    t1.start();
+
+    // 线程 2：设置 b = -1
+    final Thread t2 = new Thread() {
+        public void run() {
+            while (true) {
+                v.set2();
+            }
+        };
+    };
+    t2.start();
+
+    // 线程 3：检查 0 != b &amp;amp;&amp;amp; -1 != b
+    final Thread t3 = new Thread() {
+        public void run() {
+            while (true) {
+                v.check();
+            }
+        };
+    };
+    t3.start();
+}
+</pre>
+
+<p>&nbsp;</p>
+<div>
+
+<p> 使用 3 个线程分别重复执行 set1()、set2()、check()。执行输出结果部分如下：</p>
+<pre class="lang:plain decode:1 " >
+....
+0
+0
+1
+1
+1
+Error
+Error
+-4294967296
+0
+0
+4294967295
+....
+</pre>
+</div>
+
+<p><em>执行环境：</em></p>
+<p>_    Java(TM) SE Runtime Environment (build 1.6.0_31-b05)_</p>
+<p>_    Java HotSpot(TM) Client VM (build 20.6-b01, mixed mode, sharing), 32bit_</p>
+<p>&nbsp;</p>
+<p>“确实打印了 Error，并且打印了 4294967295、-4294967296。我勒个去，只是啥情况？”</p>
+<p>&nbsp;</p>
+<p>小 K 决定搞懂其中奥秘，重新审视了题目。以一个专业程序员的严谨，并经过无数次 Google 后&#8230;.他似乎发现了问题所在。</p>
+<p>&nbsp;</p>
+<p>“这确实是一个并发问题！”</p>
+<p>&nbsp;</p>
+<p><strong>分析</strong></p>
+<p>这道题目有两个陷阱，分别考察了对并发执行的理解，以及对 JVM 基础（赋值操作）的掌握。</p>
+<p>** **</p>
+<p><strong>陷阱一：并发执行</strong></p>
+<p>并发执行就是多个操作一起执行，CPU 执行不同上下文（可理解为不同线程）发过来的指令。操作系统上层看上去就像是并行处理一样。</p>
+<p>&nbsp;</p>
+<p>也就是说，在编程语言层面，一个简单的操作同样需要考虑并发问题。</p>
+<p>&nbsp;</p>
+<p>小 K 首先是栽在了 check() 中的 if 判断上和设值是存在并发的，不能保证 0 != b 这个判断真（此时 b 为 -1）后恰好 b 被赋值为 0 时判断 1 != b。</p>
+<p>&nbsp;</p>
+<p>除此外，无论 JVM、操作系统、CPU 层面对指令如何优化、重排，最终都是逐一执行单一指令，唯一不同的就是不同层面可能会对执行加以限制，</p>
+<p>比如加入_原子操作_，最终保证 CPU 能够完整执行一组指令。</p>
+<p>&nbsp;</p>
+<p><strong>陷阱二：JVM 赋值操作</strong></p>
+<p>一些赋值操作不是原子性的。“纳尼？”</p>
+<p>&nbsp;</p>
+<p>Java 基础类型中，long 和 double 是 64 位长的。32 位架构 CPU 的算术逻辑单元（ALU）宽度是 32 位的，在处理大于 32 位操作时需要处理两次。</p>
+<p>&nbsp;</p>
+<p>“这不是&lt;计算机组成原理与汇编&gt;么”，小 K 顿时感到大学白上了，不懂学以致用 T_T~</p>
+<p>&nbsp;</p>
+<p>题目执行打印 4294967295、-4294967296 就是因为读时高 32 位或低 32 位被其他写覆盖了（看一下这两个数字的二进制就知道了）。</p>
+<p>&nbsp;</p>
+<p>Java 已经是封装底层细节很好的语言了，但依然需要注意这些陷阱，可以使用并发处理包 java.util.concurrent.atomic 中包含了一系列无锁原子操作类型，</p>
+<p>也可以使用 volatile 关键字保证线程间变量的可见性。</p>
+<p>&nbsp;</p>
+<p>其实这道题目只要解决了并发问题，也就保证了每个执行单元（set1()、set2()、check()）中赋值、比较的正确性。可以把同步方法执行看作序列化的事务，各中操作不会相互影响。</p>
+<p>&nbsp;</p>
+<p><strong>再后来</strong></p>
+<p>虽然小 K 面试挂了，不过他挂得心服口服。</p>
+<p>通过这个期间的不断翻阅文档以及实验，小 K 下次的面试应该不会被类似的题目秒杀了吧&#8230;.</p>
+<p>&nbsp;</p>
+<p>“按照这个简单面试题的标准，以前写过的程序简直就是通篇 bugs 啊！有木有，有木有啊！！！！”</p>
+<p>&nbsp;</p>
+<p><strong>骚年，继续充电吧！</strong></p>
+<p>内外兼修才是好程序员 :-)</p>
+<p>&nbsp;</p>
+<p>Posted on <a target="_blank" rel="noopener" href="http://88250.b3log.org/java-atomic-conncurrent">http://88250.b3log.org/java-atomic-conncurrent</a></p>
+<p>&nbsp;</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/programmer/">程序员</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Atomic/">Atomic</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Concurrent/">Concurrent</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/git-tag.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">[Git] 版本控制: 如何使用標籤(Tag)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/10-google-features-for-slow-internet-connections.html">
+                        <span class="hidden-mobile">Google 为龟速网络准备的十项功能</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>晒晒我的黑苹果配置 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="晒晒我的黑苹果配置">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2013-04-06 19:20" pubdate>
+        2013年4月6日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      682 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">晒晒我的黑苹果配置</h1>
+            
+            <div class="markdown-body">
+              <p>黑苹果（Hackintosh），是指在非苹果生产或非苹果授权生产的普通 x86 架构 PC 上安装 Mac OS 的行为，而这样安装上去的 Mac OS 就被称为 Hackintosh，与白苹果——在苹果机（Macintosh）上面安装原版 Mac 系统相对。</p>
+<p>黑苹果更多的是研究技术的乐趣，对于工作/学习需要的人来说，我更推荐买苹果机。黑苹果最大的遗憾就是不能享受苹果原装配件（虽然我不知道到底有什么好的），对于伸手党，黑苹果不适合你。</p>
+<p>对于初学者，我推荐远景的这篇<a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-1064870-1-1.html">帖子</a>，从引导到系统，从安装到驱动，基本上很全了，下面提到的所有帖子、驱动和软件，这个向导帖中都有。另外，请善用搜索引擎，如果在中文的论坛中找不到想要的内容，可以试试用英文搜索，国外的相关论坛已经很成熟了，当然，国内的诸如远景黑苹果讨论区等也很成熟。</p>
+<p>&nbsp;</p>
+<p>下面晒晒我的黑苹果配置及驱动，从使用角度来说已经完美，仅供参考，只写了重要的。</p>
+<p>CPU： Intel Core i5-2300 （系统自带，另需 <a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-1056182-1-1.html">AppleIntelCPUPowerManagement</a>）</p>
+<p>主板： 华硕 P8P67 </p>
+<p>显卡： NVIDIA GeForce GTS 450 （系统自带，需 SMBios.plist，不然会黑屏，附上我的，<strong>请先确认配置与我的相近</strong>）</p>
+<pre class="lang:xml " >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>SMbiosdate</key>
+    <string>04/22/11</string>
+    <key>SMbiosvendor</key>
+    <string>Apple Inc.</string>
+    <key>SMbiosversion</key>
+    <string>IM121.88Z.0047.B0A.1104221555</string>
+    <key>SMboardproduct</key>
+    <string>Mac-942B5BF58194151B</string>
+    <key>SMfamily</key>
+    <string>iMac</string>
+    <key>SMmanufacturer</key>
+    <string>Apple Inc.</string>
+    <key>SMproductname</key>
+    <string>iMac12,1</string>
+    <key>SMserial</key>
+    <string>C02J16Y5DHJT</string>
+    <key>SMsystemversion</key>
+    <string>1.0</string>
+</dict>
+</plist>
+</pre>
+
+<p>板载网卡： <a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-797733-1-1.html">RealtekRTL81xx</a></p>
+<p>板载声卡： <a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-1272596-1-1.html">VoodooHDA</a> （我实在听不出原生驱动与仿冒驱动有什么区别，可能我耳朵背吧……有能力的可以参考 <a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-927098-1-1.html">Realtek ALC892声卡驱动之路</a>）</p>
+<p>USB 3.0： <a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-1303194-1-1.html">GenericUSBXHCI</a></p>
+<p>&nbsp;</p>
+<p>系统我推荐使用<a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-1295195-1-1.html">懒人版</a>（帖子2楼的教学比较适合新手，推荐阅读），千万不要使用各种整合镜像。要成功引导和使用，你还需要<a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-971434-1-1.html">变色龙</a>和<a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-1082609-1-1.html">FakeSMC</a>。</p>
+<p>关于 org.chameleon.Boot.plist 和 SMBios.plist，推荐阅读紫米的这个<a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-798366-1-1.html">帖子</a>。</p>
+<p>常用的软件还有 <a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-1023083-1-1.html">硬盘安装助手</a>（往硬盘中写入安装镜像，Windows）、<a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-1282608-1-1.html">Chameleon Wizard</a>（安装、更新引导，org.chameleon.Boot.plist 和 SMBios.plist 修改等，Mac OS）、<a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-853346-1-1.html">Kext Wizard</a>（安装、更新驱动，修复系统权限，清空驱动缓存等，Mac OS）。至于 Windows 下读写 HFS+、Mac OS 下读写 NTFS等，向导帖中都有，不再赘述。</p>
+<p>&nbsp;</p>
+<p>本文只是抛砖引玉，安装黑苹果遇到的问题可能远不止这些，也没有涉及到修改 DSDT，如果配置比较特殊，可能只有自行修改 DSDT 才能解决，不过黑苹果的乐趣不就是这些吗？</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/geek/">Geek</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Mac-OS/">Mac OS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Hackintosh/">Hackintosh</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/">黑苹果</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Mac/">Mac</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Macintosh/">Macintosh</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/let-us-do-some-cleaning.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">清啊、清呀，清垃圾</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/start-a-modular-extensible-webapp.html">
+                        <span class="hidden-mobile">如何开始一个模块化可扩展的Web App</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

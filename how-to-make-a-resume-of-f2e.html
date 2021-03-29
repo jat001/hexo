@@ -1,0 +1,565 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>如何做好一份前端工程师的简历？ - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="如何做好一份前端工程师的简历？">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2013-04-03 18:51" pubdate>
+        2013年4月3日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">如何做好一份前端工程师的简历？</h1>
+            
+            <div class="markdown-body">
+              <p>春节前在蓝色理想上发了个<a target="_blank" rel="noopener" href="http://job.blueidea.com/index.php?action=display&amp;option=jobs&amp;extent=view&amp;info=911">“雅虎口碑招聘前端工程师 ”的启事</a>，节后收到很多简历，加之HR通过专业招聘网站得到的简历和朋友同事推荐的简历，数量上是相当的多，把这些简历一一看完真是一个漫长而幸苦的体力活，何况我还要仔细认真的去提取和核查有用信息评估其能力，尽量不错过任何一个埋藏在大量简历中合适的人，这绝大部分时间并不是一个相当愉悦的过程。所以，我感觉有必要来谈谈：如何做好一份前端工程师的简历。</p>
+<p>&nbsp;</p>
+<h3 id="一、你是前端工程师"><a href="#一、你是前端工程师" class="headerlink" title="一、你是前端工程师"></a><span style="color: black; font-family: MicroSoft YaHei;">一、你是前端工程师</span></h3><p>虽然简历都会有一些常规信息，但职业决定了这份简历核心内容和求职成败。所以，这份简历应该尽可能体现你自己是一个合格的前端工程师。专业的前端工程师是什么可以看看去年Nate Koechley的演讲<a target="_blank" rel="noopener" href="http://nate.koechley.com/blog/2008/06/11/slides-professional-frontend-engineering/">《Professional Frontend Engineering》</a>，前端工程师应该关注的内容可以从<a target="_blank" rel="noopener" href="http://www.flickr.com/photos/kejun/3114605967/">克军总结的“前端工程师应该关注什么”的思维导图</a>中窥出一二，学习内容聚合可以看看<a target="_blank" rel="noopener" href="https://www.evernote.com/shard/s18/sh/d52d3c9c-8fda-4462-9fa0-702f463f73c7/f9481b438851dc2d3d7394c1dbdbce80">陈成总结的《前端开发大众手册(包括工具、网址、经验等)》</a>。</p>
+<p>毫无疑问，前端工程师应该知道如何用简历体现其专业技能和职业精神，这是每个应聘者应该考虑的问题。</p>
+<p>&nbsp;</p>
+<h3 id="二、内容为王"><a href="#二、内容为王" class="headerlink" title="二、内容为王"></a><span style="color: black; font-family: MicroSoft YaHei;">二、内容为王</span></h3><ol>
+<li><p><strong>个人信息</strong></p>
+<ol>
+<li> 姓名 <sub>（必需）</sub></li>
+<li> 性别 <sub>（必需）</sub></li>
+<li> 年龄 <sub>（必需）</sub></li>
+<li> 联系电话 <sub>（必需）</sub></li>
+<li> 学历及学位 <sub>（必需）</sub></li>
+<li> 薪资期望</li>
+<li> 个人照片</li>
+<li> 邮箱</li>
+<li> Blog</li>
+<li> 外语能力</li>
+</ol>
+</li>
+<li><p><strong>职业技能</strong></p>
+<ol>
+<li> HTML、CSS、JavaScript/ActionScript等</li>
+<li> Web标准、可用性、可访问性</li>
+<li> 一门非前端脚本的语言(Java、PHP、Python、C#等)</li>
+<li> 任何有利于前端开发的技能和兴趣</li>
+</ol>
+</li>
+<li><p><strong>职业和教育经历</strong></p>
+<ol>
+<li> 起始时间、单位名、职位（学位）和收获</li>
+<li> 简而精</li>
+<li> 按照时间倒序排列</li>
+</ol>
+</li>
+<li><p><strong>代表作品</strong></p>
+<ol>
+<li> 能体现自己现在前端技能或者重要经历的作品</li>
+<li> 简而精，且可以简要附上自己在这个作品中的收获</li>
+<li> 和别人合作的作品要注明自己具体完成的内容</li>
+<li> 在线链接要测试以保证可用，如果有其他人的变更应注明，较大变更就无需提交了</li>
+<li> 提供附件要注明与之对应的文件名</li>
+<li> 按完成时间倒序排列</li>
+</ol>
+</li>
+</ol>
+<p>依据实际情况，代表作品也完全可以直接融入到职业技能和经历中体现。当然内容不仅仅是这些，可以任意增加能体现前端工程师职业素质的信息。</p>
+<p>&nbsp;</p>
+<h3 id="三、Web是平台"><a href="#三、Web是平台" class="headerlink" title="三、Web是平台"></a><span style="color: black; font-family: MicroSoft YaHei;">三、Web是平台</span></h3><p>毫无疑问，Web才是真正的平台，当这个平台的后端逐步被云所统治时（Amazon的很多服务和Google App Engine都初见端倪），那么云端的用户代理（比如浏览器）就是前端工程师的战场。前端工程师是可以长期从事且有前途的职业。</p>
+<p>简历作为前端工程师迈向新征途而提交的第一份作品，应该毫不迟疑的用它来体现其专业技能和职业精神，所以Web页面是前端工程师简历的最好载体。它能体现前端工程师诸多专业素质：</p>
+<ol>
+<li><p>知道为什么选择的DTD是下面中的一个而不是其他，这是对<a target="_blank" rel="noopener" href="http://www.w3.org/html/">HTML标准</a>的理解和思考 。</p>
+<ol>
+<li><pre class="lang:html wrap:1 " >
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+</pre>
+
+<ol start="2">
+<li> <pre class="lang:html wrap:1 " >
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+</pre></li>
+<li> <pre class="lang:html wrap:1 " >
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+</pre></li>
+<li> <pre class="lang:html wrap:1 " >
+<!DOCTYPE HTML>
+</pre></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p> 针对内容选择合适的HTML标签，合理的id和class命名，尝试使用<a target="_blank" rel="noopener" href="http://microformats.org/">微格式</a>，这是对语义化的理解和思考。</p>
+</li>
+<li><p> 至少兼容<a target="_blank" rel="noopener" href="http://developer.yahoo.com/yui/articles/gbs/">YUI中列出的A-grade浏览器</a>，这是对跨浏览器和CSS Hacks的理解和思考 。</p>
+</li>
+<li><p> 虽然Web性能在大访问量下才比较容易凸显，但把尝试把<a target="_blank" rel="noopener" href="http://developer.yahoo.com/performance/rules.html">YAHOO性能团队的34条最佳实践</a>应用上，一定会小中见大且受益终生的 。</p>
+</li>
+<li><p>JavaScript的应用</p>
+<ol>
+<li> 简历的信息结构一般很简单，但是这并不意味着无法使用JavaScript来增强它的交互。找出其JavaScript技能和简历相互结合的地方。</li>
+<li> 可以尝试使用某种框架（<a target="_blank" rel="noopener" href="http://developer.yahoo.com/yui">YUI</a>、<a target="_blank" rel="noopener" href="http://www.jquery.com/">jQuery</a>、<a target="_blank" rel="noopener" href="http://www.prototypejs.org/">Prototype</a>、<a target="_blank" rel="noopener" href="http://mootools.net/">Mootools</a>等），很明显框架能提高我们的开发速度，掌握至少一种优秀的框架能增强我们的价值。</li>
+<li> 可以利用JavaScript做出几个彩蛋在简历里面么？</li>
+<li> 实现结构、样式和行为的分离。</li>
+<li> 理解和体现<a target="_blank" rel="noopener" href="http://www.webstandards.org/action/dstf/">DOM Scripting</a>、<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Graceful_degradation">预留退路（Graceful Degradation）</a>、<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Progressive_Enhancement">渐进增强（Progressive Enhancement ）</a>、<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Unobtrusive_JavaScript">无侵入的JavaScript（Unobtrusive Javascript）</a>等思想。 <a target="_blank" rel="noopener" href="http://ued.taobao.com/blog/2008/10/09/understanding-progressiveen-hancement-chs-translation/">空帷翻译的《理解“渐进增强(Progressive Enhancement)”》</a>是篇这方面的好文章。</li>
+</ol>
+</li>
+<li><p> <a target="_blank" rel="noopener" href="http://www.w3.org/WAI/">可访问性</a>，在这上面每一步的深入研究和应用都值得赞赏。</p>
+</li>
+<li><p> <a target="_blank" rel="noopener" href="http://dev.w3.org/html5/spec/Overview.html">HTML5</a>、<a target="_blank" rel="noopener" href="http://www.w3.org/Style/CSS/current-work">CSS3</a>、<a target="_blank" rel="noopener" href="http://www.w3.org/Graphics/SVG/">SVG</a>、<a target="_blank" rel="noopener" href="http://www.whatwg.org/specs/web-apps/current-work/#the-canvas-element">Canvas</a>甚至离线技术、安全技术都可以和我们的简历结合起来。列表<a target="_blank" rel="noopener" href="http://a.deveria.com/caniuse/#agents=All&amp;cats=All&amp;eras=All&amp;statuses=All">When can I use…</a>提供了一些新技术在主流浏览器的支持情况。</p>
+</li>
+<li><p> 打印样式，很明显前端简历不仅仅是其主管看，还有HR和大老板看，所以准备打印样式是很重要的，这不仅仅是技能问题，更是一种前端开发的素质。你需要知道，打印样式应该是黑字白底，且尽量少的装饰图片，因为现在的绝大部分办公打印机还是黑白的，且黑色更费墨，所以当你的简历是黑色背景时更应该注意这点。</p>
+</li>
+<li><p> 简单设计，千万不要把你的简历搞一团糟，设计虽然不是前端工程师最重要的技能，但是良好的视觉设计更能体现前端工程师的价值，所以审美其实也是前端工程师的基础素质。如果对视觉设计感到困惑，你可以从看<a target="_blank" rel="noopener" href="http://dancewithnet.com/2009/01/20/the-non-designer-design-book/">《推荐给大家看的设计书》</a>开始。</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<h3 id="四、细节决定体验"><a href="#四、细节决定体验" class="headerlink" title="四、细节决定体验"></a><span style="color: black; font-family: MicroSoft YaHei;">四、细节决定体验</span></h3><ol>
+<li> 标识性的文件名，比如“秦歌的简历”、“秦歌的作品”，而不是“个人简历”、“我的作品”。</li>
+<li> 发完信后记得检查一下发件箱，确保没有忘记发附件。</li>
+<li> 简历和众多作品整体打一个包。不要一个大包里面无数个小包。且整个包应该整理过，去掉垃圾，不应该太大。</li>
+<li> 不要重复发邮件，特别是拒绝以后，还发一个同样的邮件，除非一段时间后你有较大进步。</li>
+<li> 检查链接有效性，无效链接很伤感情的，可以使用Firefox的插件<a target="_blank" rel="noopener" href="https://addons.mozilla.org/en-US/firefox/addon/532">LinkChecker</a>或<a target="_blank" rel="noopener" href="https://addons.mozilla.org/en-US/firefox/addon/10201">Pinger</a>。</li>
+</ol>
+<p>实际上，前端工程师的工作成果是直接面向千万用户的，他直接决定了最终的用户体验，所以每个细节都至关重要，就像JavaScript编程一样，只要我们掌握<a target="_blank" rel="noopener" href="http://dancewithnet.com/2008/01/26/the-elements-of-javascript-style-part-one/">良好的风格要素</a>，我们就能避免很多错误，实际上这个思想贯穿整个前端开发的始终，包括制作简历。</p>
+<p>我很喜欢有个人blog的应聘者，因为通过其blog不仅仅可以看出他的前端技能、工作积累、职业素质和分享精神，同时他通过维护blog可以贯穿一个简单开发的始终，从内容、交互、视觉、前端一直到后端维护，而这些角色都是前端在开发过程中的上下游，需要经常协作，这种经历能使前端更高效的沟通和更务实的换位思考。同样，当我推荐前端的简历应该是以Web页面为载体时，也是基于这个想法，并适当的给出一些相关知识以备有兴趣的朋友朝这个方向走下去。虽然我的建议偏向于“HTML+CSS+JavaScript”方向的前端工程师，但实战中肯定有更多能够在简历中体现前端的技能和创意，这本身就是抛砖引玉，这仅仅是一个开始。</p>
+<p>简历很重要，但人品、职业精神和专业的前端技能更重要，最重要的是这两者是相辅相成的。虽然很羡慕兄弟团队<a target="_blank" rel="noopener" href="http://ued.taobao.com/job/season2/">淘宝UED</a>、<a target="_blank" rel="noopener" href="http://ued.alipay.com/job/">支付宝UED</a>和<a target="_blank" rel="noopener" href="http://job2009.aliued.com/">阿里巴巴B2B国际站UED</a>能有创意、时间和精力搞出那么精致的招聘站点，但我更希望我未来的同事用技能、创意、时间和精力整出一个巨牛的前端工程师简历来震住我（<a href="mailto:&#107;&#x61;&#118;&#101;&#x6e;&#121;&#x61;&#110;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#111;&#x6d;">&#107;&#x61;&#118;&#101;&#x6e;&#121;&#x61;&#110;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#111;&#x6d;</a>）吧。</p>
+<p>&nbsp;</p>
+<p>author: 秦歌</p>
+<p>Posted on <a target="_blank" rel="noopener" href="http://dancewithnet.com/2009/02/17/how-to-make-a-resume-of-f2e/">http://dancewithnet.com/2009/02/17/how-to-make-a-resume-of-f2e/</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/programmer/">程序员</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/F2E/">F2E</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88/">前端工程师</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%8B%9B%E8%81%98/">招聘</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%80%E5%8E%86/">简历</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/sublime-text-3-crack.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">最新版 Sublime Text 3 的破解方法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/use-idm-to-download-files.html">
+                        <span class="hidden-mobile">使用 IDM 下载 SinoSky 离线下载上的资源</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

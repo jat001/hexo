@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>巧用 Windows Update 解决驱动问题 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="巧用 Windows Update 解决驱动问题">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2012-12-19 19:09" pubdate>
+        2012年12月19日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      863 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">巧用 Windows Update 解决驱动问题</h1>
+            
+            <div class="markdown-body">
+              <p><span style="font-size: small;">     这篇文章写给那些“爱干净”的读者。如果你是这样一类人，喜欢新装机后用驱动光盘煲光驱，然后看着无数安装进度条欣慰地傻笑，那么请立即按下 Alt + F4 或者 Ctrl + W 关闭此页面，以免引起不适或其它可能出现的严重后果。</span></p>
+<p><span style="font-size: small;">     我们知道 Windows 7 是个很强力的系统（当然，在 Windows 8 发布之前），不仅仅只是界面、易用性和稳定性方面有所提升，更重要的是，全新的 Windows Update 也比以前更屌爆了。Windows Update 已经不仅仅是一个下载安全更新的平台，更集语言包、驱动程序、错误解决方案于一体。但是很多用户往往在第一次进入系统后便想尽各种方法封杀 Windows Update，包括但不限于使用第三方软件（如 361 安全卫士、PP 电脑管家）、禁用后台服务，设置组策略等等……殊不知保持 Windows Update的正常运转，会给用户带来诸多方便。这里以驱动问题举例。</span></p>
+<p><span style="font-size: small;">     Windows 7 自带绝大部分硬件驱动，不过对于一部分硬件也存在驱不动或者自带驱动不够新的情况。所以在安装完新系统之后，第一件事不是使劲喂光驱驱动光盘，而是调节 Windows Update。首先停止可能已开始的更新任务，并点击左侧的“更改设置”，在“重要更新”下方选取“检查更新，但让我选择是否下载和安装更新”，确定后返回。然后在 Windows Update 中找到如下界面，点击“查找详细信息”，而后关闭当前窗口。</span></p>
+<p><span style="font-size: small;"><a href="//www.sinosky.org/uploads/Created%20by%20D.Y./WU_Old.png" title="Original Windows Update"><img src="//www.sinosky.org/uploads/Created%20by%20D.Y./WU_Old.png" srcset="/img/loading.gif" lazyload alt="Original Windows Update"></a></span></p>
+<p><span style="font-size: small;">     Internet Explorer 将会打开一个页面，跟随操作以将 Windows Update 应用到所有 Microsoft 产品（而不仅仅是 Windows），期间推荐选择“保留我当前的设置”，直到 Windows Update 下方横幅改变。</span></p>
+<p><span style="font-size: small;"><a href="//www.sinosky.org/uploads/Created%20by%20D.Y./WU_WithMS.png" title="Windows Update for Microsoft Products"><img src="//www.sinosky.org/uploads/Created%20by%20D.Y./WU_WithMS.png" srcset="/img/loading.gif" lazyload alt="Windows Update for Microsoft Products"></a></span></p>
+<p><span style="font-size: small;">     此时新的更新检查操作会自动开始，等待完成即可在“重要”或“可选”列表中找到有关最新驱动程序的更新。这时再下载安装更新，即可保证安装的驱动程序是最新的，同时也是最纯净的。Windows Update 只会下载安装单纯的驱动，而不会附带安装什么 Dashboard 或 Control Center 之类的无用性能监视工具。而且全程静默安装，完全不需要用户绞尽脑汁配置驱动附加组件。下图是安装成功的历史记录。</span></p>
+<p><span style="font-size: small;"><a href="//www.sinosky.org/uploads/Created%20by%20D.Y./WU_nVIDIA.png" title="nVIDIA Driver"><img src="//www.sinosky.org/uploads/Created%20by%20D.Y./WU_nVIDIA.png" srcset="/img/loading.gif" lazyload alt="nVIDIA Driver"></a></span></p>
+<p><span style="font-size: small;"><a href="//www.sinosky.org/uploads/Created%20by%20D.Y./WU_Realtek.png" title="Realtek Driver"><img src="//www.sinosky.org/uploads/Created%20by%20D.Y./WU_Realtek.png" srcset="/img/loading.gif" lazyload alt="Realtek Driver"></a></span></p>
+<p><span style="font-size: small;">     另外，新添加大型即插即用设备（如打印机、扫描仪等，移动硬盘就不算进来了）后，也可以交给 Windows Update 解决驱动问题（除非用户手动跳过，系统一般默认获取 Windows Update 上的驱动）。只要你不在乎设备随盘附赠的软件和工具，就直接插上插头，等待驱动安装成功吧。</span></p>
+<p><span style="font-size: small;"> </span></p>
+<p><span style="font-size: small;"> </span></p>
+<p><span style="font-size: small;">     后记： </span></p>
+<p><span style="font-size: small;">     如果你的硬件实在冷门，抑或产品太过新潮，连 Windows Update 也没有相应驱动，不必担心。“操作中心”会显示给你一条消息，指引你前往官方网站下载最近驱动程序。提供的网址都是直接下载链接，一键点开便立即下载。安装完成后将消息存档即可。</span></p>
+<p><span style="font-size: small;"><a href="//www.sinosky.org/uploads/Created%20by%20D.Y./WU_Arc.png" title="Archived Messages"><img src="//www.sinosky.org/uploads/Created%20by%20D.Y./WU_Arc.png" srcset="/img/loading.gif" lazyload alt="Archived Messages"></a></span></p>
+<p><span style="font-size: small;"> </span></p>
+<p><span style="font-size: small;">     您可以在 SkyDrive 中 <a target="_blank" rel="noopener" href="https://skydrive.live.com/redir?resid=9F05F85D43FB3B74!339&amp;authkey=!AA8DzRbjFz7haso">查看或下载</a> 此文章的电子版本。</span></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/tips/">小技巧</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Windows/">Windows</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Windows-Update/">Windows Update</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%A1%AC%E4%BB%B6/">硬件</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/">驱动程序</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/how-to-use-syntaxhighlighter.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">WordPress代码高亮插件SyntaxHighlighter终极使用详解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/password-security-management.html">
+                        <span class="hidden-mobile">多平台上的密码安全管理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

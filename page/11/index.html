@@ -1,0 +1,920 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="An elegant Material-Design theme for Hexo">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/sublime-text-crack.html">Sublime Text 2/3 Windows/Mac 破解补丁/注册机/序列号</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/sublime-text-crack.html">
+          
+          
+            
+          
+          Sublime Text 是一套基于 Python 的跨平台文字编辑器。Sublime Text 2 可以无限期免费试用，而 Sublime Text 3 则没有试用的机会了。什么？支持正版，Sublime Text 3 只要70美元，你没有看错，不要998，只要70美元，你就可以获得一份个人授权 ！
+
+&nbsp;
+Windows：下载地址：http://bcs.duapp.com/sinosk
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-02-23 13:35" pubdate>
+              2013-02-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/software/">应用软件</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Sublime-Text/">Sublime Text</a>
+            
+              <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+            
+              <a href="/tags/Code-Editor/">Code Editor</a>
+            
+              <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/which-is-the-best-code-editor.html">Which is the Best Code Editor?</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/which-is-the-best-code-editor.html">
+          
+          
+            
+          
+          
+For us, web developers, the choice of a source code editor shouldn’t come lightly. This is where we spend most of our development time and where productivity is gained or lost on a grand scale. No tw
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-02-22 13:42" pubdate>
+              2013-02-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/programmer/">程序员</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Code-Editor/">Code Editor</a>
+            
+              <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器</a>
+            
+              <a href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/">文本编辑</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/some-chinese-programming-language.html">一些中文编程语言</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/some-chinese-programming-language.html">
+          
+          
+            
+          
+          我自认为本文不是恶搞，让我们本着严肃认真的精神来审视这些中文编程语言。
+易语言
+易语言可以说是中文编程语言的老大，拥有独立的编译器。易语言并不是把现存的编程工具进行表面汉化而成的，和其他国外语言相比，&#8221;易语言&#8221;最大的不同是彻底中文化，且拥有自下而上的全部自主知识产权。
+易语言的全新版本叫做“易语言.飞扬”，包含垃圾收集机制，是完全面向对象的中文编程语言：
+
+
+
+
+
+
+1
+2
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-02-06 14:48" pubdate>
+              2013-02-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/programmer/">程序员</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%B8%AD%E6%96%87/">中文</a>
+            
+              <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+            
+              <a href="/tags/%E8%8D%89%E6%B3%A5%E9%A9%AC/">草泥马</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/python-starter-s-scripts.html">Python 初学者的代码式学习方案</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/python-starter-s-scripts.html">
+          
+          
+            
+          
+          // 本文写给 python 新手，但要求所谓“初学者”已经至少精通一门其他编程语言。
+// 如果你还不知道 python 是什么，甚至没有在计算机编程上花费任何一点时间……那么请自觉略过这一行文字之下的所有内容，它们不适合你。
+&nbsp;
+&nbsp;
+// 好吧，切入正题。
+// Python 相对来说比较简单，也许这只是我个人认为。但是对比 C++ 来说，用“简单”形容不为过。
+// 如果
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-02-03 12:47" pubdate>
+              2013-02-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/tutorial/">教程</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+            
+              <a href="/tags/Python/">Python</a>
+            
+              <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/git-commands.html">Git 常用命令</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/git-commands.html">
+          
+          
+            
+          
+          Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。
+本来想着只把最有用、最常用的 Git 命令记下来，但是总觉得这个也挺有用、那个也用得着，结果越记越多。
+
+图片比较大，建议保存到本地观看
+&nbsp;
+Posted on http://www.cnblogs.com/1-2-3/archive/2010/07/18/git-com
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-01-31 06:43" pubdate>
+              2013-01-31
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/programmer/">程序员</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Github/">Github</a>
+            
+              <a href="/tags/git/">git</a>
+            
+              <a href="/tags/%E5%91%BD%E4%BB%A4/">命令</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/css3-plum-falling.html">CSS3梅花飘落</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/css3-plum-falling.html">
+          
+          
+            
+          
+          寒冬来临，为了应景，我在博客右侧放了一朵梅花， 光有梅花， 不见飘雪，如何是好。
+于是有了博客右侧的东东, 不过只支持Webkit、Firefox、Opera，不支持IE。
+
+主要参考了 Fall leaves，加了firefox和opera的支持。
+
+
+使用方法：
+
+  1.将leaves.js leaves.css images文件夹 放在同一目录下;
+  2.在头部或者底部引入leaves.
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-01-18 11:11" pubdate>
+              2013-01-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/internet/">互联网</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wordpress/">wordpress</a>
+            
+              <a href="/tags/css3/">css3</a>
+            
+              <a href="/tags/Fall-leaves/">Fall leaves</a>
+            
+              <a href="/tags/%E6%A2%85%E8%8A%B1/">梅花</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/youbbs-104-bae-bcs.html">YouBBS v1.04.1 for 百度BAE云存储(BCS)版</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/youbbs-104-bae-bcs.html">
+          
+          
+            
+          
+          YouBBS是一个简洁、高效的php+mysql轻型论坛。
+v1.04只有vps版，作者说维护多个版本太麻烦，正好我也要用，就修改了这个BAE版，附件存储及头像用的是百度云存储(BCS)。
+注意：由于我的失误，v1.04版有几个小bug，现已修复，请重新下载v1.04.1版。
+&nbsp;
+下载地址：
+本地下载
+ 
+GitHub：
+https://github.com/sinosky/youbbs
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-01-10 14:41" pubdate>
+              2013-01-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/sinosky/">SinoSky</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/BAE/">BAE</a>
+            
+              <a href="/tags/%E4%BA%91%E5%B9%B3%E5%8F%B0/">云平台</a>
+            
+              <a href="/tags/%E7%99%BE%E5%BA%A6/">百度</a>
+            
+              <a href="/tags/youBBS/">youBBS</a>
+            
+              <a href="/tags/BCS/">BCS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/chinese-dream.html">梦</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/chinese-dream.html">
+          
+          
+            
+          
+          [![梦](http://bcs.duapp.com/sinosky-blog/2013/01/09/Chinese-Dream.png)](http://bcs.duapp.com/sinosky-blog/2013/01/09/Chinese-Dream.png "梦")
+
+、 ……梦……梦
+
+
+图片一张
+作者：蟹农场 戴志勇
+（管理员让我小尺度一些，我做到了。不过只有一张图片的博文是很少见的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-01-09 19:24" pubdate>
+              2013-01-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/essay/">杂文</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%97%E6%96%B9%E5%91%A8%E6%9C%AB/">南方周末</a>
+            
+              <a href="/tags/%E6%A2%A6/">梦</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/wordpress-rewrite-for-bae.html">WordPress 伪静态 for BAE</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/wordpress-rewrite-for-bae.html">
+          
+          
+            
+          
+          BAE 上关于 app.conf 的文档太少了，伪静态功能也太弱了，而且还不能区分真静态与伪静态，如果不把所有的文件都考虑到就会出错。
+下面是我自己写的规则，基本上考虑到了常见的情况，包括 WordPress 里原有的文件，所有主题、插件以及 Sitemap、robots。
+
+handlers:
+
+  - url : /favicon.ico$
+
+    script : favicon.ico
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-01-08 13:43" pubdate>
+              2013-01-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/tips/">小技巧</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/BAE/">BAE</a>
+            
+              <a href="/tags/wordpress/">wordpress</a>
+            
+              <a href="/tags/%E4%BC%AA%E9%9D%99%E6%80%81/">伪静态</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/iphone-cycloramic.html">无需任何外部支持物,Cycloramic通过让iPhone原地旋转拍下360度全景视频</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/iphone-cycloramic.html">
+          
+          
+            
+          
+          
+360 度的全景视频已经不是什么新鲜概念，Kogeto 公司推出的摄像装置 Dot 就可以让 iPhone 瞬间变成 360 度全景摄像机，之前的 Kickstarter 项目 GoPano 同样是通过为 iPhone 装上一个特制镜头，实现类似功能。另外，iOS 6 本身也支持全景模式。
+但是，假如现在有一款应用 Cycloramic 既不需要特制镜头，也无需借助三脚架、手机盒或其他任何外部支
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-01-03 19:18" pubdate>
+              2013-01-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/geek/">Geek</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Cycloramic/">Cycloramic</a>
+            
+              <a href="/tags/GoPano/">GoPano</a>
+            
+              <a href="/tags/Kogeto/">Kogeto</a>
+            
+              <a href="/tags/%E5%85%A8%E6%99%AF%E6%91%84%E5%83%8F/">全景摄像</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/10/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/#board">12</a><a class="page-number" href="/page/13/#board">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/#board">16</a><a class="extend next" rel="next" href="/page/12/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,588 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>SSL &amp; SPDY 已全面部署 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="SSL & SPDY 已全面部署">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2013-09-09 02:34" pubdate>
+        2013年9月9日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SSL &amp; SPDY 已全面部署</h1>
+            
+            <div class="markdown-body">
+              <p>正如你所看到的，现在博客和离线下载已经全面强制启用 HTTPS 协议，不过还有一个你看不到的——SPDY 协议。</p>
+<p>SPDY 是 Google 开发的基于传输控制协议（TCP）的应用层协议，开发组正在推动 SPDY 成为正式标准（现为互联网草案）。SPDY 协议类似于 HTTP，但旨在缩短网页的加载时间和提高安全性，通过压缩、多路复用和优先级来缩短加载时间。</p>
+<p>SPDY 并不是首字母缩略字，而仅仅是“speedy”的缩写，意为“更快”，现为 Google 的商标。</p>
+<p>Google Chrome 用户打开 <code>chrome://net-internals/#spdy</code> 就会发现你已经在使用 SPDY 协议了。</p>
+<p>&nbsp;</p>
+<p><strong>Nginx 的配置方法</strong>：</p>
+<p>Redhat 系自带的 OpenSSL 版本过低，不支持 SPDY，直接使用会报错以下错误（Debian 系、ArchLinux 等源里软件更新较快的用户可以忽略）：</p>
+<pre class="lang:default highlight:0 wrap:1 " >
+nginx: [warn] nginx was built without OpenSSL NPN support, SPDY is not enabled for 0.0.0.0:443 in ...
+</pre>
+
+<p>所以你要先下载最新的 OpenSSL，目前是 1.0.1e，<a target="_blank" rel="noopener" href="http://www.openssl.org/source/">这里</a>是下载列表，红色标注的就是最新版了。</p>
+<p>只下载、解压即可：</p>
+<pre class="lang:shell" >
+cd /tmp
+wget http://www.openssl.org/source/openssl-1.0.1e.tar.gz
+tar zxvpf openssl-1.0.1e.tar.gz
+</pre>
+
+<p>然后下载最新的 <a target="_blank" rel="noopener" href="http://nginx.org/en/download.html">Nginx</a>，解压、编译、安装：</p>
+<pre class="lang:shell" >
+cd /tmp
+wget http://nginx.org/download/nginx-1.5.4.tar.gz
+tar zxvpf nginx-1.5.4.tar.gz
+cd nginx-1.5.4
+./configure --with-http_ssl_module --with-http_spdy_module --with-openssl=/tmp/openssl-1.0.1e
+make
+make install
+</pre>
+
+<p><span style="color: red">注意</span>：这里的配置只是启用 SSL 和 SPDY 所需的最小参数，生产环境中可能需要更多参数，比如我的，</p>
+<pre class="lang:shell" >
+./configure\
+ --prefix=/usr/local/nginx --conf-path=/home/www/etc/nginx/nginx.conf --error-log-path=/home/www/log/nginx/error.log --http-log-path=/home/www/log/nginx/access.log --pid-path=/var/run/nginx.pid\
+ --lock-path=/tmp/nginx.lock --user=www --group=www --with-ipv6 --with-http_ssl_module --with-http_spdy_module --with-http_gzip_static_module --with-http_stub_status_module --with-http_flv_module\
+ --with-http_mp4_module --add-module=/tmp/nginx-accesskey-2.0.3 --http-client-body-temp-path=/var/tmp/nginx/client_body --http-proxy-temp-path=/var/tmp/nginx/proxy\
+ --http-fastcgi-temp-path=/var/tmp/nginx/fastcgi --http-uwsgi-temp-path=/var/tmp/nginx/uwsgi --http-scgi-temp-path=/var/tmp/nginx/scgi --with-openssl=/tmp/openssl-1.0.1e
+</pre>
+
+<p>如果是升级的话，编译完成后不要再执行 <code>make install</code>，不然会把原有的配置文件覆盖，正确的方法是直接删除旧的，把新的复制过去后执行 <code>make upgrade</code>：</p>
+<pre class="lang:shell" >
+rm -f /usr/local/nginx/sbin/nginx
+cp objs/nginx /usr/local/nginx/sbin/nginx
+make upgrade
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Nginx 配置文件示例</strong>（有删减，不要直接使用）：</p>
+<pre class="lang:default highlight:0" >
+server
+{
+    # 合并 http/https 主机
+    listen       80;
+    # 开启 ssl & spdy
+    listen       443 ssl spdy;
+    # 主机名
+    server_name  www.sinosky.org;
+
+    # 为这个虚拟主机指定 PEM 格式的证书文件，这个文件可以包含其他的证书和服务器私钥，同样，密钥也必须是PEM格式
+    ssl_certificate     /home/www/etc/ssl/certs/main.crt;
+    # 为这个虚拟主机指定 PEM 格式的私钥
+    ssl_certificate_key /home/www/etc/ssl/private/main.key;
+    # 指出为建立安全连接，服务器所允许的密码格式列表，密码指定为 OpenSSL 支持的格式
+    # http://www.openssl.org/docs/apps/ciphers.html
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-RC4-SHA:ECDHE-RSA-AES128-SHA:AES128-GCM-SHA256:RC4:HIGH:!MD5:!aNULL:!EDH:!CAMELLIA:!PSK:!SRP;
+    # 指定要开启的 SSL 协议
+    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    # 优化 SSL 的访问速度和资源消耗
+    # 依赖 SSLv3 和 TLSv1 协议的服务器密码将优先于客户端密码
+    ssl_prefer_server_ciphers   on;
+    # 设置储存 SSL 会话的缓存类型和大小
+    ssl_session_cache    shared:SSL:10m;
+    # 设置客户端能够反复使用储存在缓存中的会话参数时间
+    ssl_session_timeout  10m;
+    # 不设置以下两项，Firefox 会报 sec_error_ocsp_unknown_cert 错误
+    # 启用 OCSP 响应验证服务器
+    ssl_stapling on;
+    # CA 证书，可以与服务器证书放在一个文件里
+    ssl_trusted_certificate /home/www/etc/ssl/certs/main.crt;
+    # 以上设置在官方文档都有详细说明 http://nginx.org/en/docs/http/ngx_http_ssl_module.html
+
+    # 强制使用 https（http 跳转到 https），$ssl_protocol 为所用的 SSL 协议，如果为空就一定是 http 了
+    # 除此外的检测方法还有 $server_port = 80、$scheme = http、error_page 497 等，下面会详细说明
+    if ($ssl_protocol = "") {
+        return 301 https://$server_name$request_uri;
+    }
+
+    # HTTP Strict Transport Security，简称 HSTS
+    # 当用户在浏览器输入不带协议的网址的时候，自动识别协议为 https，而不是 http
+    # 如果你的子域没有全部部署 https，请去掉 includeSubDomains
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+}
+</pre>
+
+<p>关于强制使用 https（http 跳转到 https），最常见的是配置两个主机，一个监听 80，一个监听 443，监听 80 的那个直接转发到 443。</p>
+<p>不常见的方法还有：合并 http/https 主机，检测 <code>$server_port = 80</code>、<code>$scheme = http</code> 或发送 <code>error code 497</code> 等。</p>
+<p><code>$server_port</code> 是浏览器请求到达的服务器端口号；<code>$scheme</code> 是所用的协议，有 http 和 https，不过使用 <code>$ssl_protocol</code> 和这两种检测方法对于 <code>http://www.sinosky.org:443</code> 无效，最典型的例子就是 phpMyAdmin 在登录时会请求 <code>http://www.sinosky.org:443</code>。</p>
+<p>497 是 nginx 的状态码，意思是 <code>The plain HTTP request was sent to HTTPS port</code>，虽然也能起到跳转的作用，但返回到客户端是 302 而不是 301，不过对于 <code>http://www.sinosky.org:443</code> 有效，建议配合前面 3 种方法一块使用。</p>
+<p>下面是 3 种方法的示例：</p>
+<pre class="lang:default highlight:0" >
+if ($server_port = 80) {
+    return 301 https://$server_name$request_uri;
+}
+
+if ($scheme = http) {
+    return 301 https://$server_name$request_uri;
+}
+
+error_page 497 https://$server_name$request_uri;
+</pre>
+
+<p>&nbsp;</p>
+<p>再提示一点，证书文件一定要含有签发证书的 CA 和 根 CA 的证书，并配置 <code>ssl_trusted_certificate</code>（nginx）或 <code>SSLCertificateChainFile</code>（apache），否则浏览器可能无法识别证书链。服务器的证书在最上面，二级 CA 在中间，最后是根 CA，顺序不能错。</p>
+<p>比如 StartSSL 的证书（来自官方的<a target="_blank" rel="noopener" href="https://www.startssl.com/?app=42">说明</a>），先获取 CA 的证书然后合并：</p>
+<pre class="lang:shell" >
+wget http://www.startssl.com/certs/ca.pem
+wget http://www.startssl.com/certs/sub.class1.server.ca.pem
+cat ssl.crt sub.class1.server.ca.pem ca.pem >> /home/www/etc/ssl/certs/main.crt
+</pre>
+
+<p>&nbsp;</p>
+<p>配置完成后，执行 <code>/etc/init.d/nginx reload</code> 或 <code>/usr/local/nginx/sbin/nginx -s reload</code> 重载 Nginx 配置文件即可正常访问了。</p>
+<p>&nbsp;</p>
+<p>强制使用 HTTPS 以后，博客垃圾评论大量减少了；开启 SPDY 后，载入速度有显著提升。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/linux/">Linux</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Nginx/">Nginx</a>
+                    
+                      <a class="hover-with-bg" href="/tags/OpenSSL/">OpenSSL</a>
+                    
+                      <a class="hover-with-bg" href="/tags/TCP/">TCP</a>
+                    
+                      <a class="hover-with-bg" href="/tags/HTTP/">HTTP</a>
+                    
+                      <a class="hover-with-bg" href="/tags/HTTPS/">HTTPS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/SPDY/">SPDY</a>
+                    
+                      <a class="hover-with-bg" href="/tags/SSL/">SSL</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE/">传输控制协议</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/deny-the-ip-address-of-wordpress-spam-comment.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">屏蔽 WordPress 垃圾评论的 IP</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/youbbs-for-bae-stop-to-update.html">
+                        <span class="hidden-mobile">YouBBS for BAE 停止维护</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

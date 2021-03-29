@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>访问卓越亚马逊被 TCP 劫持 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="访问卓越亚马逊被 TCP 劫持">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2013-12-11 00:59" pubdate>
+        2013年12月11日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      65
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">访问卓越亚马逊被 TCP 劫持</h1>
+            
+            <div class="markdown-body">
+              <p><em>应联通要求，改个标题。</em></p>
+<p>&nbsp;</p>
+<p>前两天家里的固话欠费停机了，宽带也一块停了，缴费后虽然马上就开通了，但奇怪的事也跟着来了。</p>
+<p>访问卓越亚马逊的主页（<a target="_blank" rel="noopener" href="http://www.amazon.cn)会有跳转,最后的链接有个小尾巴,看着像推广链接./">www.amazon.cn）会有跳转，最后的链接有个小尾巴，看着像推广链接。</a></p>
+<p>我用的是 Google Public DNS，电脑也从来没中过毒，于是就怀疑是运营商的问题。</p>
+<p>重新拨号后，分配给我的 IP 段变了，劫持也没了，于是就没再管它。</p>
+<p>&nbsp;</p>
+<p>可是最近几天劫持时有时无，有时候重新拨号也解决不了，试试用 <code>curl</code> 测试了一下，果然是 TCP 劫持。</p>
+<p><code>curl -ivL http://www.amazon.cn</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><code class="hljs html">* Adding handle: conn: 0x2087778<br>* Adding handle: send: 0<br>* Adding handle: recv: 0<br>* Curl_addHandleToPipeline: length: 1<br>* - Conn 0 (0x2087778) send_pipe: 1, recv_pipe: 0<br>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current<br>                                 Dload  Upload   Total   Spent    Left  Speed<br><br>  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* About to connect() to www.amazon.cn port 80 (#0)<br>*   Trying 203.81.17.130...<br>* Connected to www.amazon.cn (203.81.17.130) port 80 (#0)<br>&gt; GET / HTTP/1.1<br><br>&gt; User-Agent: curl/7.30.0<br><br>&gt; Host: www.amazon.cn<br><br>&gt; Accept: */*<br><br>&gt;<br><br>&lt; HTTP/1.1 302 Found<br><br>&lt; Content-Length: 0<br><br>&lt; Cache-Control:no-cache<br><br>&lt; Expires: Mon, 26 Jul 1987 05:00:00<br><br>&lt; Pragma: no-cache<br><br>&lt; Connection: close<br><br>&lt; Content-Type: text/html; charset=UTF-8<br><br>&lt; Location: http://www.shelive.net/slalm/gotoz.html#www.amazon.cn/?tag=nd220034-23<br><br>&lt;<br><br>  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0<br>* Closing connection 0<br>* Issue another request to this URL: &#x27;http://www.shelive.net/slalm/gotoz.html#www.amazon.cn/?tag=nd220034-23&#x27;<br>* Adding handle: conn: 0x2087778<br>* Adding handle: send: 0<br>* Adding handle: recv: 0<br>* Curl_addHandleToPipeline: length: 1<br>* - Conn 1 (0x2087778) send_pipe: 1, recv_pipe: 0<br>* About to connect() to www.shelive.net port 80 (#1)<br>*   Trying 42.121.52.144...<br>* Connected to www.shelive.net (42.121.52.144) port 80 (#1)<br>&gt; GET /slalm/gotoz.html HTTP/1.1<br><br>&gt; User-Agent: curl/7.30.0<br><br>&gt; Host: www.shelive.net<br><br>&gt; Accept: */*<br><br>&gt;<br><br>&lt; HTTP/1.1 200 OK<br><br>* Server nginx/1.0.15 is not blacklisted<br>&lt; Server: nginx/1.0.15<br><br>&lt; Date: Tue, 10 Dec 2013 16:27:42 GMT<br><br>&lt; Content-Type: text/html<br><br>&lt; Content-Length: 167<br><br>&lt; Last-Modified: Sat, 12 Oct 2013 14:09:32 GMT<br><br>&lt; Connection: keep-alive<br><br>&lt; Accept-Ranges: bytes<br><br>&lt;<br><br>&#123; [data not shown]<br><br>100   167  100   167    0     0    762      0 --:--:-- --:--:-- --:--:--   762HTTP/1.1 302 Found<br>Content-Length: 0<br>Cache-Control:no-cache<br>Expires: Mon, 26 Jul 1987 05:00:00<br>Pragma: no-cache<br>Connection: close<br>Content-Type: text/html; charset=UTF-8<br>Location: http://www.shelive.net/slalm/gotoz.html#www.amazon.cn/?tag=nd220034-23<br><br>HTTP/1.1 200 OK<br>Server: nginx/1.0.15<br>Date: Tue, 10 Dec 2013 16:27:42 GMT<br>Content-Type: text/html<br>Content-Length: 167<br>Last-Modified: Sat, 12 Oct 2013 14:09:32 GMT<br>Connection: keep-alive<br>Accept-Ranges: bytes<br><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Content-Type&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;text/html; charset=utf-8&quot;</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">location.href=<span class="hljs-string">&quot;http://hd.baofeng.com/go/aHmDz28.html&quot;</span>;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br><br>* Connection #1 to host www.shelive.net left intact<br></code></pre></td></tr></table></figure>
+
+<p><code>curl -ivL http://hd.baofeng.com/go/aHmDz28.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><code class="hljs html">* Adding handle: conn: 0x3ee960<br>* Adding handle: send: 0<br>* Adding handle: recv: 0<br>* Curl_addHandleToPipeline: length: 1<br>* - Conn 0 (0x3ee960) send_pipe: 1, recv_pipe: 0<br>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current<br>                                 Dload  Upload   Total   Spent    Left  Speed<br><br>  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0<br>  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* About to connect() to hd.baofeng.com port 80 (#0)<br>*   Trying 114.112.82.221...<br>* Connected to hd.baofeng.com (114.112.82.221) port 80 (#0)<br>&gt; GET /go/aHmDz28.html HTTP/1.1<br><br>&gt; User-Agent: curl/7.30.0<br><br>&gt; Host: hd.baofeng.com<br><br>&gt; Accept: */*<br><br>&gt;<br><br>&lt; HTTP/1.1 200 OK<br><br>* Server nginx/1.4.1 is not blacklisted<br>&lt; Server: nginx/1.4.1<br><br>&lt; Date: Tue, 10 Dec 2013 16:28:26 GMT<br><br>&lt; Content-Type: text/html<br><br>&lt; Content-Length: 847<br><br>&lt; Last-Modified: Mon, 19 Aug 2013 14:00:19 GMT<br><br>&lt; Connection: keep-alive<br><br>&lt; ETag: &quot;521224f3-34f&quot;<br><br>&lt; Expires: Tue, 10 Dec 2013 16:33:26 GMT<br><br>&lt; Cache-Control: max-age=300<br><br>&lt; Accept-Ranges: bytes<br><br>&lt;<br><br>&#123; [data not shown]<br><br>100   847  100   847    0     0   6776      0 --:--:-- --:--:-- --:--:--  6776HTTP/1.1 200 OK<br>Server: nginx/1.4.1<br>Date: Tue, 10 Dec 2013 16:28:26 GMT<br>Content-Type: text/html<br>Content-Length: 847<br>Last-Modified: Mon, 19 Aug 2013 14:00:19 GMT<br>Connection: keep-alive<br>ETag: &quot;521224f3-34f&quot;<br>Expires: Tue, 10 Dec 2013 16:33:26 GMT<br>Cache-Control: max-age=300<br>Accept-Ranges: bytes<br><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/1999/xhtml&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;pragma&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;no-cache&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br>* &#123;<br><span class="css">	<span class="hljs-attribute">margin</span>:<span class="hljs-number">0px</span>;</span><br><span class="css">	<span class="hljs-attribute">padding</span>:<span class="hljs-number">0px</span>;</span><br>&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Content-Type&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;text/html; charset=utf-8&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">language</span>=<span class="hljs-string">&quot;javascript&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">r</span>(<span class="hljs-params"></span>)</span></span><br>&#123;<br><span class="javascript">top.location.href=<span class="hljs-string">&quot;http://www.amazon.cn/?tag=nd220034-23&quot;</span>;</span><br>&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;overflow:hidden&quot;</span> <span class="hljs-attr">leftmargin</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">topmargin</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">marginwidth</span>=<span class="hljs-string">&quot;0&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">marginheight</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">scroll</span>=<span class="hljs-string">&quot;no&quot;</span> <span class="hljs-attr">onLoad</span>=<span class="hljs-string">&quot;r()&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display:none&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript"><span class="hljs-keyword">var</span> _bdhmProtocol = ((<span class="hljs-string">&quot;https:&quot;</span> == <span class="hljs-built_in">document</span>.location.protocol) ? <span class="hljs-string">&quot; https://&quot;</span> : <span class="hljs-string">&quot; http://&quot;</span>);</span><br><span class="javascript"><span class="hljs-built_in">document</span>.write(<span class="hljs-built_in">unescape</span>(<span class="hljs-string">&quot;%3Cscript src=&#x27;&quot;</span> + _bdhmProtocol + <span class="hljs-string">&quot;hm.baidu.com/h.js%3F30a07b24f9a60b28b0535c5b17a32b9c&#x27; type=&#x27;text/javascript&#x27;%3E%3C/script%3E&quot;</span>));</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br>* Connection #0 to host hd.baofeng.com left intact<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/12/11/201312111239.png"><img src="http://bcs.duapp.com/sinosky-blog/2013/12/11/201312111239.png" srcset="/img/loading.gif" lazyload alt="201312111239"></a></p>
+<p>IP 确实是亚马逊官方的，除了是被运营商劫持了就没有别的解释了。不过他们还真不嫌麻烦，竟然有 3 层跳转，后两个还是用 js 跳转的，真恶心。</p>
+<p>第一个网站 shelive.net 查询 whois 是在万网注册的，公司也写的是万网，不过备案信息是 赤峰一帆网络服务有限责任公司，许可证号是 蒙ICP备09000034号-1，估计是假的了。第二个网站 baofeng.com 就没什么好说的了，暴风影音的，有安装暴风影音的赶紧卸载了吧，这样的公司做出来的软件估计也一堆后门。</p>
+<p>&nbsp;</p>
+<p>刚才已经投诉到中国联通了，如果不给解决就投诉到工信部。</p>
+<p>&nbsp;</p>
+<p>但是也不能指望联通马上解决，只有强制使用 https 访问亚马逊了，在 <code>chrome://net-internals/#hsts</code> 加入了 amazon.cn。国内的电商不重视加密也就罢了，没想到亚马逊也不重视，甚至美国亚马逊（<a target="_blank" rel="noopener" href="http://www.amazon.com)的首页还强制使用/">www.amazon.com）的首页还强制使用</a> http（对 https 做了 301 跳转）。</p>
+<p>&nbsp;</p>
+<h3 id="Update："><a href="#Update：" class="headerlink" title="Update："></a>Update：</h3><p><strong>12月11日</strong> 联通公司派了个人来，正好劫持也消失了，给他看上面的记录，他说看不懂，又说是亚马逊的服务器问题。我就不明白了，亚马逊会在自己首页做跳转？走之前留下台笔记本电脑，让我晚上用他的电脑试试。</p>
+<p>重新拨了几次号，发现只在特定 IP 段有劫持，真奇怪。</p>
+<p>&nbsp;</p>
+<p>又尝试了几次发现有时候跳转的网址还不一样。</p>
+<p><code>curl -ivL http://www.amazon.cn</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><code class="hljs html">* Adding handle: conn: 0x71ea80<br>* Adding handle: send: 0<br>* Adding handle: recv: 0<br>* Curl_addHandleToPipeline: length: 1<br>* - Conn 0 (0x71ea80) send_pipe: 1, recv_pipe: 0<br>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current<br>                                 Dload  Upload   Total   Spent    Left  Speed<br><br>  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* About to connect() to www.amazon.cn port 80 (#0)<br>*   Trying 203.81.17.130...<br>* Connected to www.amazon.cn (203.81.17.130) port 80 (#0)<br>&gt; GET / HTTP/1.1<br><br>&gt; User-Agent: curl/7.30.0<br><br>&gt; Host: www.amazon.cn<br><br>&gt; Accept: */*<br><br>&gt;<br><br>&lt; HTTP/1.1 302 Found<br><br>&lt; Content-Length: 0<br><br>&lt; Cache-Control:no-cache<br><br>&lt; Expires: Mon, 26 Jul 1987 05:00:00<br><br>&lt; Pragma: no-cache<br><br>&lt; Connection: close<br><br>&lt; Content-Type: text/html; charset=UTF-8<br><br>&lt; Location: http://www.shelive.net/slalm/uusetoz.html#www.amazon.cn/?tag=nd220035-23<br><br>&lt;<br><br>  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0<br>* Closing connection 0<br>* Issue another request to this URL: &#x27;http://www.shelive.net/slalm/uusetoz.html#www.amazon.cn/?tag=nd220035-23&#x27;<br>* Adding handle: conn: 0x71ea80<br>* Adding handle: send: 0<br>* Adding handle: recv: 0<br>* Curl_addHandleToPipeline: length: 1<br>* - Conn 1 (0x71ea80) send_pipe: 1, recv_pipe: 0<br>* About to connect() to www.shelive.net port 80 (#1)<br>*   Trying 42.121.52.144...<br>* Connected to www.shelive.net (42.121.52.144) port 80 (#1)<br><br>  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0&gt; GET /slalm/uusetoz.html HTTP/1.1<br><br>&gt; User-Agent: curl/7.30.0<br><br>&gt; Host: www.shelive.net<br><br>&gt; Accept: */*<br><br>&gt;<br><br>&lt; HTTP/1.1 200 OK<br><br>* Server nginx/1.0.15 is not blacklisted<br>&lt; Server: nginx/1.0.15<br><br>&lt; Date: Wed, 11 Dec 2013 04:46:35 GMT<br><br>&lt; Content-Type: text/html<br><br>&lt; Content-Length: 261<br><br>&lt; Last-Modified: Sat, 09 Nov 2013 03:04:29 GMT<br><br>&lt; Connection: keep-alive<br><br>&lt; Accept-Ranges: bytes<br><br>&lt;<br><br>&#123; [data not shown]<br><br>100   261  100   261    0     0   1395      0 --:--:-- --:--:-- --:--:--  5673HTTP/1.1 302 Found<br>Content-Length: 0<br>Cache-Control:no-cache<br>Expires: Mon, 26 Jul 1987 05:00:00<br>Pragma: no-cache<br>Connection: close<br>Content-Type: text/html; charset=UTF-8<br>Location: http://www.shelive.net/slalm/uusetoz.html#www.amazon.cn/?tag=nd220035-23<br><br>HTTP/1.1 200 OK<br>Server: nginx/1.0.15<br>Date: Wed, 11 Dec 2013 04:46:35 GMT<br>Content-Type: text/html<br>Content-Length: 261<br>Last-Modified: Sat, 09 Nov 2013 03:04:29 GMT<br>Connection: keep-alive<br>Accept-Ranges: bytes<br><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Content-Type&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;text/html; charset=utf-8&quot;</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">location.href=<span class="hljs-string">&quot;http://uusee.adsame.com/c?z=uusee&amp;la=0&amp;si=35&amp;ci=46&amp;cg=41&amp;c=421&amp;or=260&amp;l=1038&amp;bg=1038&amp;b=1890&amp;u=http://www.amazon.cn/?tag=nd220035-23&quot;</span>;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br><br>* Connection #1 to host www.shelive.net left intact<br></code></pre></td></tr></table></figure>
+
+<p><code>curl -ivL &quot;http://uusee.adsame.com/c?z=uusee&amp;la=0&amp;si=35&amp;ci=46&amp;cg=41&amp;c=421&amp;or=260&amp;l=1038&amp;bg=1038&amp;b=1890&amp;u=http://www.amazon.cn/?tag=nd220035-23&quot;</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br></pre></td><td class="code"><pre><code class="hljs html">* Adding handle: conn: 0x2307e80<br>* Adding handle: send: 0<br>* Adding handle: recv: 0<br>* Curl_addHandleToPipeline: length: 1<br>* - Conn 0 (0x2307e80) send_pipe: 1, recv_pipe: 0<br>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current<br>                                 Dload  Upload   Total   Spent    Left  Speed<br><br>  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* About to connect() to uusee.adsame.com port 80 (#0)<br>*   Trying 221.238.29.68...<br>* Connected to uusee.adsame.com (221.238.29.68) port 80 (#0)<br>&gt; GET /c?z=uusee&amp;la=0&amp;si=35&amp;ci=46&amp;cg=41&amp;c=421&amp;or=260&amp;l=1038&amp;bg=1038&amp;b=1890&amp;u=http://www.amazon.cn/?tag=nd220035-23 HTTP/1.1<br><br>&gt; User-Agent: curl/7.30.0<br><br>&gt; Host: uusee.adsame.com<br><br>&gt; Accept: */*<br><br>&gt;<br><br>&lt; HTTP/1.1 302 Found<br><br>&lt; Connection: close<br><br>&lt; Content-Type: text/html<br><br>&lt; Content-Length: 1<br><br>&lt; P3P: CP=&quot;CAO PSA OUR&quot;<br><br>&lt; Set-Cookie: ASID=31444dc5866c70;expires=Fri,11-Dec-2015 12:51:07 +0800;path=/;domain=adsame.com<br><br>&lt; Set-Cookie:ADVS=31444dc5866c70;path=/;domain=uusee.adsame.com<br><br>&lt; Set-Cookie: ASL=16050,0000m,1bc74cef;expires=Fri,11-Dec-2015 12:51:07 +0800;path=/;domain=adsame.com<br><br>&lt; Location: http://www.amazon.cn/?tag=nd220035-23<br><br>&lt; Set-Cookie: uuseeATC=uusee,421,1038,1890,1386737467591,;expires=Sat,21-Dec-2013 19:48:20 +0800;path=/;path=/;domain=uusee.adsame.com<br><br>&lt; Expires: 0<br><br>&lt;<br><br>  0     1    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0<br>* Closing connection 0<br>* Issue another request to this URL: &#x27;http://www.amazon.cn/?tag=nd220035-23&#x27;<br>* Adding handle: conn: 0x2307e80<br>* Adding handle: send: 0<br>* Adding handle: recv: 0<br>* Curl_addHandleToPipeline: length: 1<br>* - Conn 1 (0x2307e80) send_pipe: 1, recv_pipe: 0<br>* About to connect() to www.amazon.cn port 80 (#1)<br>*   Trying 203.81.17.130...<br>* Connected to www.amazon.cn (203.81.17.130) port 80 (#1)<br>&gt; GET /?tag=nd220035-23 HTTP/1.1<br><br>&gt; User-Agent: curl/7.30.0<br><br>&gt; Host: www.amazon.cn<br><br>&gt; Accept: */*<br><br>&gt;<br><br>&lt; HTTP/1.1 301 MovedPermanently<br><br>&lt; Date: Wed, 11 Dec 2013 04:51:08 GMT<br><br>* Server Server is not blacklisted<br>&lt; Server: Server<br><br>&lt; Set-Cookie: session-id=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br><br>&lt; Set-Cookie: session-id-time=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br><br>&lt; Set-Cookie: session-token=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br><br>&lt; Set-Cookie: ubid-acbcn=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br><br>&lt; Set-Cookie: at-main=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br><br>&lt; Set-Cookie: x-acbcn=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br><br>&lt; Set-Cookie: UserPref=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br><br>&lt; pragma: no-cache<br><br>&lt; x-amz-id-1: 11BT41S073RD1VPKVWJM<br><br>&lt; cache-control: no-cache<br><br>&lt; expires: -1<br><br>&lt; x-amz-id-2: ixzDZ67ip2LE/GXAL6NZ6eJkvtFF+OEglhbbf3mf9Hg=<br><br>&lt; Location: http://www.amazon.cn<br><br>&lt; Vary: Accept-Encoding,User-Agent<br><br>&lt; Content-Type: text/html; charset=UTF-8<br><br>&lt; Transfer-Encoding: chunked<br><br>&lt;<br><br>* Ignoring the response-body<br>&#123; [data not shown]<br><br>  0     0    0     1    0     0      2      0 --:--:-- --:--:-- --:--:--     2<br>* Connection #1 to host www.amazon.cn left intact<br>* Issue another request to this URL: &#x27;http://www.amazon.cn&#x27;<br>* Found bundle for host www.amazon.cn: 0x230f348<br>* Re-using existing connection! (#1) with host www.amazon.cn<br>* Connected to www.amazon.cn (203.81.17.130) port 80 (#1)<br>* Adding handle: conn: 0x2307e80<br>* Adding handle: send: 0<br>* Adding handle: recv: 0<br>* Curl_addHandleToPipeline: length: 1<br>* - Conn 1 (0x2307e80) send_pipe: 1, recv_pipe: 0<br>&gt; GET / HTTP/1.1<br><br>&gt; User-Agent: curl/7.30.0<br><br>&gt; Host: www.amazon.cn<br><br>&gt; Accept: */*<br><br>&gt;<br><br>&lt; HTTP/1.1 302 Found<br><br>&lt; Content-Length: 0<br><br>&lt; Cache-Control:no-cache<br><br>&lt; Expires: Mon, 26 Jul 1987 05:00:00<br><br>&lt; Pragma: no-cache<br><br>&lt; Connection: close<br><br>&lt; Content-Type: text/html; charset=UTF-8<br><br>&lt; Location: http://www.shelive.net/slalm/gotoz.html#www.amazon.cn/?tag=nd220034-23<br><br>&lt;<br><br>  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0<br>* Closing connection 1<br>* Issue another request to this URL: &#x27;http://www.shelive.net/slalm/gotoz.html#www.amazon.cn/?tag=nd220034-23&#x27;<br>* Adding handle: conn: 0x2307e80<br>* Adding handle: send: 0<br>* Adding handle: recv: 0<br>* Curl_addHandleToPipeline: length: 1<br>* - Conn 2 (0x2307e80) send_pipe: 1, recv_pipe: 0<br><br>  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* About to connect() to www.shelive.net port 80 (#2)<br>*   Trying 42.121.52.144...<br>* Connected to www.shelive.net (42.121.52.144) port 80 (#2)<br>&gt; GET /slalm/gotoz.html HTTP/1.1<br><br>&gt; User-Agent: curl/7.30.0<br><br>&gt; Host: www.shelive.net<br><br>&gt; Accept: */*<br><br>&gt;<br><br>&lt; HTTP/1.1 200 OK<br><br>* Server nginx/1.0.15 is not blacklisted<br>&lt; Server: nginx/1.0.15<br><br>&lt; Date: Wed, 11 Dec 2013 04:51:09 GMT<br><br>&lt; Content-Type: text/html<br><br>&lt; Content-Length: 167<br><br>&lt; Last-Modified: Sat, 12 Oct 2013 14:09:32 GMT<br><br>&lt; Connection: keep-alive<br><br>&lt; Accept-Ranges: bytes<br><br>&lt;<br><br>&#123; [data not shown]<br><br>100   167  100   167    0     0    260      0 --:--:-- --:--:-- --:--:--  1192HTTP/1.1 302 Found<br>Connection: close<br>Content-Type: text/html<br>Content-Length: 1<br>P3P: CP=&quot;CAO PSA OUR&quot;<br>Set-Cookie: ASID=31444dc5866c70;expires=Fri,11-Dec-2015 12:51:07 +0800;path=/;domain=adsame.com<br>Set-Cookie:ADVS=31444dc5866c70;path=/;domain=uusee.adsame.com<br>Set-Cookie: ASL=16050,0000m,1bc74cef;expires=Fri,11-Dec-2015 12:51:07 +0800;path=/;domain=adsame.com<br>Location: http://www.amazon.cn/?tag=nd220035-23<br>Set-Cookie: uuseeATC=uusee,421,1038,1890,1386737467591,;expires=Sat,21-Dec-2013 19:48:20 +0800;path=/;path=/;domain=uusee.adsame.com<br>Expires: 0<br><br>HTTP/1.1 301 MovedPermanently<br>Date: Wed, 11 Dec 2013 04:51:08 GMT<br>Server: Server<br>Set-Cookie: session-id=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br>Set-Cookie: session-id-time=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br>Set-Cookie: session-token=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br>Set-Cookie: ubid-acbcn=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br>Set-Cookie: at-main=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br>Set-Cookie: x-acbcn=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br>Set-Cookie: UserPref=-; path=/; domain=.www.amazon.cn; expires=Tue, 11-Dec-2001 04:51:08 GMT<br>pragma: no-cache<br>x-amz-id-1: 11BT41S073RD1VPKVWJM<br>cache-control: no-cache<br>expires: -1<br>x-amz-id-2: ixzDZ67ip2LE/GXAL6NZ6eJkvtFF+OEglhbbf3mf9Hg=<br>Location: http://www.amazon.cn<br>Vary: Accept-Encoding,User-Agent<br>Content-Type: text/html; charset=UTF-8<br>Transfer-Encoding: chunked<br><br>HTTP/1.1 302 Found<br>Content-Length: 0<br>Cache-Control:no-cache<br>Expires: Mon, 26 Jul 1987 05:00:00<br>Pragma: no-cache<br>Connection: close<br>Content-Type: text/html; charset=UTF-8<br>Location: http://www.shelive.net/slalm/gotoz.html#www.amazon.cn/?tag=nd220034-23<br><br>HTTP/1.1 200 OK<br>Server: nginx/1.0.15<br>Date: Wed, 11 Dec 2013 04:51:09 GMT<br>Content-Type: text/html<br>Content-Length: 167<br>Last-Modified: Sat, 12 Oct 2013 14:09:32 GMT<br>Connection: keep-alive<br>Accept-Ranges: bytes<br><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Content-Type&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;text/html; charset=utf-8&quot;</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">location.href=<span class="hljs-string">&quot;http://hd.baofeng.com/go/aHmDz28.html&quot;</span>;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br><br>* Connection #2 to host www.shelive.net left intact<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/12/11/201312111303.png"><img src="http://bcs.duapp.com/sinosky-blog/2013/12/11/201312111303.png" srcset="/img/loading.gif" lazyload alt="201312111303"></a></p>
+<p>这下更恶心了，adsame.com 这个网站归 上海传漾网络科技有限公司 所有，估计就是专门做这个的了。广告可以有，但这种广告决不能忍。</p>
+<p>&nbsp;</p>
+<p>尝试使用跃点跟踪，但每次拨号后，无论是否被劫持，本地路由和省级路由甚至联通骨干网的 IP 总不一样，看来不是我能追踪到的了，放弃。</p>
+<p>&nbsp;</p>
+<p><strong>12月12日</strong> 目前劫持已经消失，说下我的猜测吧。</p>
+<p>根据我在本地 <code>tracert</code>（Linux 下为 <code>tracepath</code>）的结果，所有路由都是联通的 IP，从本地联通到省级联通再到联通骨干网，然后到北京联通，最后是亚马逊的服务器，中间没有其他的运营商。有可能是中间哪个路由被入侵了，亦不排除内部作案。当然也有可能是亚马逊自己的服务器被入侵或内部作案，这点很难说清。</p>
+<p>因为 TCP 劫持的隐蔽性和互联网的庞大性，终端用户很难查出是哪一点出现了问题。作为网站一方，我们也无法防止运营商 TCP 劫持，只有尽量使用 https 这种加密协议，少用 http 这种明文协议。</p>
+<p>&nbsp;</p>
+<p>忽然想到可以利用 TTL 来查找到底是哪一点出现了问题，因为一般的 TCP 劫持不会处理 TTL，可以通过比较 TTL 的不同来分析，可惜现在劫持已经没有了。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/information-security/">信息安全</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B8%AD%E5%9B%BD%E8%81%94%E9%80%9A/">中国联通</a>
+                    
+                      <a class="hover-with-bg" href="/tags/TCP/">TCP</a>
+                    
+                      <a class="hover-with-bg" href="/tags/TCP-%E5%8A%AB%E6%8C%81/">TCP 劫持</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BC%9A%E8%AF%9D%E5%8A%AB%E6%8C%81/">会话劫持</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BF%90%E8%90%A5%E5%95%86%E5%8A%AB%E6%8C%81/">运营商劫持</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/public-key-cryptography-on-the-website.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">非对称加密在网站中的应用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/chrome-and-youtube-policy-changes.html">
+                        <span class="hidden-mobile">Google 对 Chrome 与 YouTube 实行新的限制</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

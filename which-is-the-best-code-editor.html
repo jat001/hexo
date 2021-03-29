@@ -1,0 +1,514 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>Which is the Best Code Editor? - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Which is the Best Code Editor?">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2013-02-22 13:42" pubdate>
+        2013年2月22日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Which is the Best Code Editor?</h1>
+            
+            <div class="markdown-body">
+              <p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/2306.jpg" title="which-is-the-best-code-editor"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/2306.jpg" srcset="/img/loading.gif" lazyload alt="which-is-the-best-code-editor"></a></p>
+<p>For us, web developers, the choice of a source code editor shouldn’t come lightly. This is where we spend most of our development time and where productivity is gained or lost on a grand scale. No two developers are alike, so there is a plethora of editors that can accommodate any coding style. But this politically-correct statement doesn’t answer the most fundamental question of all – <strong>which is the best</strong>?</p>
+<p>To determine the best editor, we will rate each one on a scale from 1 to 5 stars, consisting of:</p>
+<ul>
+<li>  <strong>Beginner friendliness</strong> – how easy it is for a beginner to get up and running when opening it for the first time;</li>
+<li>  <strong>Power</strong> – this criteria rates the feature set, text editing capabilities, editing modes etc.</li>
+<li>  <strong>Extensibility</strong> – does the editor supports plugins, bundles or extensions;</li>
+<li>  <strong>Aesthetics</strong> – we strive for beauty in our work, so it is natural to look for the same in our tools;</li>
+<li>  <strong>Speed</strong> – this rates the startup time, performance when opening large files, snappiness of the interface;</li>
+<li>  <strong>Cross-platform</strong> – if the editor is available on multiple operating systems.</li>
+<li>  <strong>Price</strong> – the lower the cost, the higher the mark.</li>
+</ul>
+<p>Editors are presented in groups, giving some context on the typical type of developer that would use them.</p>
+<h3 id="For-Gurus"><a href="#For-Gurus" class="headerlink" title="For Gurus"></a>For Gurus</h3><p>Who is a guru you ask? Generally, this is a person who has been using one of the editors below since before you were born. The tools in this section are hardcore and insanely expandable. They can run from a terminal window and according to UNIX traditions all their settings are defined in configuration files. Beginners beware!</p>
+<h4 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h4><p>Released in 1991 this versatile and powerful editor gained a massive following in the open source world. What makes it different from any other editor in this article, is its command-based workflow. Instead of simply typing code, you choose between modes for entering or selecting text, running regex-powered searches and using more commands than you can handle on an empty stomach. It can run from both a console window and a GUI. It has also been ported to all major operating systems. Vim is also extendable by using scripts and plugins, which allow you to tailor your experience with the editor. It is open source software and comes preinstalled on most Linux systems.</p>
+<p>Links: <a target="_blank" rel="noopener" href="http://www.vim.org/">Website</a>, <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Vim_(text_editor)">Wikipedia</a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/vim_card.jpg" title="Vim Card"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/vim_card.jpg" srcset="/img/loading.gif" lazyload alt="Vim Card" title="Vim"></a></p>
+<h4 id="Emacs"><a href="#Emacs" class="headerlink" title="Emacs"></a>Emacs</h4><p>Development of Emacs started way back in the 1970 and <em>continues to this day</em>. This editor is known for its extensibility, achieved by loading customized libraries. It deserves its place in computing history, as it is one of the first editors to implement syntax highlighting, automatic indentation and support for multiple programming languages. Like Vim, it is perfectly cross-platform and can be used from both a terminal window and through a graphical user interface. The editor comes bundled with a LISP interpreter, which gurus can use to change it to extremes. Emacs is free and open source software.</p>
+<p>Links: <a target="_blank" rel="noopener" href="http://www.gnu.org/software/emacs">Website</a>, <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Emacs">Wikipedia</a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/emacs_card.jpg" title="Emacs Card"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/emacs_card.jpg" srcset="/img/loading.gif" lazyload alt="Emacs Card" title="Emacs"></a></p>
+<h3 id="For-Professionals"><a href="#For-Professionals" class="headerlink" title="For Professionals"></a>For Professionals</h3><p>The editors in this category are full blown development environments. They are meant to be easy to use and at the same time expose powerful features so that developers go through writing code, compiling, testing and deploying from a single application.</p>
+<h4 id="Eclipse"><a href="#Eclipse" class="headerlink" title="Eclipse"></a>Eclipse</h4><p>Eclipse is the goto development environment for writing Java applications. The IDE follows a plugin architecture, which makes it easy to bring support for additional programming languages. There are plugins for C/C++, Ruby, PHP and more. Eclipse offers powerful code hinting, built in documentation and real-time syntax checking. Companies like Google release their development kits for the platform, so you can easily create applications for Android and App Engine. Eclipse is free and open source.</p>
+<p>Links: <a target="_blank" rel="noopener" href="http://www.eclipse.org/">Website</a>, <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Eclipse_(software)">Wikipedia</a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/eclipse_card.jpg" title="Eclipse Card"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/eclipse_card.jpg" srcset="/img/loading.gif" lazyload alt="Eclipse Card" title="Eclipse"></a></p>
+<h4 id="Aptana-Studio"><a href="#Aptana-Studio" class="headerlink" title="Aptana Studio"></a>Aptana Studio</h4><p>Aptana is a development environment targeted at rich AJAX applications. It is based on Eclipse, and bundles powerful new tools that make sense for web developers. It has support for the most popular web programming languages: PHP, JavaScript, HTML, CSS, Ruby, Python and more through plugins. It has Git integration, ability to deploy your application to remote servers and bundles of useful code snippets and actions for every language. Like Eclipse, Aptana is free and open source.</p>
+<p>Links: <a target="_blank" rel="noopener" href="http://www.aptana.org/">Website</a>, <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Aptana_Studio">Wikipedia</a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/aptana_card.jpg" title="Aptana Card"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/aptana_card.jpg" srcset="/img/loading.gif" lazyload alt="Aptana Card" title="Aptana Studio"></a></p>
+<h4 id="Netbeans"><a href="#Netbeans" class="headerlink" title="Netbeans"></a>Netbeans</h4><p>Netbeans is another Java development environment, but like Eclipse, can be extended with bundles for additional languages including PHP, Python, C/C++ and others. It runs on Linux, Windows and OSX. Where this IDE shines though, is in Java development. Netbeans can speed up your development of desktop applications with a drag&amp;drop GUI builder. A negative side effect of all this flexibility is the performance – Netbeans has frequently been reported for being slow on large projects. The IDE is free and open source.</p>
+<p>Links: <a target="_blank" rel="noopener" href="http://www.netbeans.org/">Website</a>, <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Netbeans">Wikipedia</a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/netbeans_card.jpg" title="Netbeans Card"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/netbeans_card.jpg" srcset="/img/loading.gif" lazyload alt="Netbeans Card" title="Netbeans"></a></p>
+<h4 id="Dreamweaver"><a href="#Dreamweaver" class="headerlink" title="Dreamweaver"></a>Dreamweaver</h4><p>Dreamweaver is part of Adobe’s application suite targeted at web designers/developers. It provides support only for the most popular web languages – PHP, ASP.NET,  JavaScript, HTML, CSS. It is mainly suitable for beginner developers, with support for WYSIWYG editing, live previews, deployment to remote servers and building apps with jQuery mobile and Phonegap. Dreamweaver is available on OSX and Windows. With a standalone price tag of $399 it is hard to recommend in place of the other editors in the article, but buying it as part of Adobe’s CS suites might make more sense.</p>
+<p>Links: <a target="_blank" rel="noopener" href="http://www.adobe.com/products/dreamweaver.html">Website</a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/dreamweaver_card.jpg" title="Dreamweaver Card"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/dreamweaver_card.jpg" srcset="/img/loading.gif" lazyload alt="Dreamweaver Card" title="Dreamweaver"></a></p>
+<h4 id="Visual-Studio"><a href="#Visual-Studio" class="headerlink" title="Visual Studio"></a>Visual Studio</h4><p>Visual Studio is the all-in-one development environment for Windows. It supports a large number of languages (C/C++, C#, VB.NET and F# come built-in)  and can be used to develop applications for desktop, mobile and web. It has powerful features for code autocompletion, inline documentation, error checking, debugging, form designer, database schema creation and more. The price starts from $500, but an Express version of Visual Studio is available for free, with a limited feature set.</p>
+<p>Links: <a target="_blank" rel="noopener" href="http://www.microsoft.com/visualstudio/en-us/products/2010-editions">Visual Studio</a>, <a target="_blank" rel="noopener" href="http://www.microsoft.com/visualstudio/en-us/products/2010-editions/express">Visual Studio Express Editions</a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/visualstudio_card.jpg" title="Visual Studio Card"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/visualstudio_card.jpg" srcset="/img/loading.gif" lazyload alt="Visual Studio Card" title="Visual Studio"></a></p>
+<h4 id="Xcode"><a href="#Xcode" class="headerlink" title="Xcode"></a>Xcode</h4><p>Xcode is Apple’s solution for developing OSX and iOS applications. It supports C, C++, Objective-C, Objective-C++, Java, AppleScript, Python and Ruby. With Xcode, you can write, debug and preview code. It provides a GUI builder and a mobile device emulator for testing iOS apps. The IDE is based on open source utilities like the GNU Debugger and the Apple LLVM compiler. Xcode used to be paid, but now is offered for free to developers.</p>
+<p>Links: <a target="_blank" rel="noopener" href="https://developer.apple.com/xcode/">Website</a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/xcode_card.jpg" title="Xcode Card"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/xcode_card.jpg" srcset="/img/loading.gif" lazyload alt="Xcode Card" title="Xcode"></a></p>
+<h4 id="Coda-2"><a href="#Coda-2" class="headerlink" title="Coda 2"></a>Coda 2</h4><p>Coda is an all-in-one web developer power tool set. It includes support for (s)FTP file transfer, code navigation, sites and groups, code folding, terminal and git integration, MySQL management and much more. With the new Coda 2 release, you can even use an iPad as a dedicated preview screen. The regular price is $99, but you can get it with a discount for around $75.</p>
+<p>Link: <a target="_blank" rel="noopener" href="http://panic.com/coda/">Website</a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/coda_card.jpg" title="Coda 2 Card"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/coda_card.jpg" srcset="/img/loading.gif" lazyload alt="Coda 2 Card" title="Coda 2"></a></p>
+<h3 id="For-Aesthetes"><a href="#For-Aesthetes" class="headerlink" title="For Aesthetes"></a>For Aesthetes</h3><p>The editors presented here are beautiful, lightweight, easy to use and extensible. There are big communities around them, which produce bundles and plugins, write articles, and offer tips on how to make the best use of the respective editor.</p>
+<h4 id="TextMate"><a href="#TextMate" class="headerlink" title="TextMate"></a>TextMate</h4><p>TextMate is a general-purpose graphical text editor for OSX. It includes extensive support for macros and bundles, code folding, snippets, shell integration, clipboard history and project management. TextMate 2 is expected to bring long requested features like split views and full screen support, which are currently missing. The editor costs around $50.</p>
+<p>Link: <a target="_blank" rel="noopener" href="http://macromates.com/">Website</a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/textmate_card.jpg" title="TextMate Card"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/textmate_card.jpg" srcset="/img/loading.gif" lazyload alt="TextMate Card" title="TextMate"></a></p>
+<h4 id="Sublime-Text-2"><a href="#Sublime-Text-2" class="headerlink" title="Sublime Text 2"></a>Sublime Text 2</h4><p>Sublime is a beautiful cross-platform code editor. It is fast and feature rich, with support for practically every programming language. It supports multiple selections, code folding, keyboard bindings, macros, split screen editing and projects. Sublime Text also has a fullscreen and distraction-free modes, which look great on big displays. Like TextMate, it has a vibrant community behind it, which creates bundles and plugins with the help of Sublime’s powerful plugin API. It runs on Linux, Windows and OSX. This editor comes with an unlimited trial period, but you should eventually purchase a license for $59, which can be used on every computer that you own.</p>
+<p>Links: <a target="_blank" rel="noopener" href="http://www.sublimetext.com/">Website</a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/sublime_card.jpg" title="Sublime Card"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/sublime_card.jpg" srcset="/img/loading.gif" lazyload alt="Sublime Card" title="Sublime Text 2"></a></p>
+<h3 id="For-Pragmatists"><a href="#For-Pragmatists" class="headerlink" title="For Pragmatists"></a>For Pragmatists</h3><p>This section is for people who just want to get things done. These editors don’t get in your way, but at the same time are fast and very powerful. They may not be as refined as the last group, but rest assured that they can take anything you throw at them.</p>
+<h4 id="Notepad"><a href="#Notepad" class="headerlink" title="Notepad++"></a>Notepad++</h4><p>This powerful and lightweight editor is a must for any programmer running Windows. Although its name might connote that it is merely an improved version of Notepad, this is a mighty tool. It is easy for beginners to get started, but it takes a pro to truly master. Notepad++ supports every popular programming language with plugins available for the rest. The editor also has support for split screen editing, an FTP browser, macros and powerful text editing capabilities. Notepad++ is free as in speech and also as in beer.</p>
+<p>Links: <a target="_blank" rel="noopener" href="http://www.notepad-plus-plus.org/">Website</a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/notepadpp_card.jpg" title="Notepad++ Card"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/notepadpp_card.jpg" srcset="/img/loading.gif" lazyload alt="Notepad++ Card" title="Notepad++"></a></p>
+<h4 id="TextWrangler"><a href="#TextWrangler" class="headerlink" title="TextWrangler"></a>TextWrangler</h4><p>TextWrangler is a free and lightweight OSX-only editor with support of multiple programming languages. It offers a powerful search and replace functionality with multiple file support, text manipulation, file comparison, auto indentation, multiple clipboards, ftp support and more.</p>
+<p>Links: <a target="_blank" rel="noopener" href="http://www.barebones.com/products/TextWrangler/">Website</a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/22/textwrangler_card.jpg" title="TextWrangler Card"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/22/textwrangler_card.jpg" srcset="/img/loading.gif" lazyload alt="TextWrangler Card" title="TextWrangler"></a></p>
+<h3 id="And-the-best-editor-is"><a href="#And-the-best-editor-is" class="headerlink" title="And the best editor is.."></a>And the best editor is..</h3><p>With a rating of <strong>4.6</strong>, the best source code editor is <strong>Sublime Text 2</strong>! With its fast release cycle, cross-platform availability, speed and elegance, Sublime offers a package that is only enhanced by the large community of developers around it.</p>
+<p>Didn’t find your editor of choice in this list? Tell us which is your favorite in the comment section below!</p>
+<p>nbsp;</p>
+<p>Posted on <a target="_blank" rel="noopener" href="http://tutorialzine.com/2012/07/battle-of-the-tools-which-is-the-best-code-editor/">http://tutorialzine.com/2012/07/battle-of-the-tools-which-is-the-best-code-editor/</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/programmer/">程序员</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Code-Editor/">Code Editor</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91/">文本编辑</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/sublime-text-crack.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Sublime Text 2/3 Windows/Mac 破解补丁/注册机/序列号</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/some-chinese-programming-language.html">
+                        <span class="hidden-mobile">一些中文编程语言</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+User-agent: *
+
+Disallow: /vendors/
+Disallow: /css/
+Disallow: /js/
+Disallow: /lib/
+
+Allow: /
+
+Sitemap: https://www.sinosky.org/sitemap.xml
+Sitemap: https://www.sinosky.org/baidusitemap.xml

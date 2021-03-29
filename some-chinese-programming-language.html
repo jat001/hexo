@@ -1,0 +1,893 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>一些中文编程语言 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="一些中文编程语言">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2013-02-06 14:48" pubdate>
+        2013年2月6日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      28
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">一些中文编程语言</h1>
+            
+            <div class="markdown-body">
+              <p>我自认为本文不是恶搞，让我们本着严肃认真的精神来审视这些中文编程语言。<a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/02/05/1_thumb.jpg" title="1_thumb"><img src="http://bcs.duapp.com/sinosky-blog/2013/02/05/1_thumb.jpg" srcset="/img/loading.gif" lazyload alt="1_thumb"></a></p>
+<p><strong><span style="color: #ff0000;">易语言</span></strong></p>
+<p><a target="_blank" rel="noopener" href="http://www.dywt.com.cn/">易语言</a>可以说是中文编程语言的老大，拥有独立的编译器。易语言并不是把现存的编程工具进行表面汉化而成的，和其他国外语言相比，&#8221;易语言&#8221;最大的不同是彻底中文化，且拥有自下而上的全部自主知识产权。</p>
+<p>易语言的全新版本叫做“易语言.飞扬”，包含垃圾收集机制，是完全面向对象的中文编程语言：</p>
+<div>
+<div id="highlighter_98229">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+</td>
+<td>
+<div>
+<div>`公开 类 启动类`</div>
+<div>`{`</div>
+<div>`    ``公开 静态 启动()`</div>
+<div>`    ``{`</div>
+<div>`        ``控制台.输出(``"你好，世界！"``);`</div>
+<div>`    ``}`</div>
+<div>`}`</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<p>和其他中文编程语言相比，它是最成熟的，而且同时具备了一套完整的开发环境。</p>
+<p><strong><span style="color: #ff0000;">习语言</span></strong></p>
+<p>习语言即中文版的C语言，由一套完备的编程语法和相配套的工具组成，旨在将计算机及软件编程大众化，普及化，中文化，提高程序的维护性而诞生。</p>
+<div>
+<div id="highlighter_907739">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+</td>
+<td>
+<div>
+<div>`公共的 类 你好{`</div>
+<div>`    ``公共的 静态的 无类型 主函数(字符串 参数[]){`</div>
+<div>`        ``系统.输出.输出字符串并换行(``"你好，世界！"``);`</div>
+<div>`    ``}`</div>
+<div>`}`</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<p>习语言家族：</p>
+<ul>
+<li>  习语言：中文C语言编程系统</li>
+<li>  习佳佳：中文C++开发伴侣</li>
+<li>  习佳娃：中文Java编程的利器</li>
+<li>  习丽妞：linux系统下的中文编程系统</li>
+<li>  习姐：习语言解释版本</li>
+<li>  习51：51单片机中文开发伴侣</li>
+<li>  中汇：X86中文汇编</li>
+<li>  中文构建工具（中文版的make工具)</li>
+<li>  ……（画外音：看了这些名字，吐了没？）</li>
+</ul>
+<p><strong><span style="color: #ff0000;">丙正正</span></strong></p>
+<p>丙正正是一个能令人使用中文开发程序的编译器，提出者为魏泽人。它是中文编程语言的尝试。丙正正会将含有中文的原始码变成可被gcc编译的[C++]原始码，并透过宏定义(#define)，达到完全使用中文开发程序的目的。后期的版本中，编译器 gcc 及除错器 gdb传回的变量名称，也会被翻成中文，以利于除错。</p>
+<div>
+<div id="highlighter_323373">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+<div>8</div>
+<div>9</div>
+<div>10</div>
+<div>11</div>
+<div>12</div>
+</td>
+<td>
+<div>
+<div>`空 象棋檔::設定註解(字元 *s,整數 n)`</div>
+<div>`{`</div>
+<div>`    ``若(n &gt;= 最大註解數)`</div>
+<div>`        ``對於(;最大註解數 &lt;= n;最大註解數++)`</div>
+<div>`    ``註解[最大註解數]=NONE;`</div>
+<div>`    ``若(s==NULL 或 字串長度(s)==0)`</div>
+<div>`        ``傳回;`</div>
+<div>`    ``若(註解[n]!=NONE) `</div>
+<div>`        ``刪除 註解[n];`</div>
+<div>`    ``註解[n]=新 字元[字串長度(s)+1];`</div>
+<div>`    ``字串複製(註解[n],s);`</div>
+<div>`}`</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<p><strong><span style="color: #ff0000;">PerlYuYan</span></strong></p>
+<p>PerlYuYan是一个能令人使用中文文言文开发程式 Perl 程式的 Perl 模组，由唐凤于2002年一月发表，只花了两个小时就实作完成。它是中文编程语言的尝试。作者利用中文的特质，将许多指令改成以一个中国汉字来表示，因而造成了文言语法的感觉。</p>
+<div>
+<div id="highlighter_489652">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+<div>8</div>
+<div>9</div>
+<div>10</div>
+<div>11</div>
+</td>
+<td>
+<div>
+<div>`# The Sieve of Eratosthenes - 埃拉托斯芬篩法`</div>
+<div>`use Lingua::Sinica::PerlYuYan;`</div>
+<div>` `</div>
+<div>`  ``用籌兮用嚴。井涸兮無礙`</div>
+<div>`。印曰最高矣  又道數然哉。`</div>
+<div>`。截起吾純風  賦小入大合。`</div>
+<div>`。習予吾陣地  並二至純風。`</div>
+<div>`。當起段賦取  加陣地合始。`</div>
+<div>`。陣地賦篩始  繫繫此雜段。`</div>
+<div>`。終陣地兮印  正道次標哉。`</div>
+<div>`。輸空接段點  列終註泰來。`</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<p><strong><span style="color: #ff0000;">中蟒</span></strong></p>
+<p><a target="_blank" rel="noopener" href="http://www.chinesepython.org/">中蟒</a>是一套基于Python即时编译语言的中文编程语言。除了保留字，变量名称可用中文外，很多内建数据类型的操作都可用中文來进行。</p>
+<div>
+<div id="highlighter_879402">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+<div>8</div>
+<div>9</div>
+</td>
+<td>
+<div>
+<div>`#!/usr/local/bin/cpython`</div>
+<div>`回答 = 讀入(``'你認為中文程式語言有存在價值嗎 ? (有/沒有)'``)`</div>
+<div></div>
+<div>`如 回答 == ``'有'``:`</div>
+<div>`    ``寫 ``'好吧, 讓我們一起努力!'`</div>
+<div>`不然 回答 == ``'沒有'``:`</div>
+<div>`    ``寫 ``'好吧,中文並沒有作為程式語言的價值.'`</div>
+<div>`否則:`</div>
+<div>`    ``寫 ``'請認真考慮後再回答.'`</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<p><strong><span style="color: #ff0000;">周蟒</span></strong></p>
+<p>周蟒，又名zhpy，是一个轻量的，与Python 语言互相兼容的中文Python 语言。让使用者可以使 周蟒用纯中文语句（繁体或简体）来编写程式。目前主要适用于教学上。</p>
+<div>
+<div id="highlighter_656655">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+<div>8</div>
+<div>9</div>
+<div>10</div>
+<div>11</div>
+<div>12</div>
+<div>13</div>
+<div>14</div>
+<div>15</div>
+<div>16</div>
+</td>
+<td>
+<div>
+<div>`#!/usr/bin/env zhpy `</div>
+<div>`# 档名：while,py `</div>
+<div>`数字 = 23 `</div>
+<div>`运行 = 真 `</div>
+<div>`当 运行: `</div>
+<div>`猜测 = 整数(输入(``'输入一个数字: '``)) `</div>
+<div>`如果 猜测 == 数字: `</div>
+<div>`印出 ``'恭喜, 你猜对了.'`</div>
+<div>`运行 = 假 # 这会让循环语句结束 `</div>
+<div>`假使 猜测 &lt; 数字: `</div>
+<div>`印出 ``'错了, 数字再大一点.'`</div>
+<div>`否则: `</div>
+<div>`印出 ``'错了, 数字再小一点.'`</div>
+<div>`否则: `</div>
+<div>`印出 ``'循环语句结束'`</div>
+<div>`印出 ``'结束'`</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<p><strong><span style="color: #ff0000;">O语言</span></strong></p>
+<p>O语言是一款中文计算机语言（或称套装），包括O汇编语言、O中间语言和O高级语言等，其中窗口设计、界面描述语言、O中间语言已经能很好的整合在一起。</p>
+<p>O中间语言可以说是汇编语言的抽象，它和汇编语言一样，使用单句的语法，除了基本的条件句和函数调用外，基本的一条指令对应一条语句，因此，它比C语言在语法上更低级一些。这样设计的目的是为了保持底层足够大的灵活性，使前端代码比较容易地映射到中间语言。C语言毋庸置疑是很强大，Pascal语言也非常强大，但是你很难将两者代码进行相互转换，如果使用中间语言作为中间层，就能够兼容两者的语法。</p>
+<div>
+<div id="highlighter_814385">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+</td>
+<td>
+<div>
+<div>`.包含文&lt;*视窗32.omh&gt;`</div>
+<div>`入口 主函数()`</div>
+<div>`{`</div>
+<div>`    ``MessageBox(0,&amp;``"Hello,World!"``,&amp;``""``,0);`</div>
+<div>`    ``ExitProcess(0);`</div>
+<div>`}`</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<p><strong><span style="color: #ff0000;">中文培基</span></strong></p>
+<p>中文培基是Basic语言的中文本地化版本（八十年代初就有了，不可思议吧，可是，第一门中文编程语言其实从七十年代就有了，平台是DOS）。</p>
+<div>
+<div id="highlighter_471210">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+</td>
+<td>
+<div>
+<div>`10 卜=0`</div>
+<div>`20 入 水, 火`</div>
+<div>`30 從 日 = 水 到 火`</div>
+<div>`40 卜 = 卜+對數(日)`</div>
+<div>`50 下一 日`</div>
+<div>`60 印 卜`</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<p>翻译一下：</p>
+<div>
+<div id="highlighter_127372">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+</td>
+<td>
+<div>
+<div>`10 Y=0`</div>
+<div>`20 INPUT E, F`</div>
+<div>`30 FOR A = E TO F`</div>
+<div>`40 Y = Y + LOG (A)`</div>
+<div>`50 NEXT A`</div>
+<div>`60 PRINT Y`</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<p>其实，中文perl、中文Pascal、中文Cobol、中文LOGO和中文Basic这些明显的本地化语言都是有的。</p>
+<p>我觉得中文编程语言可以按照中文的深度这样两种：</p>
+<ol>
+<li> 本地化其它编程语言。比如上文介绍过的“丙正正”（题外话：为什么叫“丙正正”呢？因为原语言叫“C++”嘛……）。</li>
+<li> 汉语内核语言。包括“易语言”等。这种语言才能说是一门“真正的语言”，要不然只能说是语言+一个汉化包而已……</li>
+</ol>
+<p>最后，来看一个轻松一点的，嘿嘿。</p>
+<p><strong><span style="color: #ff0000;">草泥马语</span></strong></p>
+<p><a target="_blank" rel="noopener" href="http://code.google.com/p/grass-mud-horse/">草泥马语</a>是马勒戈壁第一款拥有自主知识产权的，以马勒戈壁上顽强生存的草泥马们为主体的编程语言。草泥马语语法生动丰富，内容健康活泼，是一门老少皆宜，人人适用的编程语言。它的出现弥补了我戈壁在国际编程语言界中的一项空白。</p>
+<p>草泥马语是用了先进的JOT（Just Out of Time）编译引擎，并且运行于爪哇虚拟机中，运行速度大幅度降低同时，还使用了戈壁内外各种先进技术，使的草泥马语不十分可靠。实现上，草泥马语是一款根据国外同类型语言“Whitespace”改编（替换关键字）而成的全新的编程语言，执行时使用“草泥马”的不同组合实现不同功能，关键字只有这几个：“草”、“泥”、“马”和“河蟹”，其它字符全部都被当做注释。</p>
+<div>
+<div id="highlighter_916465">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+</td>
+<td>
+<div>
+<div>`草草草泥马 马草草草泥草草草草泥泥马 草马草 泥马草泥 草草草泥草泥草马 泥马草草 草草草泥马 泥草草草 草马草 草草草泥草泥泥马 泥草草泥 马泥草草泥草草草泥草泥马 马草马草泥草草草草泥泥马 马草草草泥草草草泥草泥马 草马马 马马马`</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<p>这就是一个从1到10的循环来输出这十个数而已。</p>
+<p>另外，和“草泥马”语达成谅解备忘的还有这种中文化的标记语言（所以严格说它不能算是编程语言）——</p>
+<p><strong><span style="color: #ff0000;">CHTML</span></strong></p>
+<p><a target="_blank" rel="noopener" href="http://code.google.com/p/chtml/">CHTML</a>是国际互联网组织W3C超文本标记语言4.0的一个实现（dtd<a target="_blank" rel="noopener" href="http://chtml.googlecode.com/svn/trunk/chtml.dtd">在此</a>）。是在汉语编程光辉思想的指导下，互联网普遍协议与中国国情相结合的产物。他的名字在中文叫“中文版如何做爱”（Chinese How To Make Love）。和汉语编程一样，原来使用英文的标签现在可以全部使用中文；除此之外, 还额外扩展了两个标签，即<tt>&lt;反功夫网&gt;</tt>和<tt>&lt;勾&gt;</tt>。除此以外，该协议和现有 HTML 标准完全兼容。</p>
+<p><tt>&lt;勾&gt;</tt>是和中国国情结合的产物。有时候我们需要创建只有一个答案的投票，此标签即可用于及时丢弃用户投票，节省服务器资源，彰显社会主义优越性。</p>
+<p><tt>&lt;反功夫网&gt;</tt>是著名的CAPTCHA系统的浏览器实现。所以在此标签中的元素都变成CAPTCHA。从而人可以顺利阅读，而机器不能。此标签对人和搜索引擎都无害，但可以透明飞跃长城。技术细节还在讨论当中。</p>
+<div>
+<div id="highlighter_236976">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+<div>8</div>
+<div>9</div>
+<div>10</div>
+<div>11</div>
+<div>12</div>
+<div>13</div>
+<div>14</div>
+<div>15</div>
+<div>16</div>
+<div>17</div>
+<div>18</div>
+<div>19</div>
+<div>20</div>
+<div>21</div>
+</td>
+<td>
+<div>
+<div>`&lt;省部级标题&gt;`</div>
+<div>`    ``贵州省新闻办举行发布会公布`</div>
+<div>`        ``&lt;反功夫网&gt;`</div>
+<div>`            ``某某`</div>
+<div>`        ``&lt;/反功夫网&gt;`</div>
+<div>`    ``事件真相`</div>
+<div>`&lt;/省部级标题&gt;`</div>
+<div>`&lt;县处级标题&gt;`</div>
+<div>`    ``2008-07-01 19:56:38来源, 新华网`</div>
+<div>`&lt;/县处级标题&gt;`</div>
+<div>`&lt;列举&gt;`</div>
+<div>`    ``核心提示：7月1日晚上19点40分，XX新闻办公室举行新闻发布会，公布`</div>
+<div>`        ``&lt;反功夫网&gt;`</div>
+<div>`            ``某某`</div>
+<div>`        ``&lt;/反功夫网&gt;`</div>
+<div>`            ``事件真相。`</div>
+<div>`        ``&lt;反功夫网&gt;`</div>
+<div>`            ``某某`</div>
+<div>`        ``&lt;/反功夫网&gt;`</div>
+<div>`    ``县社会秩序基本恢复。`</div>
+<div>`&lt;/列举&gt;`</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<p>从<a target="_blank" rel="noopener" href="http://code.google.com/p/chtml/wiki/Examples">这里</a>你可以找到一些官方的例子。</p>
+<p>&nbsp;</p>
+<p>Posted on <a target="_blank" rel="noopener" href="http://www.raychase.net/758">http://www.raychase.net/758</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/programmer/">程序员</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B8%AD%E6%96%87/">中文</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%8D%89%E6%B3%A5%E9%A9%AC/">草泥马</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/which-is-the-best-code-editor.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Which is the Best Code Editor?</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/python-starter-s-scripts.html">
+                        <span class="hidden-mobile">Python 初学者的代码式学习方案</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

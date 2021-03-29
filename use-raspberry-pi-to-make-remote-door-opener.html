@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>使用树莓派制作的远程开门器 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="使用树莓派制作的远程开门器">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2013-03-07 16:42" pubdate>
+        2013年3月7日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">使用树莓派制作的远程开门器</h1>
+            
+            <div class="markdown-body">
+              <h3 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h3><hr>
+<p>话说自从我厂的商务部门搬到旁边的商务楼之后，工程师发现漂亮的前台MM也搬走了，某区只留下冷冷清清的鱼缸。然后，工程师们发现开门成了个问题。鉴于进门需要刷卡，所以没有带卡的工程师就不得不摁下门铃，等待其他人从座位上起身为自己开门。经历过多次不得不让别人来开门以及不得不为别人开门之后，终于有工程师不能忍受了（我就是其中一个），于是，决定自己动手解决问题。要知道，地球上没有能难住工程师的问题！</p>
+<h3 id="研究与选择方案："><a href="#研究与选择方案：" class="headerlink" title="研究与选择方案："></a>研究与选择方案：</h3><hr>
+<p>我厂的电子门锁的开门设备是通过一个带弹簧的开关（门内，类似墙面上开灯的开关）控制的，按下开关就能打开门，按下开关的时候能够听到明显的继电器闭合的声音，因此，趁着没人的时候我把开关拆开看了一下，证实的确是通过触电控制的一个继电器。按下开关时，两个金属触电接触，继电器动作，门打开。继电器在动作后延时4秒左右恢复。这样看来，硬件层面的开门实现就非常简单了：跨接一个数字继电器，要开门时，通过电平信号控制继电器闭合并保持2秒即可。</p>
+<p><a href="//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_IMAG0013.jpg" title="IMAG0013"><img src="//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_IMAG0013.jpg" srcset="/img/loading.gif" lazyload alt="IMAG0013"></a></p>
+<p>但要实现远程控制，必须设置一台可以通过TCP或是HTTP协议接受用户命令，并能控制开门硬件（继电器）的设备。最初考虑过Arduino，作为一个开源的硬件平台，Arduino的电平输出非常易于控制和操作。而且Arduino也有RJ45或是无线的接口模块。不过在查看了Arduino的无线模块的操作方式之后，我发现要让Arduino接入一个WPA加密的无线网络并实现一个web server并不容易。所以最终还是选择了树莓派（Raspberry PI），虽然RPI的硬件成本更高一点。</p>
+<p>RPI与Arduino的设计目标不同，它主要是一个超小的PC主机。幸好RPI本身提供了若干个GPIO的输出口（3.3V），用来操作数字继电器倒是没有问题。</p>
+<ol>
+<li> RPI的GPIO引脚的定义：<a><a target="_blank" rel="noopener" href="http://elinux.org/RPi_Low-level_peripherals#General_Purpose_Input.2FOutput_.28GPIO.29">http://elinux.org/RPi_Low-level_peripherals#General_Purpose_Input.2FOutput_.28GPIO.29</a></a></li>
+<li> 引脚的输出规格：<a><a target="_blank" rel="noopener" href="http://elinux.org/RPi_BCM2835_GPIOs">http://elinux.org/RPi_BCM2835_GPIOs</a></a></li>
+<li> RPI的GPIO教程：<a><a target="_blank" rel="noopener" href="http://log.liminastudio.com/writing/tutorials/tutorial-how-to-use-your-raspberry-pi-like-an-arduino">http://log.liminastudio.com/writing/tutorials/tutorial-how-to-use-your-raspberry-pi-like-an-arduino</a></a></li>
+</ol>
+<p><strong>请特别注意：由于GPIO的引脚是没有保护电路的，不当的硬件连接很可能会导致整块RPI板子烧掉，连接和操作时务必慎重。在确定方案时，我个人使用了面包板，电阻和二极管等电子元件搭建实验电路，并反复用万用表验证过输出电压和电流（主要是对RPI的每个脚的输出不确定）。</strong></p>
+<h3 id="操作步骤："><a href="#操作步骤：" class="headerlink" title="操作步骤："></a>操作步骤：</h3><hr>
+<h4 id="在RPI上安装操作系统"><a href="#在RPI上安装操作系统" class="headerlink" title="在RPI上安装操作系统"></a>在RPI上安装操作系统</h4><p>拿到RPI后，首先要在RPI上安装操作系统。这里有份文档：<a><a target="_blank" rel="noopener" href="http://log.liminastudio.com/writing/tutorials/getting-started-with-the-raspberry-pi">http://log.liminastudio.com/writing/tutorials/getting-started-with-the-raspberry-pi</a></a>，安装完操作系统后，确保重新启动成功（RPI的视频输出口是HDMI接口，可以直接连接在支持HDMI的显示器或是电视上，或者可以通过HDMI转VGA/DVI的连接线连接到支持VGA/DVI的显示器上。<strong>注意：无源的HDMI转VGA的线可能会损坏RPI板</strong>）。</p>
+<h4 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h4><p>RPI本身的网络支持已经比较完善，通过有线方式接入的话，只要直接插入网线就可。考虑到无线方式部署比较方便，我采用的是无线连接的方式。</p>
+<p>RPI仅对部分网卡支持较好，利用RPI的官网上的无线网卡兼容信息，最终选择了一款相对便宜且能得到较好支持的网卡：<strong>TP-LINK TL-WN823N</strong>，该网卡可以从amazon.cn购买，购买地址见本文最后的列表。</p>
+<p>插入网卡后，修改网卡的配置信息：</p>
+<pre class="lang:shell " >
+sudo vi /etc/network/interfaces
+</pre>
+
+<p>修改其中与wlan0相关的部分：</p>
+<pre class="lang:shell " >
+auto lo
+
+iface lo inet loopback
+iface eth0 inet dhcp
+
+allow-hotplug wlan0
+iface wlan0 inet static
+    wpa-ssid 你要连接的wifi ssid
+    wpa-psk 你的wpa连接密码
+address 192.168.0.20    # 设定的静态IP地址
+netmask 255.255.255.0   # 网络掩码
+gateway 192.168.0.1     # 网关
+network 192.168.0.0      # 网络地址
+#wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface default inet dhcp
+</pre>
+
+<p>这里我选择了使用静态地址，原因是我们不希望开门的服务器地址老是变来边去。设置好网络并确认能够正常工作后，就可以着手进行下一个步骤了。</p>
+<h4 id="连接硬件"><a href="#连接硬件" class="headerlink" title="连接硬件"></a>连接硬件</h4><p>下图是具体的连接方式，注意连在RPI上的三条线，白色（电源）、黑色（GND）、灰色（信号）分别连接在RPI GPIO的2号、6号与7号针脚上。</p>
+<p><a href="//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_IMAG0015.jpg" title="IMAG0015"><img src="//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_IMAG0015.jpg" srcset="/img/loading.gif" lazyload alt="IMAG0015"></a></p>
+<h4 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h4><p>RPI的操作系统缺省已经有一个Python的安装了。因此，我们可以使用Python来设置Web Server并控制开门的硬件设备。我选择了web.py作为Web server的开发基础，加上GPIO的python库来完成工作。</p>
+<ol>
+<li> Web.py的下载、安装与教程：<a><a target="_blank" rel="noopener" href="http://webpy.org/">http://webpy.org/</a></a></li>
+<li> RPI GPIO的python库安装和使用：<a><a target="_blank" rel="noopener" href="http://log.liminastudio.com/writing/tutorials/tutorial-how-to-use-your-raspberry-pi-like-an-arduino">http://log.liminastudio.com/writing/tutorials/tutorial-how-to-use-your-raspberry-pi-like-an-arduino</a></a></li>
+</ol>
+<p>接下来就是在RPI上设置Web server了。遵循我厂的传统，使用Python作为Web server的主要开发语言。</p>
+<p>开门硬件控制相关代码：</p>
+<pre class="lang:python " >
+import RPi.GPIO as GPIO
+import time
+
+PORT = 7
+
+def reset():
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(PORT, GPIO.IN)
+
+def initcontroller():
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(PORT, GPIO.OUT)
+    GPIO.output(PORT, True)
+
+def opendoor():
+    GPIO.setup(PORT, GPIO.OUT)
+    GPIO.output(PORT, False)
+    time.sleep(2)
+    GPIO.output(PORT, True)
+</pre>
+
+<p>Web server代码（基于web.py）</p>
+<pre class="lang:python " >
+import web
+    from web import form
+    import doorop
+    import requests
+
+render = web.template.render('templates/')
+
+urls = (
+        '/', 'index'
+)
+app = web.application(urls, globals())
+
+myform = form.Form(
+    form.Textbox("username"),
+    form.Textbox("password", form.notnull)
+)
+
+#initial door controller
+doorop.initcontroller()
+
+def verifyuser(uname, passwd):
+    #这里是验证用户的逻辑，我是用公司的LDAP服务器进行验证的
+    #验证成功返回True，否则返回False
+    pass
+
+class index:
+    def GET(self):
+        form = myform()
+        return render.formtest(form)
+
+    def POST(self):
+        form = myform()
+        if not form.validates():
+            return render.formtest(form)
+        else:
+            if(verifyuser(form['username'].value, form['password'].value)):
+                doorop.opendoor()
+                return "door opened!"
+            else:
+                return "Username/Password invalid!"
+
+if __name__ == "__main__":
+    web.internalerror = web.debugerror
+    app.run()
+</pre>
+
+<p>这样就在RPI上建立了一个web server，用HTTP POST方式输入正确的用户名和口令就能实现开门。</p>
+<p>为了更方便地应用远程开门（例如，用手机开门显然更cool），可以编写iOS或是Android上运行的开门应用。当然，由于开门只需要发送一个HTTP POST请求，直接写成一个可以在Mac/Linux/Win下运行的命令行也可以。</p>
+<p><a href="//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_IMAG0011.jpg" title="IMAG0011"><img src="//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_IMAG0011.jpg" srcset="/img/loading.gif" lazyload alt="IMAG0011"></a>部署后的全景</p>
+<p><a href="//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_Screenshot_2012-12-18-16-11-20.png" title="Screenshot_2012-12-18-16-11-20"><img src="//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_Screenshot_2012-12-18-16-11-20.png" srcset="/img/loading.gif" lazyload alt="Screenshot_2012-12-18-16-11-20"></a></p>
+<p>豆瓣开门</p>
+<p><a href="//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_Screenshot_2012-12-18-16-11-04.png" title="Screenshot_2012-12-18-16-11-04"><img src="//www.sinosky.org/uploads/2013/www.guanheshan.com_eledoor_Screenshot_2012-12-18-16-11-04.png" srcset="/img/loading.gif" lazyload alt="Screenshot_2012-12-18-16-11-04"></a>豆瓣开门widget</p>
+<h3 id="后记与感谢："><a href="#后记与感谢：" class="headerlink" title="后记与感谢："></a>后记与感谢：</h3><p>感谢所有参与这个项目的我厂同学们，豆瓣的确是个有着独特的技术文化的环境，这里不仅有许多可以互相交流想法的技术geek，还有这庞大的对所有新鲜的东西感兴趣的工程师群体，欢迎各位喜欢这个环境的其他非我厂同学们参观和加入：）</p>
+<h3 id="成本与硬件列表："><a href="#成本与硬件列表：" class="headerlink" title="成本与硬件列表："></a>成本与硬件列表：</h3><ol>
+<li><p> 树莓派（MODB-512M） <strong>带运费，税费，约300元</strong></p>
+</li>
+<li><p> TP-LINK TL-WN823N 300M迷你型无线USB网卡 <strong>55元</strong><a></p>
+</a></li>
+<li><p> 连接线：<strong>2元</strong> <a></p>
+</a></li>
+<li><p> 两路数字继电器 <strong>5元</strong> <a></p>
+</a></li>
+<li><p> 其他： <strong>约60元</strong> 导线 4G SD卡一张</p>
+</li>
+</ol>
+<p>Posted on <a target="_blank" rel="noopener" href="http://www.cnblogs.com/guanhe/archive/2012/12/25/2832982.html">http://www.cnblogs.com/guanhe/archive/2012/12/25/2832982.html</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/geek/">Geek</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/DIY/">DIY</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Raspberry-Pi/">Raspberry Pi</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BF%9C%E7%A8%8B%E5%BC%80%E9%97%A8/">远程开门</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/cool-ideas-for-raspberry-pi.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">40+ Cool Ideas for your Raspberry PI Project</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/a-how-to-guide-without-360.html">
+                        <span class="hidden-mobile">木有 360，怎么破？</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

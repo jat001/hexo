@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>Aria 2——下载器中的小清新 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Aria 2——下载器中的小清新">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2014-01-21 10:14" pubdate>
+        2014年1月21日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Aria 2——下载器中的小清新</h1>
+            
+            <div class="markdown-body">
+              <p>多年以前，那还是赛门铁克迅影硬盘克隆工具风靡全国的 XP 时代，下载器领域一家独大的是“迅雷 5”；虽然“快车”的安装量也有着与其叫板的可能，但不客气地说真正做到“装机必备”的还是“迅雷”。随着迅雷公司近年整合包括在线影视等各种相关服务，从“迅雷 7”发布的第一个版本就可以看出迅雷公司有想把下载器做大做强的想法。进入 2014 年，Windows 9 也快要露出真面目了（现在说 “Take us to the threshold!” 好像还早了点……）；至于迅雷公司的软件部门有没有把招牌产品做“强”我不好评价，可以肯定的是他们的确把下载器做“大”了，而且越做越“大”……说实话我对国产软件一直没好感，诸位八九也能猜出个为什么，当然这不是重点……说到下载器，腾讯出品的“QQ 旋风”我还是要推荐的，这年头拥有相对于“迅雷 7”三分之一文件体积的下载器已经不多见了。除了最基本的 HTTP(s) 文件下载功能外，对 BT /磁力链/电驴协议的支持、离线缓存、社交网络资源分享等功能应有尽有，对于想要摆脱“迅雷”阴影的普通大众是个不错选择。</p>
+<p><strong>话已至此，非极客用户请不要继续看下去，省得骂我把“简单的事情变复杂”。可是推荐“QQ 旋风”并不是我的目的，文章还是要继续写，是看是关还在您手中掌握。</strong></p>
+<p>Aria 2 下载器出现有年头了，最早一个版本可以追溯到 2006 年，那时还不支持 Windows 操作系统。目前版本更新到 1.18.3，也做到了主流操作系统全兼容（没找到合适版本？恐怕用的不是主流操作系统吧……），甚至还分出了 32 位和 64 位版（我尚不清楚对于一个下载器来说内存有多么重要）。Aria 2 本身是一款纯命令行工具，看来 6 MB 的体积没能容下精心设计的图形界面，但这绝不妨碍它成为一款使用体验上佳的下载器——退一步讲，没有图形界面也算变相避开了广告等无关因素的骚扰吧。</p>
+<p>Aria 2 支持 BT、磁力链和普通 HTTP(s) / FTP 下载，没能解析 ed2k:// 是个遗憾。作为下载器中的高端货，设置磁盘缓存、多线程、远程服务器登录和上下行限速等不在话下，它甚至能够处理 URL 通配符、从多个地址下载/合并同一文件、加载 Cookie / Header、伪装 User Agent 和允许远程控制等等等等——这些资深参数光听一遍就能把“迅雷”、“旋风”甩出几条街。说实话，用户能不能把每一项都用得上我不敢说，本着“有总比没有好”的原则，多不少几个功能却减小了文件体积，这绝对是件好事。</p>
+<p>恐怕有人又要找茬了——“减小了文件体积”是因为没有图形界面吧？好吧，鉴于“Windows 命令提示符”不方便复制、粘贴，还是弄一个美丽的图形界面看着顺眼。Aria 2 Web-UI 是一个在线图形界面（下载到本地也可以使用，可惜在我机器上总会出现这样那样的问题……），完美支持 Aria 2 的各种功能，包括自定义客户端地址进行远程控制。这下某些人总没话说了吧……</p>
+<p>&nbsp;</p>
+<p>这个地址是“一键配置”版 Aria 2 v1.18.3（自动后台运行 Aria 2 并链接到 Web-UI）：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://dl.dropboxusercontent.com/u/89277841/Aria%202%20with%20GUI.exe">https://dl.dropboxusercontent.com/u/89277841/Aria%202%20with%20GUI.exe</a><br>计算机高手们不必理会上面的链接，手动配置甚至用不了 5 分钟（除非网速足够慢）。另外注意 Aria 2 没有图标，可不要随手把任务栏上黑乎乎的“命令提示符”关掉……</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>—— 更新 ——</p>
+<p>关于下载器（此章节不止谈及 Aria 2）的“磁盘缓存” (Disk Cache) 功能，我觉得有必要说一下。最初“磁盘缓存”是为了避免短时间多次进行硬盘写入产生磁盘碎片而设计的，举个例子：假设下载器以 1 MB/s 下载文件，如果完全关闭“磁盘缓存”，每 1 秒硬盘都会收到 1 MB 数据的写入请求；如果开启了 50 MB 的“磁盘缓存”，那么下载器会把小于 50 MB 的下载数据临时存放在内存里，达到 50 MB 之后再统一提交写入请求。现在很多下载器都推荐把“磁盘缓存”设置为 256 MB - 512 MB，实际上在如今功能非常完善的操作系统和自带缓冲区的硬盘这种环境下已经收效甚微了，甚至还会与最初的理念背道而驰。理由如下：</p>
+<ol>
+<li> 部分内存并不是很充足的用户，系统都会默认开启 GB 级的“页面文件”，其原理是把硬盘空间当作内存使用，以满足“内存大户”程序的需求。如果设置了较大的“磁盘缓存”，且因为下载器存入内存的缓存并不是真的需要实时读取的“内存”类数据，系统会考虑将其移至“页面文件”——即写入通常位于硬盘系统磁盘分区的特殊文件中。这种情况下，“磁盘缓存”非但达不到减少硬盘写入次数的目的，反而会造成多个磁盘分区的重复读写，得不偿失。（相信多数人不会把电影、游戏放在系统分区吧？）</li>
+<li> 对于 16 GB / 32 GB 内存的用户，一定看着用不完的内存非常爽快，于是随手设置个 1024 MB 的“磁盘缓存”也当是浮云。孰不知一旦出现特殊情况导致系统重启，这些来不及写入硬盘的数据可就真的成为“浮云”了。如果看到开机后 90% 的下载进度瞬间变成了 60%，这种大起大落的滋味绝不是好受的。</li>
+<li> 再另外，即使拥有 32 GB 超大内存加备用电源供应，排除了一切可能的意外，也并不意味设置 512 MB / 1024 MB 的“磁盘缓存”能够起到很大作用。目前绝大多数民用硬盘的写入速度大多在 80 - 100 MB/s 左右，SSD 能够达到接近或高于 200 MB/s 的写入速度，由于硬盘和操作系统都有着不受下载器控制的“缓冲区”，这就导致内存中缓存完成的 512 MB / 1024 MB 下载数据也不是能够立即写入硬盘。于是在带宽充足的网络环境下，就会形成：下载器下载一部分数据 &gt; 数据存入内存 &gt; 缓存完成进入“缓冲区”写入队列 &gt; 下载器下载了新的数据 &gt; 新数据存入内存 &gt; 缓存完成的新数据继续进入写入队列……周而复始，“缓冲区” 的写入队列始终有数据等待写入硬盘，硬盘还是必须频繁执行写入操作……“磁盘缓存”最初防止频繁数据写入的意义又失去了……<br>总之，“磁盘缓存”现今能够起到的作用已经有限，善用“预分配磁盘空间”才是抑制磁盘碎片产生的“终极武器”；至于缓存，大部分工作还是交给系统和硬盘“缓冲区”做吧。</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/software/">应用软件</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Windows/">Windows</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BD%AF%E4%BB%B6/">软件</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Aria2/">Aria2</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD/">离线下载</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Mac-OS/">Mac OS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BF%85%E9%9B%B7/">迅雷</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/ifttt.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">if (this) /*then*/ {that};</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/give-away-an-aliyun-ecs.html">
+                        <span class="hidden-mobile">（股市收盘，活动结束）免费赠送阿里云服务器</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

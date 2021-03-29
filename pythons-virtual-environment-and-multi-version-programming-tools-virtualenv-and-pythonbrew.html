@@ -1,0 +1,746 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>Python 的虛擬環境及多版本開發利器─Virtualenv 與 Pythonbrew - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Python 的虛擬環境及多版本開發利器─Virtualenv 與 Pythonbrew">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2013-05-04 16:42" pubdate>
+        2013年5月4日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Python 的虛擬環境及多版本開發利器─Virtualenv 與 Pythonbrew</h1>
+            
+            <div class="markdown-body">
+              <p>Author: Mosky</p>
+<p>Posted on <a target="_blank" rel="noopener" href="http://www.openfoundry.org/tw/tech-column/8516-pythons-virtual-environment-and-multi-version-programming-tools-virtualenv-and-pythonbrew">http://www.openfoundry.org/tw/tech-column/8516-pythons-virtual-environment-and-multi-version-programming-tools-virtualenv-and-pythonbrew</a></p>
+<p>&nbsp;</p>
+<p>Virtualenv 和 Pythonbrew 都是可以創造虛擬（獨立）Python 環境的工具，只是虛擬（獨立）標的不同。</p>
+<p>Virtualenv 可以隔離函數庫需求不同的專案，讓它們不會互相影響。在建立並啟動虛擬環境後，透過 <code>pip</code> 安裝的套件會被放在虛擬環境中，專案就可以擁有一個獨立的環境。</p>
+<p>簡而言之，Virtualenv 可以幫你做到：</p>
+<ul>
+<li>  在沒有權限的情況下安裝新套件</li>
+<li>  不同專案可以使用不同版本的相同套件</li>
+<li>  套件版本升級時不會影響其他專案</li>
+</ul>
+<p>Pythonbrew 則可以在家目錄中安裝多個 Python，並迅速地切換版本；也可以在指定的 Python 版本下批次測試你的 Python 程式；另外更整合了 Virtualenv。</p>
+<p>這篇文章會詳細介紹這兩個工具，讓你在多人開發及多版本開發的環境中更得心應手。</p>
+<p>&nbsp;</p>
+<h3 id="事前準備"><a href="#事前準備" class="headerlink" title="事前準備"></a>事前準備</h3><p>Python 的 package 通常會上傳至 <a target="_blank" rel="noopener" href="http://pypi.python.org/pypi">PyPI</a>，有很多工具都可以從 <a target="_blank" rel="noopener" href="http://pypi.python.org/pypi">PyPI</a> 安裝 package。下面會使用<code>easy_install</code> 這個工具（由 <a target="_blank" rel="noopener" href="http://pypi.python.org/pypi/setuptools">setuptools</a> 提供）來安裝 Virtualenv 和 Pythonbrew。</p>
+<h4 id="01-Linux"><a href="#01-Linux" class="headerlink" title="01. Linux"></a>01. Linux</h4><p>如果不知道 <code>easy_install</code> 或還沒安裝 setuptools，在 Debian/Ubuntu 可以用下列指令安裝：</p>
+<pre class="lang:shell " >
+$ sudo apt-get install python-setuptools
+</pre>
+
+<p>在 Fedora/CentOS/Redhat/openSUSE，則可以使用：</p>
+<pre class="lang:shell " >
+$ su -
+# yum install python-setuptools
+</pre>
+
+<h4 id="02-Windows"><a href="#02-Windows" class="headerlink" title="02. Windows"></a>02. Windows</h4><p>在 Windows 則可以從 <a target="_blank" rel="noopener" href="http://pypi.python.org/pypi/setuptools">setuptools</a> 的頁面找到 <code>*.exe</code> 格式的安裝檔案。安裝完後，可以在<code>C:\PythonX.Y\Scripts\</code>（X.Y 是 Python 的版本）下找到 <code>easy_install.exe</code>。記得把這個路徑放進 Windows 環境變數中的 PATH。</p>
+<p>接著就可以輕鬆安裝任何在 <a target="_blank" rel="noopener" href="http://pypi.python.org/pypi">PyPI</a> 的 Python Package 囉。</p>
+<p>&nbsp;</p>
+<h3 id="Virtualenv-Virtual-Python-Environment-builder"><a href="#Virtualenv-Virtual-Python-Environment-builder" class="headerlink" title="Virtualenv - Virtual Python Environment builder"></a>Virtualenv - Virtual Python Environment builder</h3><h4 id="01-安裝"><a href="#01-安裝" class="headerlink" title="01. 安裝"></a>01. 安裝</h4><p>Pythonbrew 已整合了 Virtualenv，如果不想額外安裝一個套件，也可以不要裝 Virtualenv。</p>
+<p>如果需要安裝，請於命令列模式下輸入下列指令：</p>
+<pre class="lang:shell " >
+# easy_install virtualenv
+</pre>
+
+<h4 id="02-使用方法"><a href="#02-使用方法" class="headerlink" title="02. 使用方法"></a>02. 使用方法</h4><h5 id="I-建立虛擬環境"><a href="#I-建立虛擬環境" class="headerlink" title="I. 建立虛擬環境"></a>I. 建立虛擬環境</h5><p>請於命令列模式下輸入下列指令：</p>
+<pre class="shell " >
+$ virtualenv [指定虛擬環境的名稱]
+</pre>
+
+<p>例如下列指令會建立名為 “ENV” 的虛擬環境：</p>
+<pre class="lang:shell " >
+$ virtualenv ENV
+</pre>
+
+<p>預設在建立虛擬環境時，會依賴系統環境中的 site packages，如果想_完全不依賴_系統的 packages，可以加上參數 <code>--no-site-packages</code> 來建立虛擬環境：</p>
+<pre class="lang:shell " >
+$ virtualenv --no-site-packages [指定虛擬環境的名稱]
+</pre>
+<div id="ii.-啟動虛擬環境">
+
+<h5 id="II-啟動虛擬環境"><a href="#II-啟動虛擬環境" class="headerlink" title="II. 啟動虛擬環境"></a>II. 啟動虛擬環境</h5><p>請先切換當前目錄至建立的虛擬環境中。前例中，建立名稱為 &#8220;ENV&#8221;，則：</p>
+<pre class="lang:shell " >
+$ cd ENV
+</pre>
+
+<p>接著，啟動虛擬環境：</p>
+<pre class="lang:shell " >
+$ source bin/activate
+</pre>
+
+<p>在 Windows 環境中則改用：</p>
+<pre class="lang:batch " >
+> \path\to\env\Scripts\activate.bat
+</pre>
+
+<p>然後就可以注意到，在 shell 提示字元的最前面多了虛擬環境的名稱提示：</p>
+<pre class="lang:shell " >
+(ENV) ...$
+</pre>
+
+<h5 id="III-退出虛擬環境"><a href="#III-退出虛擬環境" class="headerlink" title="III. 退出虛擬環境"></a>III. 退出虛擬環境</h5><p>請於命令列模式下輸入下列指令：</p>
+<pre class="lang:shell " >
+$ deactivate
+</pre>
+
+<p>就可以回到系統原先的 Python 環境。</p>
+<h5 id="IV-在虛擬環境安裝新的-Python-套件"><a href="#IV-在虛擬環境安裝新的-Python-套件" class="headerlink" title="IV. 在虛擬環境安裝新的 Python 套件"></a>IV. 在虛擬環境安裝新的 Python 套件</h5><p>Virtualenv 在安裝時會附帶 <code>pip</code> 這個 Python 的套件安裝工具，當虛擬環境被啟動時，由它安裝的 package 會出現在虛擬環境的資料夾中，用法是：</p>
+<pre class="lang:shell " >
+(ENV)...$ pip install [套件名稱]
+</pre>
+
+<p>如果系統也有安裝 <code>pip</code>，請特別注意是否已經_啟動_虛擬環境，否則套件會被安裝到系統中，而非虛擬環境裡。</p>
+<p>如果想要避免 <code>pip</code> 在沒有進入虛擬環境時被使用，可以在 <code>~/.bashrc</code> 加上：</p>
+<pre class="lang:shell " >
+export PIP_REQUIRE_VIRTUALENV=true
+
+</pre>
+
+<p>要求 <code>pip</code> 一定要在虛擬環境中執行。</p>
+<p>也可以用下面的設定，讓系統的 <code>pip</code> 自動使用啟動中的虛擬環境。</p>
+<pre class="lang:shell " >
+export PIP_RESPECT_VIRTUALENV=true
+</pre>
+
+<p>避免意外將套件安裝至系統環境。</p>
+<h5 id="V-從程式中指定使用虛擬環境的函數庫"><a href="#V-從程式中指定使用虛擬環境的函數庫" class="headerlink" title="V. 從程式中指定使用虛擬環境的函數庫"></a>V. 從程式中指定使用虛擬環境的函數庫</h5><p>無法從 Shell 啟動虛擬環境的情況，像是使用 <a target="_blank" rel="noopener" href="http://www.modpython.org/">mod_python</a> 或 <a target="_blank" rel="noopener" href="http://code.google.com/p/modwsgi/">mod_wsgi</a>，這時可以在 Python 的程式中加上：</p>
+<pre class="lang:python " >
+activate_this = '/path/to/env/bin/activate_this.py'
+execfile(activate_this, dict(__file__=activate_this))
+</pre>
+
+<p>來使用安裝在虛擬環境中的 packages。</p>
+<h4 id="03-延伸套件：Virtualenvwrapper"><a href="#03-延伸套件：Virtualenvwrapper" class="headerlink" title="03. 延伸套件：Virtualenvwrapper"></a>03. 延伸套件：Virtualenvwrapper</h4><p>Virtualenvwrapper 是一個 Virtualenv 的 extension，可使虛擬環境的管理變得更容易。</p>
+<p>詳細來說，Virtualenvwrapper 提供下述功能：</p>
+<ol>
+<li> 將所有的虛擬環境整合在一個目錄下。</li>
+<li> 管理（新增、移除、複製）所有的虛擬環境。</li>
+<li> 可以使用一個命令切換虛擬環境。</li>
+<li> Tab 補全虛擬環境的名字。</li>
+<li> 每個操作都提供允許使用者自訂的 hooks。</li>
+<li> 可撰寫容易分享的 extension plugin 系統。</li>
+</ol>
+<h5 id="I-安裝"><a href="#I-安裝" class="headerlink" title="I. 安裝"></a>I. 安裝</h5><p>請於命令列模式下輸入下列指令：</p>
+<pre class="lang:shell " >
+# easy_install virtualenvwrapper
+</pre>
+
+<h5 id="II-使用方法"><a href="#II-使用方法" class="headerlink" title="II. 使用方法"></a>II. 使用方法</h5><p>於 <code>$WORKON_HOME</code>製作虛擬環境：</p>
+<pre class="lang:shell " >
+$ mkvirtualenv [-i package] [-r requirements_file] [virtualenv options] ENVNAME
+</pre>
+
+<p>列出所有的虛擬環境：</p>
+<pre class="lang:shell " >
+$ lsvirtualenv [-b] [-l] [-h]
+</pre>
+
+<p><code>-b</code> 是簡短模式；<code>-l</code> 是詳細模式（預設）；<code>-h</code> 是印出 help 資訊。</p>
+<p>移除虛擬環境：</p>
+<pre class="lang:shell " >
+$ rmvirtualenv ENVNAME
+</pre>
+
+<p>複製虛擬環境：</p>
+<pre class="lang:shell " >
+$ cpvirtualenv ENVNAME TARGETENVNAME
+</pre>
+
+<p>啟動虛擬環境：</p>
+<pre class="lang:shell " >
+$ workon [environment_name]
+</pre>
+
+<p>如果只輸入 <code>workon</code>，則會列出所有的虛擬環境。</p>
+<p>離開虛擬環境一樣是使用 <code>deactivate</code>。</p>
+<p>可以使用下面的設定來告訴 <code>pip</code> Virtualenv 的路徑。</p>
+<pre class="lang:shell " >
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+</pre>
+
+<p>Virtualenvwrapper 的功能當然不只如此，更多功能可以參考 <a target="_blank" rel="noopener" href="http://www.doughellmann.com/docs/virtualenvwrapper/index.html">Virtualenvwrapper 的官方文件</a>。</p>
+<p>&nbsp;</p>
+<h3 id="Pythonbrew"><a href="#Pythonbrew" class="headerlink" title="Pythonbrew"></a>Pythonbrew</h3><h4 id="01-安裝-1"><a href="#01-安裝-1" class="headerlink" title="01. 安裝"></a>01. 安裝</h4><p>Pythonbrew 是個比較新的專案，雖然比較新，卻非常完整。它也有整合上面介紹的 Virtualenv。可以用類似 Virtualenvwrapper 的方式來操作 Virtualenv。</p>
+<p>安裝方式與 Virtualenv 一樣，只要輸入下面的指令就可以了：</p>
+<pre class="lang:shell " >
+# easy_install pythonbrew
+</pre>
+
+<p>Pythonbrew 官方有推薦的安裝方式，但這篇教學為求一致性，就不額外介紹了，可以參考<a target="_blank" rel="noopener" href="https://github.com/utahta/$%20pythonbrew/blob/master/README.rst">pythonbrew/README.rst</a>。</p>
+<p>對於 Windows 的使用者，很可惜地，Pythonbrew 暫時沒有支援 Windows 的計畫 (<a target="_blank" rel="noopener" href="https://github.com/utahta/$%20pythonbrew/issues/6">#6: Windows Support? - Issues - utahta/pythonbrew - GitHub</a>)。所以 Windows 暫時還沒辦法使用 Pythonbrew 囉。</p>
+<p>經過 <code>easy_install</code> 的安裝後，還需要在 shell 執行：</p>
+<pre class="lang:shell " >
+$ pythonbrew_install
+</pre>
+
+<p>才會把初始的設定檔和資料夾配置進你的家目錄。接著要修改 <code>~/.bashrc</code> 的配置：</p>
+<pre class="lang:shell " >
+$ echo "source ~/.pythonbrew/etc/bashrc" >> ~/.bashrc
+</pre>
+
+<p>這樣就算安裝完全囉。</p>
+<p>Pythonbrew 使用 <code>curl</code> 來抓取資料，如果你的系統沒有，請記得安裝。Ubuntu 上可以使用這行指令：</p>
+<pre class="lang:shell " >
+$ sudo apt-get install curl
+</pre>
+
+<h4 id="02-編譯前準備"><a href="#02-編譯前準備" class="headerlink" title="02. 編譯前準備"></a>02. 編譯前準備</h4><p>因為 Pythonbrew 採取下載 tarball，並編譯、安裝的方法，所以我們要先為系統準備好編譯 Python 所需的套件。</p>
+<p>也因為許多 Linux 發行版都已打包 Python，所以我們可以偷懶一點，用已經打包好的套件來解決編譯所需的相依性。在 Ubuntu/Debian 上，可以透過：</p>
+<pre class="lang:shell " >
+$ sudo apt-get build-dep python2.7
+</pre>
+
+<p>來安裝所有編譯 Python 2.7 所需的套件。雖然已經能夠安裝得相當完整，但還是缺少了 <code>gdbm</code> 這個 module，如果需要的話，可以透過：</p>
+<pre class="lang:shell " >
+$ sudo apt-get build-dep python-gdbm
+</pre>
+
+<p>來安裝編譯 <code>gdbm</code> 所需的套件。</p>
+<p>註：<code>bsddb185</code>、<code>linuxaudiodev</code>、<code>ossaudiodev</code>、<code>sunaudiodev</code> 等是按以上方式安裝後，仍會缺少的 module。其中 <code>ossaudiodev</code>（Open Sound System）在隨 Ubuntu 發布的 Python 中有提供，列出來讓大家參考。</p>
+<p>Fedora/CentOS/Redhat/openSUSE 則可以使用 <code>yum-builddep</code> 這個指令。</p>
+<h4 id="03-使用方法"><a href="#03-使用方法" class="headerlink" title="03. 使用方法"></a>03. 使用方法</h4><p>Pythonbrew 的操作不外乎安裝、移除、列出及使用新的 Python 版本，下面是依照初次使用時所需的指令順序來介紹。</p>
+<h5 id="I-列出可安裝的版本"><a href="#I-列出可安裝的版本" class="headerlink" title="I. 列出可安裝的版本"></a>I. 列出可安裝的版本</h5><p>首先我們用 <code>list --know</code> 列出可以安裝的 Python 版本：</p>
+<pre class="lang:shell " >
+$ pythonbrew list --know
+</pre>
+</div>
+<div id="ii.-安裝新的版本">
+
+<h5 id="II-安裝新的版本"><a href="#II-安裝新的版本" class="headerlink" title="II. 安裝新的版本"></a>II. 安裝新的版本</h5><p>接著利用 <code>install VERSION</code> 來下載並編譯 Python 到本機，除了接 Python 的版本編號以外，也可以接 Python 的 tarball 路徑或網址來安裝；也能調整編譯 Python 的選項。下面是一些例子：</p>
+<pre class="lang:shell " >
+$ pythonbrew install 2.7.2
+$ pythonbrew install --verbose 2.7.2
+$ pythonbrew install --force 2.7.2
+$ pythonbrew install --no-test 2.7.2
+$ pythonbrew install --configure=&amp;quot;CC=gcc_4.1&amp;quot; 2.7.2
+$ pythonbrew install --no-setuptools 2.7.2
+$ pythonbrew install http://www.python.org/ftp/python/2.7/Python-2.7.2.tgz
+$ pythonbrew install /path/to/Python-2.7.2.tgz
+$ pythonbrew install /path/to/Python-2.7.2
+$ pythonbrew install 2.7.2 3.2
+</pre>
+
+<h5 id="III-清理安裝時產生的檔案"><a href="#III-清理安裝時產生的檔案" class="headerlink" title="III. 清理安裝時產生的檔案"></a>III. 清理安裝時產生的檔案</h5><p>下載的 Python tarball 會放在 <code>~/.pythonbrew/dists/</code> 下；而編譯則會在 <code>~/.pythonbrew/build/</code>下進行。如果想清理這兩個目錄，可以使用：</p>
+<pre class="lang:shell " >
+$ pythonbrew cleanup
+</pre>
+
+<h5 id="IV-列出所有已安裝的版本"><a href="#IV-列出所有已安裝的版本" class="headerlink" title="IV. 列出所有已安裝的版本"></a>IV. 列出所有已安裝的版本</h5><p>安裝好之後，可以使用 <code>list</code> 命令列出所有已安裝的 Python 版本：</p>
+<pre class="lang:shell " >
+$ pythonbrew list
+</pre>
+
+<p>後面有打星號的，就是現在正在使用的 Python 版本。</p>
+<h5 id="V-切換已安裝的版本"><a href="#V-切換已安裝的版本" class="headerlink" title="V. 切換已安裝的版本"></a>V. 切換已安裝的版本</h5><p>可以使用 <code>switch</code> 來切換預設的 Python 版本：</p>
+<pre class="lang:shell " >
+$ pythonbrew switch VERSION
+</pre>
+
+<p>如果只想在當前的 shell 下切換，可以使用 <code>use</code>：</p>
+<pre class="lang:shell " >
+$ pythonbrew use VERSION
+</pre>
+
+<p>要切換回預設的環境時，使用 <code>off</code>：</p>
+<pre class="lang:shell " >
+$ pythonbrew off
+</pre>
+
+<p>就會返回系統環境的 Python 了。</p>
+<h5 id="VI-批次在不同版本下測試"><a href="#VI-批次在不同版本下測試" class="headerlink" title="VI. 批次在不同版本下測試"></a>VI. 批次在不同版本下測試</h5><p>最重要的是，可以用系統內所有安裝過的 Python 版本，或指定的 Python 版本來測試自己的程式！</p>
+<pre class="lang:shell " >
+$ pythonbrew py test.py # 使用所有有安裝的版本
+$ pythonbrew py -v test.py # 詳細輸出
+$ pythonbrew py -p 2.7.2 -p 3.2 test.py # 指定特定的版本
+</pre>
+
+<h5 id="VII-移除已安裝的版本"><a href="#VII-移除已安裝的版本" class="headerlink" title="VII. 移除已安裝的版本"></a>VII. 移除已安裝的版本</h5><p>若想移除已經安裝的 Python，則可以使用 <code>uninstall</code>：</p>
+<pre class="lang:shell " >
+$ pythonbrew uninstall 2.7.2
+$ pythonbrew uninstall 2.7.2 3.2
+</pre>
+
+<h5 id="VIII-與-Virtualenv-的整合"><a href="#VIII-與-Virtualenv-的整合" class="headerlink" title="VIII. 與 Virtualenv 的整合"></a>VIII. 與 Virtualenv 的整合</h5><p>要注意 Pythonbrew 中所提供的 Virtualenv，是基於 Pythonbrew 中所安裝的 Python（置於<code>~/.pythonbrew/venvs/Python-VERSION/</code> 下）。在不使用 Pythonbrew 的情況下，無法使用附屬於 Pythonbrew 的 <code>venv</code> 功能。</p>
+<p>Pythonbrew 提供了和 Virtualenvwrapper 類似的功能，只是沒有像 Virtualenvwrapper 那麼完整的 plugin 系統。所有在 Pythonbrew 中的 Virtualenv 指令都以 <code>venv</code> 作為第一個副命令。</p>
+<pre class="lang:shell " >
+$ pythonbrew venv create [指定虛擬環境的名稱]
+$ pythonbrew venv list
+$ pythonbrew venv use [指定虛擬環境的名稱]
+$ pythonbrew venv delete [指定虛擬環境的名稱]
+</pre>
+
+<p>離開虛擬環境一樣是使用 <code>deactivate</code>。</p>
+<h5 id="IX-Buildout"><a href="#IX-Buildout" class="headerlink" title="IX. Buildout"></a>IX. Buildout</h5><p>如果有使用 <a target="_blank" rel="noopener" href="http://www.buildout.org/">Buildout</a> 這個工具，也可以透過 Pythonbrew 來執行：</p>
+<pre class="lang:shell " >
+$ pythonbrew buildout
+$ pythonbrew buildout -p 2.6.6 # 指定版本
+</pre>
+</div>
+<div id="x.-自我更新">
+
+<h5 id="X-自我更新"><a href="#X-自我更新" class="headerlink" title="X. 自我更新"></a>X. 自我更新</h5><p>最後，Pythonbrew 有內建更新自己的指令：</p>
+<pre class="lang:shell " >
+$ pythonbrew update
+$ pythonbrew update --master
+$ pythonbrew update --develop
+</pre>
+
+<p>Virtualenv 和 Pythonbrew 就介紹到這邊，如果想獲得更多資訊，可以多多參考它們的官網哦。祝大家玩得愉快。</p>
+<p>&nbsp;</p>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ul>
+<li>  <a target="_blank" rel="noopener" href="http://www.virtualenv.org/">www.virtualenv.org</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://github.com/utahta/pythonbrew">utahta/pythonbrew &#8211; GitHub</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://pypi.python.org/pypi/setuptools">setuptools &#8211; PyPI</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://pypi.python.org/pypi/pip">pip &#8211; PyPI</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://www.doughellmann.com/docs/virtualenvwrapper/">virtualenvwrapper documentaion</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/6171210/building-python-and-more-on-missing-modules">Building Python and more on missing modules &#8211; Stack Overflow</a></div></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/programmer/">程序员</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Pythonbrew/">Pythonbrew</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Virtualenv/">Virtualenv</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%9A%E7%89%88%E6%9C%AC%E5%BC%80%E5%8F%91/">多版本开发</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">虚拟环境</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/use-raspberry-pi-and-aria2-to-make-low-power-download-machine.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用 Raspberry Pi 和 aria2 打造低功耗下载机</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/add-url-from-sinosky-lixian-to-aria2.html">
+                        <span class="hidden-mobile">从 SinoSky 离线下载直接添加资源到 ARIA2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

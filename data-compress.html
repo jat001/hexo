@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>小空间，大能量 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="小空间，大能量">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2012-12-26 19:07" pubdate>
+        2012年12月26日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">小空间，大能量</h1>
+            
+            <div class="markdown-body">
+              <p><span style="font-family: helvetica; font-size: medium;" data-mce-mark="1">按照近来科技发展趋势，电脑硬盘空间有着越来越大的增长势头。但随着固态驱动器 (SSD, Solid State Drive) 的兴起，硬盘空间已经不再是购置计算机的必需标准。在这篇文章中，我们来回顾一下曾经“勤俭节约”的日子，为那些先前不常注意到的压缩格式打打广告。</span></p>
+<p><span style="font-family: helvetica; font-size: medium;" data-mce-mark="1">        1. 文件压缩格式：ARC</span></p>
+<p><span style="font-family: helvetica; font-size: medium;" data-mce-mark="1">        说点题外话，单词 arc 的本意是“弧”，所以在此肯定不是取此意，而是用了存档 (archive) 这个单词的前三个字母缩写作为后缀名。ARC 格式通常并不怎么有名，因为在处理绝大多数文件时，另一种名为 7z (7-Zip) 的格式已经可以提供很高的压缩率。但如果需要处理非常庞大的文件，动辄十几吉 (GB, gigabyte) 甚至几十吉的文件体积会让 7z 也力不从心，这时候就应该请 ARC 格式助一臂之力了。通过查询维基百科 (Wikipedia) 网站，得知 ARC 格式是 System Enhancement Associates (SEA) 组织的产物，早在拨号网络 (Dial-up) 年代就已出现且被广泛使用，由于版权和商标原因，SEA 和其它公司中间还产生了一些矛盾，但这种格式还是一直流传和演变到现在，恐怕也已经分不清究竟谁才是 ARC 格式的所有者。官方并没有提供很好的压解工具，目前常用的 ARC 制作和释放工具是 FreeArc。相比于其它压缩文件格式，例如 RAR 或 7z 等，ARC 格式在提高压缩率的同时也牺牲了一些有用的特性，比如多卷压缩、储存文件的属性、时间戳、NTFS 流数据等；同时 FreeArc 软件也并不能利用 64 位操作系统的大内存优势，对于一款针对超大文件的处理工具而言，不支持 64 位实属可惜。</span></p>
+<p><span style="font-family: helvetica; font-size: medium;" data-mce-mark="1">        现在最常见到 ARC 格式的地方就是在网上下载的硬盘版游戏中，鉴于大型游戏遵循文件少而大的原则，那些需要通过批处理解压的硬盘版游戏，不是使用 7z 就是用的 ARC。至于 ARC 的其它“广泛使用”，似乎并不怎么多见。</span></p>
+<p><span style="font-family: helvetica; font-size: medium;" data-mce-mark="1">        2. 视频压缩格式：BIK</span></p>
+<p><span style="font-family: helvetica; font-size: medium;" data-mce-mark="1">        BIK 格式的全称是 Bink Video，由 RAD Game Tools 提供。BIK 压制的视频拥有极高的清晰度和非常小的文件体积，且无需完整解压即可播放。记得很久之前支持 BIK 的播放器还很少，于是我就打算将 BIK 格式转换成 AVI 以便分享，结果愣是用 19 兆 (M, megabyte) 的 BIK 文件提取出 220 兆的 AVI，从此我吸取经验，再也没打算从 BIK 里面挖任何东西，这个比率真是伤不起啊……BIK 格式比较完善，没有像 ARC 格式那样通过牺牲其它优势而追求压缩比。既可以用播放器直接播放 BIK 视频，也可以通过调用 BinkW.dll 中的 API 在应用程序中实现嵌入的实时解码。RAD Game Tools 是官方唯一的集视频制作、封装、调整、提取为一体的处理工具，但如果只考虑播放的话，普通播放器就可以解决问题。</span></p>
+<p><span style="font-family: helvetica; font-size: medium;" data-mce-mark="1">        BIK 视频也多用于游戏中，甚至可以说它就是为游戏而生的。另外某些压制的高清电影共享时也采用这种格式，但压制 BIK 电影并不普遍。</span></p>
+<p><span style="font-family: helvetica; font-size: medium;" data-mce-mark="1">        3. 音频压缩格式：M4A / MP4 / AAC</span></p>
+<p><span style="font-family: helvetica; font-size: medium;" data-mce-mark="1">        也许会有人奇怪，为什么这次出现了两个格式。其实这两个音频格式有着异曲同工之妙，两者根本的编码方式是相同的，为 MPEG-4 AAC 音频编码，只不过在不同场合采用了不同的文件后缀名加以区分。最初，MP4 文件也包含纯音频，不过后来人们发现视频文件也是相同的 MP4 文件，不容易分辨，便将音频改名为 M4A，取 MPEG-4 Audio 之意。也有一些转换工具直接以编码器命名，又出现 AAC 文件。M4A 文件最大的特点就是几乎无损，相比同为 MPEG 编码的 MP3 格式要好的没倍。在不通过机器测试的情况下，可以认为 M4A 就是无损音乐；换个说法，至少人的耳朵听不出来 M4A 比起真正无损音乐损失了什么。因为 MPEG 是一种公开的编码方式，所以从简易的千千静听，到发烧级的 Foobar 200，很多工具都可以制作 M4A 或者 AAC 文件，没有什么官方不官方的软件来推荐。</span></p>
+<p><span style="font-family: helvetica; font-size: medium;" data-mce-mark="1">        说起 M4A 格式，不得不提一下 Apple 的 iTunes 音乐商店，Apple 不仅很早就开始支持 M4A，还将它投入到商业运营当中。如今做成了全球最大的在线音乐销售平台，可以说也有高质量 M4A 格式的功劳。想做到媲美 CD 的数字音乐，靠 MP3 格式是站不住脚的。</span></p>
+<p><span style="font-family: helvetica; font-size: medium;">        您可以在 <a target="_blank" rel="noopener" href="http://sdrv.ms/YM8FXX">SkyDrive</a> 查看或下载此文档的 Office Word 与 iWork Pages 副本。</span></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/software/">应用软件</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/AAC/">AAC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ARC/">ARC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/BIK/">BIK</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8E%8B%E7%BC%A9/">压缩</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/create-ios-profiles.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">为个人或企业用户创建 iOS 描述文件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/what-kind-of-work-experience-in-the-development-of-tencent-qq-im.html">
+                        <span class="hidden-mobile">在腾讯开发 QQ IM 的工作体验是怎样的？</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

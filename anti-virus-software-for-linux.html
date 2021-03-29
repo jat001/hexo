@@ -1,0 +1,477 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>5个免费Linux杀毒软件 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="5个免费Linux杀毒软件">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2012-06-18 08:18" pubdate>
+        2012年6月18日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      896 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">5个免费Linux杀毒软件</h1>
+            
+            <div class="markdown-body">
+              <p>Linux的防病毒软件，开玩笑吧？Linux不是很安全吗？很多Linux新手都这样认为，看到标题不要犹豫，读完全文你就会从中找到答案。</p>
+<p>首先，Linux比其它操作系统更稳定更安全。理论上Linux是有可能被病毒侵害的。但实际上 Linux机器几乎不可能遭受病毒的攻击。所以我这里的问题是为什么要为Linux准备防病毒软件，为了更好理解，我准备了以下理由：</p>
+<p>Linux平台安装杀毒软件的原因：</p>
+<p>● 从Linux平台扫描Windows驱动</p>
+<p>● 通过网络扫描Windows工作站</p>
+<p>● 在Linux服务器中扫描接收和发送的邮件</p>
+<p>● 扫描发送给其它机器的重要文件</p>
+<p>下面介绍几个免费的Linux平台上的杀毒软件</p>
+<p>1、ClamAV 杀毒</p>
+<p>ClamAV 杀毒是Linux平台最受欢迎的杀毒软件，ClamAV属于免费开源产品，支持多种平台，如：Linux/Unix、MAC OS X、Windows、OpenVMS。ClamAV是基于病毒扫描的命令行工具，但同时也有支持图形界面的ClamTK工具。ClamAV主要用于邮件服务器扫描邮件。它有多种接口从邮件服务器扫描邮件，支持文件格式有如：ZIP、RAR、TAR、GZIP、BZIP2、HTML、DOC、PDF,、SIS CHM、RTF等等。ClamAV有自动的数据库更新器，还可以从共享库中运行。命令行的界面让ClamAV运行流畅，你不必以后台进程的方式运行，当你想扫描时只需输入扫描命令指定文件或目录就行。</p>
+<p><a target="_blank" rel="noopener" href="http://roorta.sn2.livefilestore.com/y1pnmi26fFMcMEIDssF8-kgQnIeqvm3IKnu4DMMTtIqOqcGanhTYUJXMBQS1V4L8KBo0i6PbDypDjZuVQPsDwZbZuewdzELv34d/clamAv.png?psid=1"><img src="http://roorta.sn2.livefilestore.com/y1pnmi26fFMcMEIDssF8-kgQnIeqvm3IKnu4DMMTtIqOqcGanhTYUJXMBQS1V4L8KBo0i6PbDypDjZuVQPsDwZbZuewdzELv34d/clamAv.png?psid=1" srcset="/img/loading.gif" lazyload alt="ClamAV"></a></p>
+<p>2、Avast Linux 家庭版</p>
+<p>对于你的计算机来说，Avast是最好的防病毒解决方案之一。Avast Linux家庭版是免费的，只能用户家庭或者非商业用途。简单易用的用户界面和其它特性使得Avast变得逐渐流行起来，同样支持GUI和命令行两种工具。所有用户都能轻松地操作，因为它有简单界面(初级用户)高级界面(高级用户)，Avast有以下一些特性：自动更新、内置邮件扫描器等。</p>
+<p> <a target="_blank" rel="noopener" href="http://roorta.sn2.livefilestore.com/y1pVAuuwEkIg9l9Ljxj5QQ0NG1rwCX40m_gxX6ehxLKyvYls-OikUZxkC6e5oh4hXtViD6Vl9_6hVwfWBJDv2C-_9rZVWBCMPgG/Avast-linux.png?psid=1"><img src="http://roorta.sn2.livefilestore.com/y1pVAuuwEkIg9l9Ljxj5QQ0NG1rwCX40m_gxX6ehxLKyvYls-OikUZxkC6e5oh4hXtViD6Vl9_6hVwfWBJDv2C-_9rZVWBCMPgG/Avast-linux.png?psid=1" srcset="/img/loading.gif" lazyload alt="Avast"></a></p>
+<p>3、Avria</p>
+<p>另一个Linux下最好的杀毒软件是Avria免费杀毒版，Avria提供可扩展配置，控制你的计算机成为可能。它有一些很强大的特性，例如：简单的脚本安装方式、命令行扫描器、自动更新(产品、引擎、VDF)、自我完整性程序检查等等。</p>
+<p> <a target="_blank" rel="noopener" href="http://roorta.sn2.livefilestore.com/y1p1V7ID6nHa2DgYlMuSqnZc5E7Y16sNJ0IShzT_0ZHTG5RrzhyCedO_sIgusFlXfC_WVw66k4wtJJ5YeYq34Vzu3JrsYnTuHps/avria.png?psid=1"><img src="http://roorta.sn2.livefilestore.com/y1p1V7ID6nHa2DgYlMuSqnZc5E7Y16sNJ0IShzT_0ZHTG5RrzhyCedO_sIgusFlXfC_WVw66k4wtJJ5YeYq34Vzu3JrsYnTuHps/avria.png?psid=1" srcset="/img/loading.gif" lazyload alt="Avria"></a></p>
+<p>4、AVG 免费版杀毒</p>
+<p>现在有超过10亿用户使用AVG杀毒，同样是Linux机器中不错的杀毒专家，免费版提供的特性比高级版要少。AVG目前还不支持图形界面。提供防病毒和防间谍工具，AVG运行速度很快，占用系统资源很少，支持主流Linux版本如：Debian、Ubuntu、Red hat、Cent OS、FreeBSD等等。</p>
+<p> <a target="_blank" rel="noopener" href="http://roorta.sn2.livefilestore.com/y1ptM3eLvv7udWetZ9IiVmXmcjG8axOPNN8-0JgaDVIbb5ZoQ65riBp0RoegEOH1RhtrNHAuhtNQoj1Qh0xTxHlnTRRkPtz3a64/avg.png?psid=1"><img src="http://roorta.sn2.livefilestore.com/y1ptM3eLvv7udWetZ9IiVmXmcjG8axOPNN8-0JgaDVIbb5ZoQ65riBp0RoegEOH1RhtrNHAuhtNQoj1Qh0xTxHlnTRRkPtz3a64/avg.png?psid=1" srcset="/img/loading.gif" lazyload alt="AVG"></a></p>
+<p>5、F-PROT 杀毒</p>
+<p>F-PORT属于Linux用户中的一种新的杀毒解决方案，对家庭用户免费。它有使用克龙(cron)工具的任务调度的特性，能在指定时间执行扫描任务。同时它还可以扫描USB HDD、Pendrive、CD-ROM、网络驱动、指定文件或目录、引导区病毒扫描、镜像。</p>
+<p> <a target="_blank" rel="noopener" href="http://roorta.sn2.livefilestore.com/y1py38g-GulUOkB1mho2eLJomHKaU4td_Kcvf1mVZsPRl0CQTpp7-qAIjXj6hxv5ocaPwUD7UQH3AuA_uL6GDvqEC4u3R73jP-i/f-prot.png?psid=1"><img src="http://roorta.sn2.livefilestore.com/y1py38g-GulUOkB1mho2eLJomHKaU4td_Kcvf1mVZsPRl0CQTpp7-qAIjXj6hxv5ocaPwUD7UQH3AuA_uL6GDvqEC4u3R73jP-i/f-prot.png?psid=1" srcset="/img/loading.gif" lazyload alt="F-PROT"></a></p>
+<p>从以上讨论中可看出，每种杀毒软件都有它自己的特性，有些支持良好的图形界面，有些更适合命令行扫描，根据这些特性选择一款最适合你自己的吧！</p>
+<p>Posted on <a target="_blank" rel="noopener" href="http://os.51cto.com/art/201208/354960.htm">http://os.51cto.com/art/201208/354960.htm</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/information-security/">信息安全</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9D%80%E6%AF%92%E8%BD%AF%E4%BB%B6/">杀毒软件</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/who-invented-esc-key.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">是谁发明了ESC键？</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/if-life-can-choose.html">
+                        <span class="hidden-mobile">2012高考零分作文：如果生活可以选择</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

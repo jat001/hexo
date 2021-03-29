@@ -1,0 +1,953 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>WordPress代码高亮插件SyntaxHighlighter终极使用详解 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="WordPress代码高亮插件SyntaxHighlighter终极使用详解">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2012-12-25 13:48" pubdate>
+        2012年12月25日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      588 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">WordPress代码高亮插件SyntaxHighlighter终极使用详解</h1>
+            
+            <div class="markdown-body">
+              <p>子曰： 工欲善其事，必先利其器。作为码农一枚，再加上站长这个已经不再光鲜的称呼，岂能没有一款经济实用、操作简单、而且功能必须强大、样式也必须好看的Wordpress代码高亮插件？！作为一个视代码如生命的码农，把代码整的漂漂亮亮是一件多么神圣和伟大的事情啊！</p>
+<p>今天就给大家推荐一款这样的代码高亮插件：<span id="more-59"></span>SyntaxHighlighter Evolved。相信我， 功这款插件能强足够大、并且简单易用，绝对值得推荐。本站就是用的这款插件，大家可以看看<a target="_blank" rel="noopener" href="http://www.diguage.com/archives/52.html">“生病的JavaScript代码”</a>，这就是最好的例子。</p>
+<h4 id="插件介绍"><a href="#插件介绍" class="headerlink" title="插件介绍"></a>插件介绍</h4><p><strong>插件名称：</strong>SyntaxHighlighter Evolved</p>
+<p><strong>插件作者：</strong>Viper007Bond, automattic</p>
+<p><strong>作者主页：</strong><a target="_blank" rel="noopener" href="http://www.viper007bond.com/wordpress-plugins/syntaxhighlighter/">http://www.viper007bond.com/wordpress-plugins/syntaxhighlighter/</a></p>
+<p><strong>插件类型：</strong>代码高亮</p>
+<p><strong>中文支持：</strong>支持</p>
+<p><strong>安装环境：</strong>WordPress2.7或以上版本，经过我自己的测试，在3.3和3.4上都可以正常运行</p>
+<p><strong>下载地址：</strong><a target="_blank" rel="noopener" href="http://downloads.wordpress.org/plugin/syntaxhighlighter.zip">点击这里下载最新版</a></p>
+<p>SyntaxHighlighter Evolved基于开源的JS核心库：SyntaxHighlighter JavaScript package by Alex Gorbatchev二次开发扩展的。安装后只需简单设置一下，不用修改任何代码即可达到很好的效果。</p>
+<h4 id="功能特效"><a href="#功能特效" class="headerlink" title="功能特效"></a>功能特效</h4><p>说起SyntaxHighlighter Evolved的特效，忍不住要“炫耀”一下。不说不足以让你感受到SyntaxHighlighter Evolved的强悍功能。SyntaxHighlighter Evolved的功能特效如下：</p>
+<ol>
+<li> 代码高亮</li>
+<li> 支持Eclips、Emacs等多种样式，可搭配不同风格的主题</li>
+<li> 特色——显示工具条。右上角显示工具条，可以”查看源代码”、”复制源代码”、”打印源代码”。（只有第2版支持）</li>
+<li> 显示行号</li>
+<li> 长代码自动换行（只有第2版支持）</li>
+<li> 可以点击代码中的超文本链接</li>
+<li> 可以收缩代码框</li>
+<li> 高亮显示模式—某一行高亮</li>
+<li> 设置开始行号</li>
+<li> 自定义样式</li>
+</ol>
+<h4 id="特效演示"><a href="#特效演示" class="headerlink" title="特效演示"></a>特效演示</h4><p>只要做Web应用的，无论是JSP，还是PHP,甚至ASP.NET，都会用JavaScript代码。所以，就是用JavaScript代码来演示SyntaxHighlighter的功能吧。要实现的功能是计算第N个斐波纳契数列（Fibonacci Sequence）数列的值。同时，我们要求文件名显示为：FibonacciSequence.js；代码的第二行高亮显示。则实例如下：</p>
+<pre class="lang:javascript title:FibonacciSequence.js " >
+function fib(n) {
+    return n<2 ? n : fib(n-1) + fib(n-2);
+}
+</pre>
+
+<p>怎么样，你是不是已经被SyntaxHighlighter强大功能震撼了？也许你已经好奇，这是如何实现的？我们接下来就介绍SyntaxHighlighter的使用方法。</p>
+<h4 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h4><p>只需要在后台插件里搜索“SyntaxHighlighter Evolved”之后点击安装，启用即可。</p>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>使用方法很简单。在发布文章时，在“HTML”编辑模式下（注意：不是CKEditor等富文本编辑模式；防止让这些富文本编辑器把代码转义了。），使用如下代码，把需要展示的代码包含起来即可：（注意：把前面的@符号去掉。）</p>
+<ol>
+<li> <code>&lt;pre class=&quot;lang:java decode:1 &quot; &gt;这里写你的代码&lt;/pre&gt;</code></li>
+<li> <code>&lt;pre class=&quot;lang:css autolinks:false classname:myclass collapse:false firstline:1 gutter:true highlight:1-3,6,9 htmlscript:false light:false padlinenumbers:false smarttabs:true tabsize:4 toolbar:true title:example-filename.php decode:1 &quot; &gt;这里写你的代码&lt;/pre&gt;</code></li>
+<li> <code>[code lang=&quot;js&quot;]这里写你的代码[/code]</code></li>
+<li> <code>[sourcecode language=&quot;plain&quot;]这里写你的代码[/sourcecode]</code></li>
+<li> 推荐使用这种方式。这种使用方式，见<a href="#bestPractice">“最佳实践”</a></li>
+</ol>
+<p>其实，在网上，搜“SyntaxHighlighter 使用方法”就会出现一堆结果，里面大多时对于这些使用方法的罗列。很少去讲解这些配置项的意思和说明。下面，我将针对这些配置进行详细说明。同时，针对这些配置的使用，我总结了SyntaxHighlighter使用方法的最佳实践。如果急于知道结果，可以直接查看<a href="#bestPractice">“最佳实践”</a>。</p>
+<h4 id="配置详解"><a href="#配置详解" class="headerlink" title="配置详解"></a>配置详解</h4><h5 id="代码样式配置"><a href="#代码样式配置" class="headerlink" title="代码样式配置"></a>代码样式配置</h5><table width="98%" border="1">
+<caption>表-1-SyntaxHighlighter配置参数表</caption>
+<tbody>
+<tr>
+<th scope="col" width="70px">简码</th>
+<th scope="col" width="55px">默认值</th>
+<th scope="col">含义说明</th>
+<th scope="col" width="60px">V2支持</th>
+<th scope="col" width="60px">V3支持</th>
+</tr>
+<tr>
+<td>lang</td>
+<td>无</td>
+<td>说明代码块是哪种语言？</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>autolinks</td>
+<td>true</td>
+<td>Toggle automatic URL linking. 是否自动将网址转换为链接。 默认转换。可以后台管理页面修改默认值。 [示例：点击查看](http://alexgorbatchev.com/SyntaxHighlighter/manual/demo/auto-links.html)</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>classname</td>
+<td>无</td>
+<td>Add an additional CSS class to the code box. 允许你添加一个或多个自定义的样式。 默认没有。可以后台管理页面修改默认值。[示例：点击查看](http://alexgorbatchev.com/SyntaxHighlighter/manual/demo/class-name.html)</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>collapse</td>
+<td></td>
+<td>Toggle collapsing the code box by default, requiring a click to expand it. Good for large code posts. 是否默认折叠代码段。如果折叠，这需要一个“点击”操作，才能展开。非常适合有大段代码的文章。默认不折叠。可以后台管理页面修改默认值。 [示例：点击查看](http://alexgorbatchev.com/SyntaxHighlighter/manual/demo/collapse.html)</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>firstline</td>
+<td>1</td>
+<td>An interger specifying what number the first line should be (for the line numbering). 设置起始行的行号。[示例：点击查看](http://alexgorbatchev.com/SyntaxHighlighter/manual/demo/first-line.html)</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>gutter</td>
+<td></td>
+<td>Toggle the left-side line numbering. 是否显示行号。默认显示。可以后台管理页面修改默认值。 [示例：点击查看](http://alexgorbatchev.com/SyntaxHighlighter/manual/demo/gutter.html)</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>highlight</td>
+<td>无</td>
+<td>A comma-sperated list of line numbers to highlight. You can also specify a range. Example: 2,5-10,12 需要高亮显示并使用逗号分隔的行号。同时，也支持区间（开始行号-结束行号）。例如：2,5-10,12。 [示例：点击查看](http://alexgorbatchev.com/SyntaxHighlighter/manual/demo/highlight.html)</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>htmlscript</td>
+<td></td>
+<td>Toggle highlighting any extra HTML/XML. Good for when you're mixing HTML/XML with another language, such as having PHP inside an HTML web page. The above preview has it enabled for example. This only works with certain languages. 是否高亮显示功能任何额外的HTML / XML。特别适合混合HTML/XML与另一种语言混合的情况下。如在HTML代码中含有部分PHP代码。注意，这仅仅适用于特定的语言。[示例：点击查看](http://alexgorbatchev.com/SyntaxHighlighter/manual/demo/html-script.html)</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>light</td>
+<td>false</td>
+<td>Toggle light mode which disables the gutter and toolbar all at once. 是否显示高亮模式。默认是关闭。可以后台管理页面修改默认值。</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>padlinenumbers</td>
+<td>off</td>
+<td>Controls line number padding. 设置行号的格式化，前面是否补零。默认是关闭。可以后台管理页面修改默认值。</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>title</td>
+<td>无</td>
+<td>Sets some text to show up before the code. 设置文本的标题。默认没有。可以后台管理页面修改默认值。</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>toolbar</td>
+<td>false</td>
+<td>Toggle the toolbar (buttons in v2, the about question mark in v3) 默认不显示。可以后台管理页面修改默认值。 [示例：点击查看](http://alexgorbatchev.com/SyntaxHighlighter/manual/demo/toolbar.html)</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>wraplines</td>
+<td>false</td>
+<td>Toggle line wrapping. 是否开启自动换行。可以后台管理页面修改默认值。</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>smarttabs</td>
+<td>true</td>
+<td>Allows you to turn smart tabs feature on and off. [Click here](http://alexgorbatchev.com/SyntaxHighlighter/manual/demo/smart-tabs.html) for a demo.智能制表符</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>tabsize</td>
+<td>4</td>
+<td>Allows you to adjust tab size. [Click here](http://alexgorbatchev.com/SyntaxHighlighter/manual/demo/tab-size.html) for a demo.制表符的长度。</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+</tbody>
+</table>
+
+<h5 id="颜色主题"><a href="#颜色主题" class="headerlink" title="颜色主题"></a>颜色主题</h5><p>目前IT行业中，常用的语言有几十种；使用的开发环境也多种多样，比如开发Java的也许用Eclipse的比较多；但是在Linux下做C/C++开发的也许用Emacs等。见过这些开发环境的人都知道，这些开发环境的高亮模式、颜色等都是不一样的。习惯了Eclipse的人很难适应Emacs；反之亦然。SyntaxHighlighter考虑的很周全，她在内部直接继承了大概其中这样的颜色主题来供大家选择。大家可以在后台的管理页面轻松的选择自己喜欢的“颜色主题”来进行显示。“颜色主题”列表如下：（排名部分前后。呵呵）</p>
+<ul>
+<li>  Default</li>
+<li>  Django</li>
+<li>  Eclipse</li>
+<li>  Emacs</li>
+<li>  Fade to Grey</li>
+<li>  Midnight</li>
+<li>  RDark</li>
+<li>  None</li>
+</ul>
+<h5 id="语言别名"><a href="#语言别名" class="headerlink" title="语言别名"></a>语言别名</h5><p>从事IT行业的朋友也许都知道，由于历史等原因，一个语言可能有好几个名字。比如JavaScript，微软山寨了个JScript；后来经过ECMA标准化之后，名字又称了ECMAScript；我们大家平时还简称成JS。这就给我们在使用SyntaxHighlighter的语言代号时，造成了一定的困难：不知道到底该用哪个名字才是“正确”的。</p>
+<p>其实，这点SyntaxHighlighter也考虑到了。她通过“语言别名”的方式很好的解决了这个问题。</p>
+<table width="98%" border="1">
+<caption>表-2-SyntaxHighlighter中“语言别名”和“语言代码”对应表</caption>
+<tbody>
+<tr>
+<th scope="col" width="26%">语言别名</th>
+<th scope="col" width="26%">语言代码</th>
+<th scope="col">说明</th>
+</tr>
+<tr>
+<td>as3</td>
+<td>as3</td>
+<td rowspan="2">不知道是否支持AS2？</td>
+</tr>
+<tr>
+<td>actionscript3</td>
+<td>as3</td>
+</tr>
+<tr>
+<td>bash</td>
+<td>bash</td>
+<td rowspan="2">竟然还支持Shell.</td>
+</tr>
+<tr>
+<td>shell</td>
+<td>bash</td>
+</tr>
+<tr>
+<td>coldfusion</td>
+<td>coldfusion</td>
+<td rowspan="2"></td>
+</tr>
+<tr>
+<td>cf</td>
+<td>coldfusion</td>
+</tr>
+<tr>
+<td>clojure</td>
+<td>clojure</td>
+<td></td>
+</tr>
+<tr>
+<td>clj</td>
+<td>clojure</td>
+<td></td>
+</tr>
+<tr>
+<td>cpp</td>
+<td>cpp</td>
+<td></td>
+</tr>
+<tr>
+<td>c</td>
+<td>cpp</td>
+<td></td>
+</tr>
+<tr>
+<td>c-sharp</td>
+<td>csharp</td>
+<td rowspan="2"></td>
+</tr>
+<tr>
+<td>csharp</td>
+<td>csharp</td>
+</tr>
+<tr>
+<td>css</td>
+<td>css</td>
+<td></td>
+</tr>
+<tr>
+<td>delphi</td>
+<td>delphi</td>
+<td rowspan="3">看来Delphi和Pascal确实有一腿啊！</td>
+</tr>
+<tr>
+<td>pas</td>
+<td>delphi</td>
+</tr>
+<tr>
+<td>pascal</td>
+<td>delphi</td>
+</tr>
+<tr>
+<td>diff</td>
+<td>diff</td>
+<td></td>
+</tr>
+<tr>
+<td>patch</td>
+<td>diff</td>
+<td></td>
+</tr>
+<tr>
+<td>erl</td>
+<td>erlang</td>
+<td></td>
+</tr>
+<tr>
+<td>erlang</td>
+<td>erlang</td>
+<td></td>
+</tr>
+<tr>
+<td>fsharp</td>
+<td>fsharp</td>
+<td></td>
+</tr>
+<tr>
+<td>groovy</td>
+<td>groovy</td>
+<td></td>
+</tr>
+<tr>
+<td>java</td>
+<td>java</td>
+<td></td>
+</tr>
+<tr>
+<td>jfx</td>
+<td>javafx</td>
+<td rowspan="2"></td>
+</tr>
+<tr>
+<td>javafx</td>
+<td>javafx</td>
+</tr>
+<tr>
+<td>js</td>
+<td>jscript</td>
+<td rowspan="3">从这里可以看出，针对JavaScript的代码，写js行，写javascript行，甚至是微软的jscript都行。</td>
+</tr>
+<tr>
+<td>jscript</td>
+<td>jscript</td>
+</tr>
+<tr>
+<td>javascript</td>
+<td>jscript</td>
+</tr>
+<tr>
+<td>latex</td>
+<td>latex</td>
+<td>Not used as a shortcode</td>
+</tr>
+<tr>
+<td>tex</td>
+<td>latex</td>
+<td></td>
+</tr>
+<tr>
+<td>matlab</td>
+<td>matlabkey</td>
+<td></td>
+</tr>
+<tr>
+<td>objc</td>
+<td>objc</td>
+<td rowspan="2"></td>
+</tr>
+<tr>
+<td>obj-c</td>
+<td>objc</td>
+</tr>
+<tr>
+<td>perl</td>
+<td>perl</td>
+<td rowspan="2"></td>
+</tr>
+<tr>
+<td>pl</td>
+<td>perl</td>
+</tr>
+<tr>
+<td>php</td>
+<td>php</td>
+<td></td>
+</tr>
+<tr>
+<td>plain</td>
+<td>plain</td>
+<td></td>
+</tr>
+<tr>
+<td>text</td>
+<td>plain</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>powershell</td>
+<td rowspan="2"></td>
+</tr>
+<tr>
+<td>powershell</td>
+<td>powershell</td>
+</tr>
+<tr>
+<td>py</td>
+<td>python</td>
+<td rowspan="2"></td>
+</tr>
+<tr>
+<td>python</td>
+<td>python</td>
+</tr>
+<tr>
+<td>r</td>
+<td>r</td>
+<td>Not used as a shortcode</td>
+</tr>
+<tr>
+<td>splus</td>
+<td>r</td>
+<td></td>
+</tr>
+<tr>
+<td>rails</td>
+<td>ruby</td>
+<td rowspan="4">针对Ruby的。td>
+</tr>
+<tr>
+<td>rb</td>
+<td>ruby</td>
+</tr>
+<tr>
+<td>ror</td>
+<td>ruby</td>
+</tr>
+<tr>
+<td>ruby</td>
+<td>ruby</td>
+</tr>
+<tr>
+<td>scala</td>
+<td>scala</td>
+<td></td>
+</tr>
+<tr>
+<td>sql</td>
+<td>sql</td>
+<td></td>
+</tr>
+<tr>
+<td>vb</td>
+<td>vb</td>
+<td rowspan="2"></td>
+</tr>
+<tr>
+<td>vbnet</td>
+<td>vb</td>
+</tr>
+<tr>
+<td>xml</td>
+<td>xml</td>
+<td rowspan="5">针对XML、HTML以及XHTML等，其实都是按照XML来处理的</td>
+</tr>
+<tr>
+<td>xhtml</td>
+<td>xml</td>
+</tr>
+<tr>
+<td>xslt</td>
+<td>xml</td>
+</tr>
+<tr>
+<td>html</td>
+<td>xml</td>
+</tr>
+<tr>
+<td>xhtml</td>
+<td>xml</td>
+</tr>
+</tbody>
+</table>
+
+<p>从这个表中，我们也可以看出SyntaxHighlighter支持的编程语言多达二十五种语言：AppleScript、 ActionScript、 Bash、 ColdFusion、 C /C++、 C#、 CSS、 Delphi、 Diff（不知道这是不是一种编程语言）、 Erlang、 Groovy、 Java、 JavaFX、 JavaScript、 Perl、 PHP、 PowerShell、 Python、 Ruby、 Sass、 Scala、 SQL、 VB、 XML。</p>
+<h4 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a><a id="bestPractice" name="bestPractice"></a>最佳实践</h4><p>经过配置的讲解，我们可以明白，SyntaxHighlighter已经遵循了软件工程中的最佳实践“约定大于配置”。其实，我们并不需要过多地去设定SyntaxHighlighter的配置，只需要设定一些“实在没办法约定”的配置项即可。比如：title、highlight等。另外，经过我自己的实际测试，我还发现了第五种使用方法，其实，我们可以在[代码名称]这个标签中，添加刚刚讲到的配置配置项。当然，lang就没必要了。因为这里已经通过“标签名”指定过了。综上所述，SyntaxHighlighter使用方法的最佳实践如下：（下面以Java代码为例）</p>
+<p><strong>[@java title=”自定义的文件名” highlight=”高亮的行”]　这里写你的代码　[/java]</strong></p>
+<p>有时，我们并不需要一定有高亮强调的行，这是highlight就可以省略掉。另外，如果你需要自定义样式，可以添加class属性。不过，我个人觉得必要性不大。</p>
+<h4 id="特效扩展"><a href="#特效扩展" class="headerlink" title="特效扩展"></a>特效扩展</h4><ol>
+<li> 设置背景样式</li>
+</ol>
+<p>大家在 <a target="_blank" rel="noopener" href="http://www.diguage.com/archives/52.html">“生病的JavaScript代码”</a> 也许会发现高亮部分的背景颜色比较深，也许有一些人看着不舒服（我个人就觉得颜色有点深）。也许就有人想修改高亮行的背景色。这是，就可以通过修改插件自带的CSS文件，来实现自定义样式的功能。</p>
+<p>在线操作方式是：登录Wordpress后台管理页面，插件-编辑-选择SyntaxHighlighter-选择syntaxhighlighter/syntaxhighlighter2/styles/shThemeDefault.css-找到</p>
+<pre class="lang:css title:原CSS定义 " >
+.syntaxhighlighter .line.highlighted.alt1,
+.syntaxhighlighter .line.highlighted.alt2
+{
+    background-color: #e0e0e0 !important;
+}
+</pre>
+
+<p>将其修改为：</p>
+<pre class="lang:css title:自定义CSS定义 " >
+.syntaxhighlighter .line.highlighted.alt1,
+.syntaxhighlighter .line.highlighted.alt2
+{
+    background-color: #6CE26C !important;
+}
+</pre>
+
+<p>重起见，D瓜哥不建议做这个修改。如果以后修改“颜色主题”可能会带来一点的不良影响。</p>
+<ol>
+<li> 实现圆角和阴影</li>
+</ol>
+<p>SyntaxHighlighter的“容器”样式是一个方方正正。也许不如圆角、立体阴影效果漂亮。这个效果也很容易实现。只需要修改syntaxhighlighter的样式即可；不过，这个修改是在主题的style.css文件做的。修改方式如下：将以下代码添加到主题的style.css文件里面：</p>
+<pre class="lang:css title:实现圆角和阴影 " >
+.syntaxhighlighter{
+     padding: 10px 0 !important;
+     box-shadow: 1px 1px 3px #ccc;
+    -webkit-box-shadow: 1px 1px 3px #ccc;
+    -moz-box-shadow: 1px 1px 3px #ccc;
+    border-radius: 5px;
+   -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+ }
+</pre>
+
+<p>参考资料：</p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="http://www.msland.cn/syntaxhighlighter.html">代码高亮插件SyntaxHighlighter Evolved的使用方法</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://lovesoo.org/wordpress-code-highlight-plugin-syntaxhighlighter-evolved.html">WordPress代码高亮插件SyntaxHighlighter Evolved</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://blog.lichenliang.com/syntaxhighlighterb-syntaxhighlighter-defaults.html">SyntaxHighlighter配置详解B SyntaxHighlighter.defaults</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://www.isolution.me/syntaxhighlighter-config">SYNTAXHIGHLIGHTER配置详解</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97">维基百科中关于“斐波那契数列”的介绍</a></li>
+</ul>
+<p>Posted on <a target="_blank" rel="noopener" href="http://www.diguage.com/archives/59.html">http://www.diguage.com/archives/59.html</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/programmer/">程序员</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Web/">Web</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/what-kind-of-work-experience-in-the-development-of-tencent-qq-im.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">在腾讯开发 QQ IM 的工作体验是怎样的？</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/windows-update-for-drivers.html">
+                        <span class="hidden-mobile">巧用 Windows Update 解决驱动问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

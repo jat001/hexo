@@ -1,0 +1,569 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>活用 MKLINK 命令保护、节省你的硬盘 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="活用 MKLINK 命令保护、节省你的硬盘">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2013-05-16 13:14" pubdate>
+        2013年5月16日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      980 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">活用 MKLINK 命令保护、节省你的硬盘</h1>
+            
+            <div class="markdown-body">
+              <p>用过 Linux 的人应该都熟悉软硬链接，但很多人估计还不知道 Windows 中也包含了这项功能。如果对链接的使用只局限于在桌面“创建快捷方式”，那么我很替你的硬盘担心。</p>
+<p><code>MKLINK</code> 适合需要经常在不同位置访问同一个文件的人，说白了就是不把一个文件复制、剪切多次，却还能够让不同程序在不同路径读取同一个文件。</p>
+<p><code>MKLINK</code> 的基础命令如下：</p>
+<ul>
+<li>  不加参数使用表示链接源、目标都是单个文件。这个命令会让 D 盘多出 <code>BOOTMGR</code> 文件，大小为 0 字节，但编辑时确是 <code>C:\BOOTGR</code> 的内容。（系统启动文件，不要真编辑里面的内容了……）</li>
+</ul>
+<pre class="lang:batch " >
+mklink D:\BOOTMGR C:\BOOTMGR
+</pre>
+
+<ul>
+<li>  <code>/j</code> 参数表示链接源、目标都是文件夹。这样做可以在你的 D 盘创建一个 <code>Windows</code> 文件夹，里面的内容与 <code>C:\Windows</code> 一模一样，不占空间（显示为与 <code>C:\Windows</code> 一样大）且修改也会及时同步到 C 盘。如果能把 C 盘隐藏的话，你完全可以说 Windows 安装在 D 盘。</li>
+</ul>
+<pre class="lang:batch " >
+mklink /j D:\Windows C:\Windows
+</pre>
+
+<p>日常操作知道这两个命令就够了，太高深的也不做介绍。需要注意的是与快捷方式的相同与不同之处：</p>
+<ol>
+<li><p> 快捷方式无论目标是文件还是目录，生成的都是新的有内容的 <code>.lnk</code> 文件，打开时是打开的源路径，直接编辑则是编辑 <code>.lnk</code> 文件的内容，源文件/目录不受影响。<code>MKLINK</code> 生成的文件和目录都是 0 字节，但访问时仍然是新文件/目录的路径，且编辑操作编辑的是源文件/目录；原理相当于网盘的同步，只不过不通过网络、不占用空间。</p>
+</li>
+<li><p> 删除两者生成的目标文件/目录都不会对源文件/目录产生影响。但删除源文件/目录后，新路径都不再可用。</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>实例 1：给 C 盘减负</strong></p>
+<p>不少驱动程序都会自动在 <code>C:\Program Files\InstallShield Installation Information</code> 目录中留下安装程序备份用于卸载，其实有谁没事卸载驱动玩？但这却是 C 盘主要的空间杀手，也是 InstallShield 通常被人们诟病的地方。</p>
+<p>于是，为了节省系统盘空间，可以在安全模式中 <code>C:\Program Files\InstallShield Installation Information</code> 剪切到 E 盘（需要先显示系统隐藏文件夹），利用 <code>MKLINK</code> 让系统误以为没有移动（注意别清理优化时手快删了就行）。</p>
+<p>剪切完之后，执行一下</p>
+<pre class="lang:batch wrap:1 " >
+mklink /j "E:\InstallShield Installation Information" "C:\Program Files\InstallShield Installation Information"
+</pre>
+
+<p>大功告成！</p>
+<p>这个方法同时适用于许多已安装的 Windows 程序（例如 Office 等），这些程序在注册表中留有许多信息，不能随意移动原来路径下的文件。但等到 C 盘空间不足时，可以考虑把他们剪切出来，再用 <code>MKLINK</code> 链回去。</p>
+<p><strong>实例 2：整合游戏客户端</strong></p>
+<p>《魔兽世界》是个很流行的网络游戏，不少玩家却因为不同地区游戏版本不同饱受折磨。其实客户端中大部分文件都可以通用，只有几个目录需要根据连接的服务器做调整，但是客户端只会死板的访问自己路径下的文件。于是把这些特殊目录、文件单列出来，需要连接哪个服务器就把目录链回去。</p>
+<p>这是一个脚本的部分命令，大量用到了 <code>MKLINK</code>，用于在不同服务器之前切换，却不需要重复下载、来回复制文件。</p>
+<pre class="lang:batch " >
+:TW
+ECHO.
+copy /y /v ".\@TW@\.agent.db"
+mklink "Battle.net.dll" ".\@TW@\TW@Battle.net.dll"
+mklink "Battle.net-64.dll" ".\@TW@\TW@Battle.net-64.dll"
+>Launcher.db set /p=zhTW<NUL
+mklink "WoW.exe" ".\@TW@\TW@WoW.exe"
+mklink "WoW.mfil" ".\@TW@\TW@WoW.mfil"
+mklink "WoW.pfil" ".\@TW@\TW@WoW.pfil"
+mklink "WoW.tfil" ".\@TW@\TW@WoW.tfil"
+mklink "Wow-64.exe" ".\@TW@\TW@Wow-64.exe"
+mklink "WowError.exe" ".\@TW@\TW@WowError.exe"
+mklink "WowError-64.exe" ".\@TW@\TW@WowError-64.exe"
+mklink /j ".\Cache\ADB\zhTW" ".\@TW@\ADB@zhTW"
+mklink /j ".\Cache\WDB\zhTW" ".\@TW@\WDB@zhTW"
+mklink /j ".\Data\Cache\zhTW" ".\@TW@\CACHE@zhTW"
+mklink /j ".\Data\zhTW" ".\@TW@\DATA@zhTW"
+mklink /j ".\WTF" ".\@TW@\TW@WTF"
+:CN
+ECHO.
+copy /y /v ".\@CN@\.agent.db"
+mklink "Battle.net.dll" ".\@NA@\NA@Battle.net.dll"
+mklink "Battle.net-64.dll" ".\@NA@\NA@Battle.net-64.dll"
+>Launcher.db set /p=zhCN<NUL
+mklink "WoW.exe" ".\@NA@\NA@WoW.exe"
+mklink "WoW.mfil" ".\@CN@\CN@WoW.mfil"
+mklink "WoW.pfil" ".\@CN@\CN@WoW.pfil"
+mklink "WoW.tfil" ".\@CN@\CN@WoW.tfil"
+mklink "Wow-64.exe" ".\@NA@\NA@WoW-64.exe"
+mklink "WowError.exe" ".\@NA@\NA@WoWError.exe"
+mklink "WowError-64.exe" ".\@NA@\WoWError-64.exe"
+mklink /j ".\Cache\ADB\zhCN" ".\@CN@\ADB@zhCN"
+mklink /j ".\Cache\WDB\zhCN" ".\@CN@\WDB@zhCN"
+mklink /j ".\Data\Cache\zhCN" ".\@CN@\CACHE@zhCN"
+mklink /j ".\Data\zhCN" ".\@CN@\DATA@zhCN"
+mklink /j ".\WTF" ".\@CN@\CN@WTF"
+:NA
+ECHO.
+copy /y /v ".\@NA@\.agent.db"
+mklink "Battle.net.dll" ".\@NA@\NA@Battle.net.dll"
+mklink "Battle.net-64.dll" ".\@NA@\NA@Battle.net-64.dll"
+>Launcher.db set /p=enUS<NUL
+mklink "WoW.exe" ".\@NA@\NA@WoW.exe"
+mklink "WoW.mfil" ".\@NA@\NA@WoW.mfil"
+mklink "WoW.pfil" ".\@NA@\NA@WoW.pfil"
+mklink "WoW.tfil" ".\@NA@\NA@WoW.tfil"
+mklink "Wow-64.exe" ".\@NA@\NA@WoW-64.exe"
+mklink "WowError.exe" ".\@NA@\NA@WoWError.exe"
+mklink "WowError-64.exe" ".\@NA@\WoWError-64.exe"
+mklink /j ".\Cache\ADB\enUS" ".\@NA@\ADB@enUS"
+mklink /j ".\Cache\WDB\enUS" ".\@NA@\WDB@enUS"
+mklink /j ".\Data\Cache\enUS" ".\@NA@\CACHE@enUS"
+mklink /j ".\Data\enUS" ".\@NA@\DATA@enUS"
+mklink /j ".\Data\Cache\esMX" ".\@LA@\CACHE@esMX"
+mklink /j ".\Data\esMX" ".\@LA@\DATA@esMX"
+</pre>
+
+<p><strong>实例 3：隐藏私密文件</strong></p>
+<p>由于 <code>MKLINK</code> 生成的文件/目录并不继承源文件/目录的属性，这个特点可以用来直接访问隐藏文件。</p>
+<p>在 <code>C:\Windows</code> 中新建 <code>Photos</code> 目录，把个人照片拷进去，执行命令</p>
+<pre class="lang:batch " >
+attrib +s +h +r C:\Windows\Photos\*.* /s /d
+</pre>
+
+<p>就可以让 <code>Photos</code> 目录进行系统级隐藏，即使打开普通的 <code>显示隐藏文件和文件夹</code> 开关也看不到。</p>
+<p>然后插入自己的 U 盘，执行</p>
+<pre class="lang:batch " >
+mklink /j "U:\我的照片" "C:\Windows\Photos"
+</pre>
+
+<p>以后就可以通过 U 盘直接访问 Photos 中的照片，路径仍然显示为 <code>U:\我的照片</code> 而不至于暴露。</p>
+<p>除非有人花时间在 <code>C:\Windows</code> 中隐藏文件中仔细查找，否则绝大多数情况下，照片都是安全的。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/tips/">小技巧</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Windows/">Windows</a>
+                    
+                      <a class="hover-with-bg" href="/tags/MKLINK/">MKLINK</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%A1%AC%E9%93%BE%E6%8E%A5/">硬链接</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AC%A6%E5%8F%B7%E9%93%BE%E6%8E%A5/">符号链接</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BD%AF%E9%93%BE%E6%8E%A5/">软链接</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/rc-codecademy.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">[推荐] 菜鸟、专家都适合的编程（语言）学习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/use-raspberry-pi-and-aria2-to-make-low-power-download-machine.html">
+                        <span class="hidden-mobile">使用 Raspberry Pi 和 aria2 打造低功耗下载机</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

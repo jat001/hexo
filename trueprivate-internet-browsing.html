@@ -1,0 +1,474 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>InPrivate 神马弱爆了，浏览器要用 TruePrivate - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="InPrivate 神马弱爆了，浏览器要用 TruePrivate">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2012-12-19 07:56" pubdate>
+        2012年12月19日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      828 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">InPrivate 神马弱爆了，浏览器要用 TruePrivate</h1>
+            
+            <div class="markdown-body">
+              <p><span style="font-family: arial, helvetica, sans-serif; font-size: small;">        首先声明 TruePrivate（绝对隐私）在这里是一个形容词，不要去百度、Google 搜索“TruePrivate 绿色版下载”之类的关键词，它不是一个软件。</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small;">        下面切入正题。</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small;">        我们知道 InPrivate 浏览，这是 Internet Explorer 一个非常好的功能，可以不留痕迹的上网……你懂的。但是 InPrivate 也有很多不便之处，比如它直接禁用了 Cookie、临时文件储存功能和全部扩展、加载项，对于某些必须保存 Cookie 数据和需要加载项的网站来说，InPrivate 就有些鸡肋了。那么，如何实现全功能不留痕迹浏览呢？下面来介绍一种方式，既保证 TruePrivate，又不失网络体验。</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small;">        TruePrivate 实现的思路是这样的：由于不可能改变 InPrivate 的规则，而加载项和扩展都是正常运行的，要实现隐私浏览就必须从 Cookie 和临时文件入手。这好办了，用内存啊。</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small;">        需要用到一个软件，是大名鼎鼎的“魔方”优化工具的一个组件，（您可以访问 <a target="_blank" rel="noopener" href="http://mofang.ithome.com/">软媒产品主页</a> 来下载“魔方 3”，也可以访问 <a target="_blank" rel="noopener" href="https://docs.google.com/open?id=0B4p68HOOaC12WmE4dU5rdkdSM2s">Google 云端硬盘</a> 单独下载所需软件）目的是将部分内存虚拟为硬盘驱动器。内存的原理不必多说，关机即清的特点非常适合用作 TruePrivate 浏览中 Cookie 等数据的储存介质。操作过程图文如下。</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small;">        第一步，解压（或安装）名为 RAMDisk.exe 的程序。（不再上图）</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small;">        第二步，创建一个新的内存盘，路径和盘符可以随意设置，大小建议为 250 MB，使用 NTFS 文件系统。打开自动加载，但关闭自动保存。<span style="color: #ff0000;">注意：这里的文件路径只做紧急情况保存重要数据使用，通常情况下此文件内容为空。</span></span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small;"><span style="color: #ff0000;"><a href="//www.sinosky.org/uploads/Created%20by%20D.Y./TruePrivate_Create.PNG" title="内存盘的创建界面"><img src="//www.sinosky.org/uploads/Created%20by%20D.Y./TruePrivate_Create.PNG" srcset="/img/loading.gif" lazyload alt="内存盘的创建界面"></a></span></span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;">        第三步，在资源管理器中确认内存盘已经加载，并尝试在其中新建任意文件测试是否正常使用。</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;">        第四步，更改 Internet Explorer 中 Cookie 和临时文件的保存位置，临时文件的最大可用空间需小于虚拟内存盘总大小。<span style="color: #ff0000;">注意：Internet Explorer 10 修改此设置需要注销并重新登录当前用户，无论在 Windows 7 还是 Windows 8 中都需如此操作。</span></span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;"><span style="color: #ff0000;"><a href="//www.sinosky.org/uploads/Created%20by%20D.Y./TruePrivate_IE.PNG" title="进入 IE 临时文件设置窗口"><img src="//www.sinosky.org/uploads/Created%20by%20D.Y./TruePrivate_IE.PNG" srcset="/img/loading.gif" lazyload alt="进入 IE 临时文件设置窗口"></a></span></span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;"><span style="color: #ff0000;"><a href="//www.sinosky.org/uploads/Created%20by%20D.Y./TruePrivate_Migrate.PNG" title="移动 IE 临时文件目录"><img src="//www.sinosky.org/uploads/Created%20by%20D.Y./TruePrivate_Migrate.PNG" srcset="/img/loading.gif" lazyload alt="移动 IE 临时文件目录"></a></span></span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;"><span style="color: #ff0000;">        <span style="color: #000000;">最后，大功告成。直接打开 Internet Explorer 看看是不是所有功能全部正常，再也不用担心隐私浏览没有扩展程序和加载项了。而如果希望完全删除浏览数据，只要简单重启一下计算机或者刷新内存即可。这才是 TruePrivate！</span></span></span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;"><span style="color: #ff0000;"><span style="color: #000000;"> </span></span></span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;"><span style="color: #ff0000;"><span style="color: #000000;">        后记：</span></span></span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: small; color: #000000;"><span style="color: #ff0000;"><span style="color: #000000;">        灵活使用内存盘可以帮助我们完成很多平时操作起来非常繁琐的清理工作，例如应用程序临时文件和各种缓存目录。如果你的计算机安装有 Google Chrome 等第三方浏览器，则可以配合 Internet Explorer 使用，做到随时可以在正常浏览与 TruePrivate 之间切换。但此方法对 Google Chrome 并不适用，似乎 Chrome 将部分重要的网页本地数据保存在了除浏览器缓存目录外的其它路径，即使修改临时文件路径也不能做到无痕浏览。</span></span></span></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/information-security/">信息安全</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Windows/">Windows</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a>
+                    
+                      <a class="hover-with-bg" href="/tags/IE/">IE</a>
+                    
+                      <a class="hover-with-bg" href="/tags/InPrivate/">InPrivate</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%86%85%E5%AD%98/">内存</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/automatic-tasking.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">任务自动化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/bae-youbbs.html">
+                        <span class="hidden-mobile">百度 BAE 系列教程之部署 YouBBS 篇</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

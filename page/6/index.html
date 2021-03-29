@@ -1,0 +1,933 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="An elegant Material-Design theme for Hexo">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/the-blog-database-was-lost.html">博客数据库丢失</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/the-blog-database-was-lost.html">
+          
+          
+            
+          
+          该死的 MySQL 的数据库文件竟然在 /usr/local/mysql/var/ 里，升级 MySQl 的时候不小心一块删了。由于这两天在升级 MySQL 和 WordPress，想着都弄完之后再重新备份，就把本地的备份也删了。
+&nbsp;
+我是在升级完 MySQL 才想起来数据库在 /usr/local/mysql/var/ 的，所以从硬盘恢复根本不可能了。不过还好有 Google 网页快照
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-08-26 16:08" pubdate>
+              2013-08-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/sinosky/">SinoSky</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Google/">Google</a>
+            
+              <a href="/tags/%E8%B0%B7%E6%AD%8C/">谷歌</a>
+            
+              <a href="/tags/MySQL/">MySQL</a>
+            
+              <a href="/tags/backup/">backup</a>
+            
+              <a href="/tags/%E5%A4%87%E4%BB%BD/">备份</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/sinosky-picturmation-announced.html">SinoSky 新栏目 Picturmation 测试</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/sinosky-picturmation-announced.html">
+          
+          
+            
+          
+          自 2013 年 8 月 1 日起，SinoSky 将添加一个新的栏目，测试期为一个月。栏目暂定名为 Picturmation，取自 Picture + Information 的合成词，意为我们常说的“信息图”。
+现在人们不断加快生活的节奏，传统的长篇大论的文字新闻很难再激起人们的阅读兴趣（特别是 CCTV 的新闻），即使真的因为标题吸引人而打开完整文章，恐怕能够坚持一篇篇看完的人也不是多数（至
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-08-01 00:00" pubdate>
+              2013-08-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/picturmation/">Picturmation</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BF%A1%E6%81%AF%E5%9B%BE/">信息图</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/youbbs-for-bae-16.html"> YouBBS for BAE v1.6 发布</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/youbbs-for-bae-16.html">
+          
+          
+            
+          
+          更新日志：
+
+ 重构了部分代码
+
+ 修复了一些 bug
+
+ 新增 置顶 功能
+
+ 新增 隐藏帖子 功能
+
+ 新增 隐藏节点 功能
+
+ 修改了 热门节点和节点导航 的显示方式
+
+
+&nbsp;
+升级说明：
+
+ 不要跨版本升级，v1.5.1 以前的版本请在覆盖文件后参照各版本的发布日志操作，或重新部署
+ 从 v1.5.1 升级至 v1.6 需执行下列 SQL 语句
+UPDATE yunbbs_sett
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-07-29 13:12" pubdate>
+              2013-07-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/cloud-platform/">云平台</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/PHP/">PHP</a>
+            
+              <a href="/tags/BAE/">BAE</a>
+            
+              <a href="/tags/%E4%BA%91%E5%B9%B3%E5%8F%B0/">云平台</a>
+            
+              <a href="/tags/%E7%99%BE%E5%BA%A6/">百度</a>
+            
+              <a href="/tags/youBBS/">youBBS</a>
+            
+              <a href="/tags/Baidu-App-Engine/">Baidu App Engine</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/the-report-of-use-aws-ec2.html">AWS EC2 使用小记</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/the-report-of-use-aws-ec2.html">
+          
+          
+            
+          
+          Amazon Elastic Compute Cloud (Amazon EC2) 是一种 Web 服务，可在云中提供大小可调的计算容量。该服务旨在降低开发人员进行网络规模计算的难度。
+详见 官方介绍。
+本文主要记录我在使用 AWS EC2 过程中所遇到的一些细节问题，权当备忘。
+&nbsp;
+一. 申请开通 AWS 需要信用卡，没有的话用财付通的运通虚拟卡也可以，具体的申请过程网上到处都是，不再
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-07-12 07:54" pubdate>
+              2013-07-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/cloud-platform/">云平台</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BA%91%E5%B9%B3%E5%8F%B0/">云平台</a>
+            
+              <a href="/tags/Amazon-EC2/">Amazon EC2</a>
+            
+              <a href="/tags/Amazon-Elastic-Compute-Cloud/">Amazon Elastic Compute Cloud</a>
+            
+              <a href="/tags/Amazon-Web-Services/">Amazon Web Services</a>
+            
+              <a href="/tags/AWS/">AWS</a>
+            
+              <a href="/tags/%E5%A4%87%E5%BF%98/">备忘</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/lixian-restored.html">离线下载已恢复</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/lixian-restored.html">
+          
+          
+            
+          
+          由于原服务器被墙，导致离线下载服务无法正常使用，目前我们已经转移网站，服务已恢复正常。
+&nbsp;
+随着用户的增多，网站的开销也越来越大，如果您喜欢我们的网站，请赞助我们，您的捐款将仅用于网站的运行与维护。
+&nbsp;
+由于不少人要源码，我在这里说明一下：
+离线下载使用的是 Binux 写的开源程序，源码托管在 GitHub 上。
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-07-09 17:16" pubdate>
+              2013-07-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/sinosky/">SinoSky</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/SinoSky/">SinoSky</a>
+            
+              <a href="/tags/%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD/">离线下载</a>
+            
+              <a href="/tags/%E8%BF%85%E9%9B%B7/">迅雷</a>
+            
+              <a href="/tags/Lixian/">Lixian</a>
+            
+              <a href="/tags/Xunlei/">Xunlei</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/rc-codecademy.html">[推荐] 菜鸟、专家都适合的编程（语言）学习</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/rc-codecademy.html">
+          
+          
+            
+          
+          首先声明，这不是广告。
+&nbsp;
+这一次推荐的是两个网站，一个针对 Web 编程，另一个适合多语言强迫症。
+第一个登场的是 Codecademy，这个网站在去年很风光，不仅吸引了纽约知名州长加入，还获得几轮融资（有一次高达千万哦）。一开始我也只是抱着尝鲜的态度去玩 Python，玩了一段时间感觉不错。但正要推荐时却发生一件大事，Codecademy 数据库出错（被盗？意外？傻傻分不清楚……），
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-06-14 07:50" pubdate>
+              2013-06-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/tutorial/">教程</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+            
+              <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/mklink-cmd-useful-tips.html">活用 MKLINK 命令保护、节省你的硬盘</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/mklink-cmd-useful-tips.html">
+          
+          
+            
+          
+          用过 Linux 的人应该都熟悉软硬链接，但很多人估计还不知道 Windows 中也包含了这项功能。如果对链接的使用只局限于在桌面“创建快捷方式”，那么我很替你的硬盘担心。
+MKLINK 适合需要经常在不同位置访问同一个文件的人，说白了就是不把一个文件复制、剪切多次，却还能够让不同程序在不同路径读取同一个文件。
+MKLINK 的基础命令如下：
+
+  不加参数使用表示链接源、目标都是单个文件。这个命
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-05-16 13:14" pubdate>
+              2013-05-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/tips/">小技巧</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Windows/">Windows</a>
+            
+              <a href="/tags/MKLINK/">MKLINK</a>
+            
+              <a href="/tags/%E7%A1%AC%E9%93%BE%E6%8E%A5/">硬链接</a>
+            
+              <a href="/tags/%E7%AC%A6%E5%8F%B7%E9%93%BE%E6%8E%A5/">符号链接</a>
+            
+              <a href="/tags/%E8%BD%AF%E9%93%BE%E6%8E%A5/">软链接</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/use-raspberry-pi-and-aria2-to-make-low-power-download-machine.html">使用 Raspberry Pi 和 aria2 打造低功耗下载机</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/use-raspberry-pi-and-aria2-to-make-low-power-download-machine.html">
+          
+          
+            
+          
+          树莓派（Raspberry Pi）是一款基于 Linux 系统的只有一张信用卡大小的单板机电脑，详细介绍见维基百科。利用树莓派廉价、低功耗、可扩展的特性，我们可以用它打造下载机、开关、小型服务器，甚至是电话。
+&nbsp;
+一. 准备
+
+  树莓派，红板（Made in China）比较便宜， 也没发现有什么质量问题
+
+  4G 以上 SD 卡，推荐 class 10，树莓派支持的 SD 卡列表
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-05-11 23:57" pubdate>
+              2013-05-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/geek/">Geek</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DIY/">DIY</a>
+            
+              <a href="/tags/Raspberry-Pi/">Raspberry Pi</a>
+            
+              <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+            
+              <a href="/tags/%E4%B8%8B%E8%BD%BD%E6%9C%BA/">下载机</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/pythons-virtual-environment-and-multi-version-programming-tools-virtualenv-and-pythonbrew.html">Python 的虛擬環境及多版本開發利器─Virtualenv 與 Pythonbrew</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/pythons-virtual-environment-and-multi-version-programming-tools-virtualenv-and-pythonbrew.html">
+          
+          
+            
+          
+          Author: Mosky
+Posted on http://www.openfoundry.org/tw/tech-column/8516-pythons-virtual-environment-and-multi-version-programming-tools-virtualenv-and-pythonbrew
+&nbsp;
+Virtualenv 和 Pythonbrew 都是可以創造虛擬
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-05-04 16:42" pubdate>
+              2013-05-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/programmer/">程序员</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">Python</a>
+            
+              <a href="/tags/Pythonbrew/">Pythonbrew</a>
+            
+              <a href="/tags/Virtualenv/">Virtualenv</a>
+            
+              <a href="/tags/%E5%A4%9A%E7%89%88%E6%9C%AC%E5%BC%80%E5%8F%91/">多版本开发</a>
+            
+              <a href="/tags/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">虚拟环境</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/add-url-from-sinosky-lixian-to-aria2.html">从 SinoSky 离线下载直接添加资源到 ARIA2</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/add-url-from-sinosky-lixian-to-aria2.html">
+          
+          
+            
+          
+          一个月前提了个 issue 给 Binux，希望可以增加一个 aria2 RPC  模式的导出功能，可一个月过去了，毫无动静，看来他是不想做了。由于本人的前端不太好（其实后台也是个半吊子），无法自己实现这个功能，只能转篇他写的文章给有需要的同学了。
+&nbsp;
+首先参照 YAAW 以 RPC 模式启动 ARIA2，保证 YAAW 能正常工作。
+在 SinoSky 离线下载中随便点开一个一个资源 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-05-03 20:52" pubdate>
+              2013-05-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/tutorial/">教程</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Aria2/">Aria2</a>
+            
+              <a href="/tags/SinoSky/">SinoSky</a>
+            
+              <a href="/tags/YAAW/">YAAW</a>
+            
+              <a href="/tags/%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD/">离线下载</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/5/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/#board">16</a><a class="extend next" rel="next" href="/page/7/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

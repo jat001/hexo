@@ -1,0 +1,479 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>CDNZZ与CloudFlare的简单比较 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="CDNZZ与CloudFlare的简单比较">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2012-12-18 11:08" pubdate>
+        2012年12月18日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      670 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CDNZZ与CloudFlare的简单比较</h1>
+            
+            <div class="markdown-body">
+              <p><span style="font-size: 16px;"><span style="font-family: 'Microsoft YaHei'; font-size: 14px;">这个博客是部署在GAE上的，由</span><span style="font-family: 'Microsoft YaHei'; font-size: 14px;">于最近全国人民喜迎斯巴达，导致国内使用谷歌的服务非常不稳定，所以博客的访问也经常抽风，无奈只有找个CDN使用了。</span></span></p>
+<p><span style="font-size: 16px;"><span style="font-family: 'Microsoft YaHei'; font-size: 14px;"></p>
+<p></span></span></p>
+<p><img src="//www.sinosky.org/uploads/2012/www.aleng.net_wp-content_uploads_2012_04_cloudflare.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><span style="font-size: 16px; font-family: 'Microsoft YaHei';"><span style="font-size: 14px;">以前一直</span><span style="font-size: 14px;">在用</span></span><span style="font-size: 14px; font-family: 'Microsoft YaHei';">CloudFlare</span><span style="font-size: 14px; font-family: 'Microsoft YaHei';">，不过自从把博客放在GAE上后就没再用了，斯巴达前国内访问GAE的速度还是很理想的。</span></p>
+<p><span style="font-size: 14px; font-family: 'Microsoft YaHei';">不过自从斯巴达开幕到现在，无论是谷歌搜索还是Gmail以及GAE，只要是谷歌的服务都是各种抽，有时候挂代理也没用。</span></p>
+<p><span style="font-size: 14px; font-family: 'Microsoft YaHei';">回到</span><span><span style="font-size: 14px; font-family: 'Microsoft YaHei';">CloudFlare上，虽然它号称在全世界都有节点，但我用的时候都是连接到美国节点而不是日本节点，加速后比不加速还慢。</span></span></p>
+<p><span><span style="font-size: 14px; font-family: 'Microsoft YaHei';">不过</span><span style="font-size: 14px; font-family: 'Microsoft YaHei';">CloudFlare稳定性倒是没的说，虽然国内访问慢点</span><span><span style="font-size: 14px; font-family: 'Microsoft YaHei';">但绝对不会抽风，再加上节点多，运营时间长，在国内站长中也有着良好的口碑。</span></span></span></p>
+<p><span><span><span style="font-size: 14px; font-family: 'Microsoft YaHei';"><span style="font-family: 'Microsoft YaHei'; font-size: 14px; line-height: 21px;">CloudFlare并不限制免费用户添加网站的数量，功能也足以应付大部分网站的日常需求，最重要的是，它不限制流量</span>。</p>
+<p></span></span></span></p>
+<p><span><span><span style="font-size: 14px; font-family: 'Microsoft YaHei';"></p>
+<p></span></span></span></p>
+<p><span style="font-size: 14px; font-family: 'Microsoft YaHei';"><img src="//www.sinosky.org/uploads/2012/logo.jpg" srcset="/img/loading.gif" lazyload>后来我尝试了CDNZZ，一家新兴的提供全球互联网加速的云服务提供商。</span></p>
+<p><span style="font-size: 14px; font-family: 'Microsoft YaHei';">CDNZZ提供的加速节点有大陆、香港、美国、新加坡，其中大陆节点包括：河北电信，河北联通，河北移动，贵州电信，江西联通，广东电信，广东移动（即将上线）。</span></p>
+<p><span style="font-size: 14px; font-family: 'Microsoft YaHei';">不过其大陆的节点要网站备案才能使用，而香港节点的带宽已经满了，新用户都是接入到新加坡节点和美国节点，不过付费用户会优先接入香港节点。</span></p>
+<p><span style="font-size: 14px; font-family: 'Microsoft YaHei';">至于速度，由于我不是付费用户，所以不能测试香港节点的速度，不过其新加坡节点的速度还是可以的，起码比直连要快点。</span></p>
+<p><span style="font-family: 'Microsoft YaHei';"><span style="font-size: 14px; line-height: 21px; font-family: 'Microsoft YaHei';">免费用户只能添加一个网站，每月初始免费流量为1GB，通过邀请用户和参加活动可以获得更多免费流量。</span></span></p>
+<p><span style="font-family: 'Microsoft YaHei';"><span style="font-size: 14px; line-height: 21px; font-family: 'Microsoft YaHei';">目前CDNZZ处于邀请注册阶段，需要邀请码才能注册，下面附上几个邀请码：</span></span></p>
+<blockquote>
+<p><span style="font-family: 'Microsoft YaHei'; font-size: 14px;"><span style="line-height: 21px; font-family: 'Microsoft YaHei'; font-size: 14px;">175464632507 175414593413 175435835376 175425905256 175480626038</span></span><br><span style="font-family: 'Microsoft YaHei'; font-size: 14px;"><span style="line-height: 21px; font-family: 'Microsoft YaHei'; font-size: 14px;">175420705419 175478267979 175434928486 175497768924 175483131870</span></span></p>
+</blockquote>
+<p><span><span style="font-size: 14px; line-height: 21px;"></p>
+<p></span></span></p>
+<p><span style="line-height: 21px;"><span style="font-family: 'Microsoft YaHei'; font-size: 14px;">综上所述，如果是想要长期使用CDN，又追求稳定的话，建议使用</span><span style="font-family: 'Microsoft YaHei'; line-height: 21px; font-size: 14px;">CloudFlare；而如果你像我一样，只是暂时避避斯巴达的和谐之光的话，</span><span><span style="font-family: 'Microsoft YaHei'; line-height: 21px; font-size: 14px;">CDNZZ是一个不错的选择。</span></span></span></p>
+<p><span style="line-height: 21px;"><span style="font-family: 'Microsoft YaHei'; font-size: 14px;">不过这些免费的国外CDN始终不是办法，要想提升</span><span style="font-family: 'Microsoft YaHei'; font-size: 14px;">用户体验，备案并使用国内的CDN才是解决之道。</span></span></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/internet/">互联网</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%92%E8%81%94%E7%BD%91/">互联网</a>
+                    
+                      <a class="hover-with-bg" href="/tags/CDN/">CDN</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AB%99%E9%95%BF/">站长</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/vulnerability-of-win8-remote-desktop.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">WIN8系统的远程桌面漏洞 利用QQ拼音纯净版实现提权</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/google-zeitgeist-2012.html">
+                        <span class="hidden-mobile">Google 发布 Zeitgeist 2012 (时代精神 2012)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

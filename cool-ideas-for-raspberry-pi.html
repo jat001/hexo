@@ -1,0 +1,613 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>40+ Cool Ideas for your Raspberry PI Project - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="40+ Cool Ideas for your Raspberry PI Project">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2013-03-08 08:26" pubdate>
+        2013年3月8日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      38
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">40+ Cool Ideas for your Raspberry PI Project</h1>
+            
+            <div class="markdown-body">
+              <p><a target="_blank" rel="noopener" href="http://pingbin.com/wp-content/uploads/2012/12/raspberry-pi-wales.jpeg" title="raspberry-pi-wales-300x168.jpeg"><img src="http://pingbin.com/wp-content/uploads/2012/12/raspberry-pi-wales-300x168.jpeg" srcset="/img/loading.gif" lazyload alt="raspberry-pi-wales-300x168.jpeg"></a></p>
+<p>So my Raspberry Pi came a few months ago and I have been thinking of projects to use it for, I am still not 100% sure however I have made quite a big list of other projects for some inspiration, which I have included below.</p>
+<p><strong>If you have any ideas that I have missed off please leave a comment, and I will update this post!</strong></p>
+<p>&nbsp;</p>
+<table border="0" cellpadding="10">
+<tbody>
+<tr>
+<td>[![RaspberryPi-WebServer](http://pingbin.com/wp-content/uploads/2012/12/P1010299-150x150.jpeg)](http://www.penguintutor.com/linux/raspberrypi-webserver)</td>
+<td>[![RaspberryPi-HomeAutomation](http://pingbin.com/wp-content/uploads/2012/12/FYVP0JNH8TTNRXT.MEDIUM-150x150.jpeg)](http://www.instructables.com/id/Raspberry-Pi-GPIO-home-automation/)</td>
+<td>[![RaspberryPI-Bittorrent](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPI-Bittorrent-150x150.jpeg)](http://blog.snapdragon.cc/raspberry-pi-as-bittorrent-server/)</td>
+<td>[![RaspberryPi-WebCam](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPi-WebCam-150x150.png)](http://www.raspberrypi.org/archives/tag/webcam)</td>
+</tr>
+<tr>
+<td align="center">[Web Server](http://www.penguintutor.com/linux/raspberrypi-webserver)</td>
+<td align="center">[Home Automation](http://www.instructables.com/id/Raspberry-Pi-GPIO-home-automation/)</td>
+<td align="center">[BitTorrent Server](http://blog.snapdragon.cc/raspberry-pi-as-bittorrent-server/)</td>
+<td align="center">[Web Cam Server](http://www.raspberrypi.org/archives/tag/webcam)</td>
+</tr>
+<tr>
+<td>[![RaspberryPi-WeatherStation](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPi-WeatherStation-150x150.jpeg)](http://blog.retep.org/2012/07/30/installing-a-usb-weather-station-on-a-raspberry-pi-part-1/)</td>
+<td>[![Raspberry-Pi-Tank](http://pingbin.com/wp-content/uploads/2012/12/Raspberry-Pi-Tank-150x150.png)](http://blog.ianrenton.com/raspberry-tank-build-diary/)</td>
+<td> [![Pi-Quad-Copter](http://pingbin.com/wp-content/uploads/2012/12/Pi-Quad-Copter.jpeg)](http://hackaday.com/2012/12/01/raspberry-pi-quadcopter/)</td>
+<td>[![RasberryPi-VoIP PBX Asterisk](http://pingbin.com/wp-content/uploads/2012/12/RasberryPi-VoIP-PBX-Asterisk-150x150.jpeg)](http://www.raspberry-asterisk.org/)</td>
+</tr>
+<tr>
+<td align="center">[Weather Station](http://blog.retep.org/2012/07/30/installing-a-usb-weather-station-on-a-raspberry-pi-part-1/)</td>
+<td align="center">[Make a cool Tank](http://blog.ianrenton.com/raspberry-tank-build-diary/)</td>
+<td align="center">[QuadCopter](http://hackaday.com/2012/12/01/raspberry-pi-quadcopter/)</td>
+<td align="center">[VoIP PBX](http://www.raspberry-asterisk.org/)</td>
+</tr>
+<tr>
+<td>[![RaspberryPi-XMBC](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPi-XMBC-150x150.jpeg)](http://hackaday.com/2012/11/19/raspberry-pi-reaches-critical-mass-as-xbmc-hardware/)</td>
+<td>[![RaspberryPi-AudioBook](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPi-AudioBook-150x150.jpeg)](http://hackaday.com/2012/11/01/one-button-audiobook-player-made-from-a-raspberry-pi/)</td>
+<td>[![RaspberryPi-Arduino](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPi-Arduino-150x150.png)](http://www.cooking-hacks.com/index.php/documentation/tutorials/raspberry-pi-to-arduino-shields-connection-bridge)[
+](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPi-AudioBook.jpeg "40+ Cool Ideas for your Raspberry PI Project")</td>
+<td>[![RasberryPi-NAS Server](http://pingbin.com/wp-content/uploads/2012/12/RasberryPi-NAS-Server-150x150.png)](http://elinux.org/R-Pi_NAS)</td>
+</tr>
+<tr>
+<td align="center">[Media Server XMBC](http://hackaday.com/2012/11/19/raspberry-pi-reaches-critical-mass-as-xbmc-hardware/)</td>
+<td align="center">[Audio Book Player](http://hackaday.com/2012/11/01/one-button-audiobook-player-made-from-a-raspberry-pi/)</td>
+<td align="center">[Arduino Shields](http://www.cooking-hacks.com/index.php/documentation/tutorials/raspberry-pi-to-arduino-shields-connection-bridge)</td>
+<td align="center">[NAS Server](http://elinux.org/R-Pi_NAS)</td>
+</tr>
+<tr>
+<td>[![time-machine-shot](http://pingbin.com/wp-content/uploads/2012/12/time-machine-shot-150x150.jpeg)](http://www.andadapt.com/2012/09/06/raspberry-pi-raspbian-hfs-afp-and-time-machine/)</td>
+<td>[![RaspberryPi-Tor-Realy](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPi-Tor-Realy-150x150.jpeg)](http://lifehacker.com/5953155/use-a-raspberry-pi-as-a-tor-relay-and-help-others-browser-anonymously)</td>
+<td> [![Raspberry-pi-VPN](http://pingbin.com/wp-content/uploads/2012/12/Raspberry-pi-VPN-150x150.jpeg)](http://wellsb.com/post/29412820494/raspberry-pi-vpn-server)</td>
+<td>[![pi-gps](http://pingbin.com/wp-content/uploads/2012/12/pi-gps-150x150.jpeg)](http://www.milos.ivanovic.co.nz/blog/252)</td>
+</tr>
+<tr>
+<td align="center">[Apple Time Machine support](http://www.andadapt.com/2012/09/06/raspberry-pi-raspbian-hfs-afp-and-time-machine/)</td>
+<td align="center">[Tor Relay](http://lifehacker.com/5953155/use-a-raspberry-pi-as-a-tor-relay-and-help-others-browser-anonymously), be careful!</td>
+<td align="center">[Home VPN Server](http://wellsb.com/post/29412820494/raspberry-pi-vpn-server)</td>
+<td align="center">[GPS Tracker, with 3G!](http://www.milos.ivanovic.co.nz/blog/252)</td>
+</tr>
+<tr>
+<td>[![advice](http://pingbin.com/wp-content/uploads/2012/12/advice-150x150.jpeg)](http://hackaday.com/2012/09/26/machine-offers-cheap-advice-charges-more-for-something-profound/)</td>
+<td>[![Raspberry_PI-Analog Input](http://pingbin.com/wp-content/uploads/2012/12/Raspberry_PI-Analog-Input-150x150.jpeg)](http://hackaday.com/2012/09/14/a-truly-professional-raspi-analog-input/)</td>
+<td> [![Pi-Super-Computer](http://pingbin.com/wp-content/uploads/2012/12/Pi-Super-Computer-150x150.png)](http://www.southampton.ac.uk/~sjc/raspberrypi/)</td>
+<td>[![RaspberryPi-Kindel Screen](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPi-Kindel-Screen-150x150.jpeg)](http://www.ponnuki.net/2012/09/kindleberry-pi/)</td>
+</tr>
+<tr>
+<td align="center">[Advice Machine, useless but cool!](http://hackaday.com/2012/09/26/machine-offers-cheap-advice-charges-more-for-something-profound/)</td>
+<td align="center">[Analog Input](http://hackaday.com/2012/09/14/a-truly-professional-raspi-analog-input/)</td>
+<td align="center">[Super Computer](http://www.southampton.ac.uk/~sjc/raspberrypi/)</td>
+<td align="center">[Kindle Screen](http://www.ponnuki.net/2012/09/kindleberry-pi/)</td>
+</tr>
+<tr>
+<td>[![PIC-Programmer-RaspberryPi](http://pingbin.com/wp-content/uploads/2012/12/PIC-Programmer-RaspberryPi-150x150.jpeg)](http://holdenc.altervista.org/rpp/)</td>
+<td>[
+](http://pingbin.com/wp-content/uploads/2012/12/PIC-Programmer-RaspberryPi.jpeg "40+ Cool Ideas for your Raspberry PI Project")[![PenTesting-RaspberryPi](http://pingbin.com/wp-content/uploads/2012/12/PenTesting-RaspberryPi-150x150.png)](http://blog.pwnieexpress.com/post/24967860602/raspberry-pwn-a-pentesting-release-for-the-raspberry)</td>
+<td>[![RaspberryPi- Running-Android](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPi-Running-Android-150x150.jpeg)](http://www.raspberrypi.org/archives/1700)</td>
+<td>[![Raspberry-Pi-Traffic-Light](http://pingbin.com/wp-content/uploads/2012/12/Raspberry-Pi-Traffic-Light-150x150.jpg)](https://wiki.bitlair.nl/Pages/Projects/Netlight)
+[
+](http://pingbin.com/wp-content/uploads/2012/12/Pi-Super-Computer.png "40+ Cool Ideas for your Raspberry PI Project")</td>
+</tr>
+<tr>
+<td align="center">[PIC Programmer](http://holdenc.altervista.org/rpp/)</td>
+<td align="center">[PenTesting/Hacking](http://blog.pwnieexpress.com/post/24967860602/raspberry-pwn-a-pentesting-release-for-the-raspberry)</td>
+<td align="center">[Android anyone?](http://www.raspberrypi.org/archives/1700)</td>
+<td align="center">[Check your network status](https://wiki.bitlair.nl/Pages/Projects/Netlight)</td>
+</tr>
+<tr>
+<td>[![SolarDataLogger-RaspberryPi](http://pingbin.com/wp-content/uploads/2012/12/SolarDataLogger-RaspberryPi-150x150.jpeg)](http://www.briandorey.com/post/Raspberry-Pi-Solar-Data-Logger.aspx)</td>
+<td>[![RaspberryPiInTheSky](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPiInTheSky-150x150.jpeg)](http://www.daveakerman.com/?p=592)</td>
+<td>[![RaspberryPi-Coffee-Machine](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPi-Coffee-Machine-150x150.png)](http://moccapi.blogspot.co.uk/2012/03/idea.html)</td>
+<td>[![RaspberryPI-BitCoin](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPI-BitCoin-150x150.jpeg)](https://bitcointalk.org/index.php?topic=93724.0)</td>
+</tr>
+<tr>
+<td align="center">[Solar Data Logger](http://www.briandorey.com/post/Raspberry-Pi-Solar-Data-Logger.aspx)</td>
+<td align="center">[Send me to space!](http://www.daveakerman.com/?p=592)</td>
+<td align="center">[Coffee](http://moccapi.blogspot.co.uk/2012/03/idea.html)</td>
+<td align="center">[ ](http://blog.ianrenton.com/raspberry-tank-build-diary/)[BitCoin Wallet](https://bitcointalk.org/index.php?topic=93724.0)</td>
+</tr>
+<tr>
+<td> [![RaspberryPi-WiFi](http://pingbin.com/wp-content/uploads/2012/12/RaspberryPi-WiFi-150x150.png)](http://www.cjb.im/2012/06/raspberry-pi-wireless-display-using.html)</td>
+<td>[
+![;](http://pingbin.com/wp-content/uploads/2012/12/jpeg-150x150.)](http://pingbin.com/2012/12/setup-wifi-raspberry-pi/)</td>
+<td> [
+![touch-screen-kiosk-icon](http://pingbin.com/wp-content/uploads/2012/12/touch-screen-kiosk-icon-150x150.png)](http://pikiosk.tumblr.com/)</td>
+<td>[![RasberryPi-NodeJs](http://pingbin.com/wp-content/uploads/2012/12/RasberryPi-NodeJs-150x150.png)](http://elsmorian.com/post/23474168753/node-js-on-raspberry-pi)</td>
+</tr>
+<tr>
+<td align="center">[Photo Frame?](http://www.cjb.im/2012/06/raspberry-pi-wireless-display-using.html)</td>
+<td align="center">[Give it WiFi](http://pingbin.com/2012/12/setup-wifi-raspberry-pi/ "How to setup WiFi on your Raspberry PI")</td>
+<td align="center">[OpenSource Kiosk](http://pikiosk.tumblr.com/)</td>
+<td align="center">[Node JS](http://elsmorian.com/post/23474168753/node-js-on-raspberry-pi)</td>
+</tr>
+<tr>
+<td>[![traffic_feat](http://pingbin.com/wp-content/uploads/2012/12/traffic_feat-150x150.png)](http://www.thepowerbase.com/2012/12/integreen-brings-open-source-traffic-monitoring-to-italy/) [
+](http://www.thepowerbase.com/2012/12/integreen-brings-open-source-traffic-monitoring-to-italy/)</td>
+<td> [![how-to-overclock-raspberry-pi-2](http://pingbin.com/wp-content/uploads/2012/12/how-to-overclock-raspberry-pi-2-150x150.png)](http://www.jeremymorgan.com/tutorials/raspberry-pi/how-to-overclock-raspberry-pi/)[
+](http://www.jeremymorgan.com/tutorials/raspberry-pi/how-to-overclock-raspberry-pi/)</td>
+<td> [![FH3OQXTH8RVCY10.LARGE](http://pingbin.com/wp-content/uploads/2012/12/FH3OQXTH8RVCY10.LARGE_-150x150.jpeg)](http://www.instructables.com/id/Raspberry-Pi-Owncloud-dropbox-clone/)[
+](http://www.instructables.com/id/Raspberry-Pi-Owncloud-dropbox-clone/)[
+](http://www.tonido.com/)</td>
+<td>[![control-raspberry-pi-with-an-iphone](http://pingbin.com/wp-content/uploads/2012/12/control-raspberry-pi-with-an-iphone-150x150.png)](http://www.samratamin.com/blog/raspberry-pi-iphone-control-a-rpi-with-an-iphone-in-2-minutes/)</td>
+</tr>
+<tr>
+<td align="center">[Traffic Monitoring](http://www.thepowerbase.com/2012/12/integreen-brings-open-source-traffic-monitoring-to-italy/)</td>
+<td align="center">[Overclock It!](http://www.jeremymorgan.com/tutorials/raspberry-pi/how-to-overclock-raspberry-pi/)</td>
+<td align="center">[Personal Cloud on a Pi](http://www.instructables.com/id/Raspberry-Pi-Owncloud-dropbox-clone/)</td>
+<td align="center">[Control with an iPhone](http://www.samratamin.com/blog/raspberry-pi-iphone-control-a-rpi-with-an-iphone-in-2-minutes/)</td>
+</tr>
+<tr>
+<td>[
+](http://www.thepowerbase.com/2012/12/integreen-brings-open-source-traffic-monitoring-to-italy/)[![wearable-raspberry-pi-goggles](http://pingbin.com/wp-content/uploads/2012/12/wearable-raspberry-pi-goggles-150x150.jpeg)](http://blog.makerbar.com/?p=254) [
+](http://www.thepowerbase.com/2012/12/integreen-brings-open-source-traffic-monitoring-to-italy/)</td>
+<td>[![raspberry-pi-git](http://pingbin.com/wp-content/uploads/2012/12/raspberry-pi-git-150x150.png)](http://tumblr.intranation.com/post/766290565/how-set-up-your-own-private-git-server-linux)</td>
+<td> [
+](https://github.com/luismreis/node-openvg-canvas)[![raspberry-pi-html5-canvas](http://pingbin.com/wp-content/uploads/2012/12/raspberry-pi-html5-canvas-150x150.png)](https://github.com/luismreis/node-openvg-canvas)</td>
+<td> [
+![raspberry-pi-print-server](http://pingbin.com/wp-content/uploads/2012/12/raspberry-pi-print-server-150x150.jpeg)](http://blog.snapdragon.cc/use-your-raspberry-pi-to-print-using-your-ipad-or-iphone/)</td>
+</tr>
+<tr>
+<td align="center">[Wearable Computer](http://blog.makerbar.com/?p=254)</td>
+<td align="center">[Git Server](http://tumblr.intranation.com/post/766290565/how-set-up-your-own-private-git-server-linux)</td>
+<td align="center">[HTML5 Canvas](https://github.com/luismreis/node-openvg-canvas)</td>
+<td align="center">[Print Server for IOS](http://blog.snapdragon.cc/use-your-raspberry-pi-to-print-using-your-ipad-or-iphone/)</td>
+</tr>
+<tr>
+<td>[![retro](http://pingbin.com/wp-content/uploads/2012/12/retro-150x150.jpeg)](http://petrockblog.wordpress.com/2012/07/22/retropie-setup-an-initialization-script-for-retroarch-on-the-raspberry-pi/)</td>
+<td>[![mail-server](http://pingbin.com/wp-content/uploads/2012/12/mail-server-150x150.png)](http://ducky-pond.com/posts/9/)</td>
+<td>[![IMG_1050](http://pingbin.com/wp-content/uploads/2012/12/IMG_1050-150x150.jpeg)](http://spritesmods.com/?art=rpi_arcade&amp;page=7)</td>
+<td>[![beetbox](http://pingbin.com/wp-content/uploads/2012/12/beetbox-150x150.jpeg)](http://scott.j38.net/interactive/beetbox/)</td>
+</tr>
+<tr>
+<td align="center">[RetroArch on the PI](http://petrockblog.wordpress.com/2012/07/22/retropie-setup-an-initialization-script-for-retroarch-on-the-raspberry-pi/)</td>
+<td align="center">[Mail Server](http://ducky-pond.com/posts/9/)</td>
+<td align="center">[Mini Arcade Cab](http://spritesmods.com/?art=rpi_arcade&amp;page=7)</td>
+<td align="center">[Beet Box… Strange!](http://scott.j38.net/interactive/beetbox/)</td>
+</tr>
+</tbody>
+</table>
+
+<p>&nbsp;</p>
+<p>Any other ideas? Leave a comment below.</p>
+<p>&nbsp;</p>
+<p>Posted on <a target="_blank" rel="noopener" href="http://pingbin.com/2012/12/30-cool-ideas-raspberry-pi-project/">http://pingbin.com/2012/12/30-cool-ideas-raspberry-pi-project/</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/geek/">Geek</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/DIY/">DIY</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Raspberry-Pi/">Raspberry Pi</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/sinosky-lixian.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SinoSky 离线下载上线</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/use-raspberry-pi-to-make-remote-door-opener.html">
+                        <span class="hidden-mobile">使用树莓派制作的远程开门器</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,907 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="An elegant Material-Design theme for Hexo">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/sinosky-lixian-416-maintainance.html">SinoSky 离线下载将于4月16日晚维护</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/sinosky-lixian-416-maintainance.html">
+          
+          
+            
+          
+          Python2 更新 2.7.4 了，由于 OpenShift 不提供包管理器，所以得自己编译安装，顺便还得升级下第三方库。至于时间，短则几个小时，长则一晚上甚至一天。
+顺便一提，我发现最近有些人传了些奇怪的东西，传了自己下倒没什么，请不要公开，一经发现，直接封。
+对了，我的迅雷会员快到期了，不想续费了，怎么破？
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-04-16 13:21" pubdate>
+              2013-04-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/sinosky/">SinoSky</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/SinoSky/">SinoSky</a>
+            
+              <a href="/tags/%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD/">离线下载</a>
+            
+              <a href="/tags/%E8%BF%85%E9%9B%B7/">迅雷</a>
+            
+              <a href="/tags/Lixian/">Lixian</a>
+            
+              <a href="/tags/Xunlei/">Xunlei</a>
+            
+              <a href="/tags/Python/">Python</a>
+            
+              <a href="/tags/OpenShift/">OpenShift</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/youbbs-for-bae-15.html">YouBBS for BAE v1.5 正式发布</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/youbbs-for-bae-15.html">
+          
+          
+            
+          
+          YouBBS for BAE 不只是原版的移植，以后也不会根据原版更新。原版未实现的功能可能这个版本有，原版有的东西这个版本可能永远不会有。我不喜欢折腾前端，所以新主题什么的就别找我了。
+对了，本人有拖延症，小 bug 修复会很快修复，功能性更新可能会拖很久。
+&nbsp;
+Changelog：
+1. 修复了由于 BAE 更新导致验证码不能显示的 bug。
+2. 当页面内容过少的时候，页脚固定在底
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-04-15 14:03" pubdate>
+              2013-04-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/cloud-platform/">云平台</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/PHP/">PHP</a>
+            
+              <a href="/tags/BAE/">BAE</a>
+            
+              <a href="/tags/%E4%BA%91%E5%B9%B3%E5%8F%B0/">云平台</a>
+            
+              <a href="/tags/Github/">Github</a>
+            
+              <a href="/tags/youBBS/">youBBS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/youbbs-for-bae-15-dev.html">YouBBS for BAE v1.5 dev 发布</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/youbbs-for-bae-15-dev.html">
+          
+          
+            
+          
+          由于写得比较匆忙，可能有 bug，先放出来供野生 bug 君测试。
+大致的 changelog 见 https://github.com/sinosky/youbbs/issues?milestone=1&amp;page=1&amp;state=closed ，更详细的在正式版发布的时候再写吧。
+由于是测试版本，所以链接及图片是用的 SinoSky 的，正式版会去掉（其实这个版本就是 http:
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-04-14 13:59" pubdate>
+              2013-04-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/cloud-platform/">云平台</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/PHP/">PHP</a>
+            
+              <a href="/tags/BAE/">BAE</a>
+            
+              <a href="/tags/%E4%BA%91%E5%B9%B3%E5%8F%B0/">云平台</a>
+            
+              <a href="/tags/youBBS/">youBBS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/about-youbbs-for-bae-can-not-register.html">关于 YouBBS for BAE 不能注册的问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/about-youbbs-for-bae-can-not-register.html">
+          
+          
+            
+          
+          此 bug 是由于 BAE 的更新，虽然有用户反馈后我马上做了更新，但我不可能每做一个小的更改就发一个新版本，所以请关注 GitHub 上的更新，这上面的改动事先都会经过测试，所以此版本是稳定版。至于不稳定版，由于 BAE 采用 SVN 提交代码，同步起来太麻烦，所以不提供。当稳定版有大的更新或小的更新累积到一定程度，我会发布新版本。
+&nbsp;
+另外，以前说好的伪静态现已完成，但由于 YouB
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-04-13 16:46" pubdate>
+              2013-04-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/cloud-platform/">云平台</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/BAE/">BAE</a>
+            
+              <a href="/tags/%E4%BA%91%E5%B9%B3%E5%8F%B0/">云平台</a>
+            
+              <a href="/tags/youBBS/">youBBS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/copyright-statement.html">声明</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/copyright-statement.html">
+          
+          
+            
+          
+          虽然我已经在博客右下角和文章结尾处声明了许可协议以及转载要注明出处，但还是有些人不当回事，我在这里再重申一下，凡是我转载的文章，都会在文首或文尾注明作者和出处，没有注明的肯定是原创的，你要转载，必须以链接形式注明出处。
+你要是默默的转了，没写出处，我不知道，那我也懒得管你，可你要转载后非得 pingback 我或来我这里评论一下，那就别怪我骂人了。
+&nbsp;
+最后，再声明下许可协议：
+本站原创
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-04-08 18:46" pubdate>
+              2013-04-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/sinosky/">SinoSky</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Creative-Commons/">Creative Commons</a>
+            
+              <a href="/tags/%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB/">知识共享</a>
+            
+              <a href="/tags/%E8%91%97%E4%BD%9C%E6%9D%83/">著作权</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/let-us-do-some-cleaning.html">清啊、清呀，清垃圾</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/let-us-do-some-cleaning.html">
+          
+          
+            
+          
+          CCleaner 是个好东西，喜欢的人也肯定不少。但是说起 CCEnhancer 和 System Ninja，知道的人数恐怕同比刚才要下降了吧？
+&nbsp;
+CCEnhancer 本身只是 269 KB 的下载器（此处是英文版文件体积），与 CCleaner 是一对好基友。CCEnhancer 的唯一作用就是为 CCleaner 更新整合自世界各地用户的清理规则（“你”也是用户之一），截至目前
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-04-06 19:24" pubdate>
+              2013-04-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/software/">应用软件</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a>
+            
+              <a href="/tags/%E8%BD%AF%E4%BB%B6/">软件</a>
+            
+              <a href="/tags/%E5%9E%83%E5%9C%BE%E6%B8%85%E7%90%86/">垃圾清理</a>
+            
+              <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%B8%85%E7%90%86/">系统清理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/show-my-hackintosh.html">晒晒我的黑苹果配置</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/show-my-hackintosh.html">
+          
+          
+            
+          
+          黑苹果（Hackintosh），是指在非苹果生产或非苹果授权生产的普通 x86 架构 PC 上安装 Mac OS 的行为，而这样安装上去的 Mac OS 就被称为 Hackintosh，与白苹果——在苹果机（Macintosh）上面安装原版 Mac 系统相对。
+黑苹果更多的是研究技术的乐趣，对于工作/学习需要的人来说，我更推荐买苹果机。黑苹果最大的遗憾就是不能享受苹果原装配件（虽然我不知道到底有什
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-04-06 19:20" pubdate>
+              2013-04-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/geek/">Geek</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Mac-OS/">Mac OS</a>
+            
+              <a href="/tags/Hackintosh/">Hackintosh</a>
+            
+              <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/">黑苹果</a>
+            
+              <a href="/tags/Mac/">Mac</a>
+            
+              <a href="/tags/Macintosh/">Macintosh</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/start-a-modular-extensible-webapp.html">如何开始一个模块化可扩展的Web App</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/start-a-modular-extensible-webapp.html">
+          
+          
+            
+          
+          Author: AlloVince
+Posted on http://avnpc.com/pages/start-a-modular-extensible-webapp
+&nbsp;
+虽然从没有认为自己是一个前端开发者，但不知不觉中也积累下了一些前端开发的经验。正巧之前碰到一道面试题，于是就顺便梳理了一下自己关于Web App的一些思路并整理为本文。
+对于很多简单的网站或Web应用来说，引入jQu
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-04-05 18:58" pubdate>
+              2013-04-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/programmer/">程序员</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+              <a href="/tags/requireJS/">requireJS</a>
+            
+              <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/dotcloud-close-free-sevice.html">dotCloud 关闭免费服务</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/dotcloud-close-free-sevice.html">
+          
+          
+            
+          
+          刚才收到 dotCloud 的邮件，大意就是他们把自己的沙盒开源了，并且变成自托管了，而现有的免费沙盒会在4月22日全部关闭、4月25日全部删除。
+又一个云平台取消免费服务了，下一个是哪个？
+&nbsp;
+文章全文
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-04-05 06:42" pubdate>
+              2013-04-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/cloud-platform/">云平台</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BA%91%E5%B9%B3%E5%8F%B0/">云平台</a>
+            
+              <a href="/tags/dotCloud/">dotCloud</a>
+            
+              <a href="/tags/PAAS/">PAAS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/sublime-text-3-crack.html">最新版 Sublime Text 3 的破解方法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/sublime-text-3-crack.html">
+          
+          
+            
+          
+          注意：此破解方法只适用与部分 dev 版本，其他版本请参考以前的文章，Windows 和 Mac OS 下的注册机仍旧有效。
+&nbsp;
+其他步骤没有改变，只有第4步变了，请先看以前的文章，我懒得再写了……
+查找的字符串变成了 3943 3333 4230 ，把其中的 3333 改成 3332 ，其实改动的字符没有变，只不过位置变了。
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2013-04-04 17:03" pubdate>
+              2013-04-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/software/">应用软件</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Sublime-Text/">Sublime Text</a>
+            
+              <a href="/tags/%E7%A0%B4%E8%A7%A3/">破解</a>
+            
+              <a href="/tags/Code-Editor/">Code Editor</a>
+            
+              <a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/7/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/#board">16</a><a class="extend next" rel="next" href="/page/9/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

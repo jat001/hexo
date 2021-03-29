@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>Sublime Text 热门插件简介（一） - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Sublime Text 热门插件简介（一）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2013-09-30 07:16" pubdate>
+        2013年9月30日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      13
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Sublime Text 热门插件简介（一）</h1>
+            
+            <div class="markdown-body">
+              <p>俗话说：磨刀不误砍柴工，作为程序员，代码编辑器就是我们的斧头，在写代码之前，配置好一个顺手的编辑器就是很重要的了。Sublime Text 是一把好斧头，而它丰富的插件就是磨刀石了。</p>
+<p>本文将为你介绍最受欢迎的 50 个 Sublime Text 插件，大部分插件来自于 <a target="_blank" rel="noopener" href="https://sublime.wbond.net/">Package Control</a> 上的<a target="_blank" rel="noopener" href="https://sublime.wbond.net/browse/popular">热门榜单</a>。由于 Sublime Text 2 不再更新，Sublime Text 3 也已经稳定，所以替换了几个不支持 Sublime Text 3 的插件。</p>
+<p>&nbsp;</p>
+<h4 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h4><p>本文所介绍的一部分插件并未在 Package Control 中包含，或 Package Control 中包含的是此插件的 Sublime Text 2 版本，所以你需要手动安装它。</p>
+<p>打开菜单 <code>Preferences -&gt; Browse Packages…</code>，使用 <code>git clone</code> 命令在此目录克隆，然后使用 <code>git checkout</code> 命令切换到 Sublime Text 3 版本所在分支。当然你也可以直接下载这个分支的压缩文件并解压到此目录，但这样无法使用 <code>git pull</code> 命令获取更新了。</p>
+<p>&nbsp;</p>
+<h4 id="No-00-Package-Control-GitHub"><a href="#No-00-Package-Control-GitHub" class="headerlink" title="No.00 - Package Control (GitHub)"></a>No.00 - <strong><a target="_blank" rel="noopener" href="https://sublime.wbond.net/packages/Package%20Control">Package Control</a></strong> (<a target="_blank" rel="noopener" href="https://github.com/wbond/sublime_package_control">GitHub</a>)</h4><p>提到 Sublime Text，就不得不说 Package Control，就像 Linux 下的 apt-get 和 yum 一样，它是 Sublime Text 的包管理器，你用它可以轻松地找到你想要的插件和管理已有插件。</p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/09/29/Package-Control.png" title="Package Control"><img src="http://bcs.duapp.com/sinosky-blog/2013/09/29/Package-Control.png" srcset="/img/loading.gif" lazyload alt="Package Control"></a></p>
+<p>安装 Package Control 十分简单，只需要打开控制台（菜单 <code>View -&gt; Show Console</code> 或快捷键 `ctrl+``），将下列代码粘贴进去即可。</p>
+<pre class="lang:python wrap:1 " >
+import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
+</pre>
+
+<p>&nbsp;</p>
+<h4 id="No-01-Emmet-GitHub"><a href="#No-01-Emmet-GitHub" class="headerlink" title="No.01 - Emmet (GitHub)"></a>No.01 - <strong><a target="_blank" rel="noopener" href="https://sublime.wbond.net/packages/Emmet">Emmet</a></strong> (<a target="_blank" rel="noopener" href="https://github.com/sergeche/emmet-sublime">GitHub</a>)</h4><p>Emmet 是一个前端开发的利器，其前身是 <a target="_blank" rel="noopener" href="https://code.google.com/p/zen-coding/">Zen Coding</a>。它让编写 HTML 代码变得简单。Emmet 的基本用法是：输入简写形式，然后按 <code>Tab</code> 键。</p>
+<p>比如，输入 <code>html:5</code>，然后按 <code>Tab</code> 键，就会产生如下的代码：</p>
+<pre class="lang:html " >
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+</pre>
+
+<p>更复杂的比如 <code>ul#nav&gt;li.item$*4&gt;a&#123;Item $&#125;</code>：</p>
+<pre class="lang:html " >
+
+*   [Item 1]()
+*   [Item 2]()
+*   [Item 3]()
+*   [Item 4]()
+</pre>
+
+<p>关于 Emmet 的更多用法，请看<a target="_blank" rel="noopener" href="http://docs.emmet.io/">官方文档</a>，这份<a target="_blank" rel="noopener" href="http://docs.emmet.io/cheat-sheet/">速查表</a>可以帮你快速记忆简写形式。</p>
+<p>&nbsp;</p>
+<h4 id="No-02-Theme-Soda-GitHub"><a href="#No-02-Theme-Soda-GitHub" class="headerlink" title="No.02 - Theme - Soda (GitHub)"></a>No.02 - <strong><a target="_blank" rel="noopener" href="https://sublime.wbond.net/packages/Theme%20-%20Soda">Theme - Soda</a></strong> (<a target="_blank" rel="noopener" href="https://github.com/buymeasoda/soda-theme">GitHub</a>)</h4><p>Soda Theme 是最受欢迎的 Sublime Text 主题。</p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/09/29/Soda-Light.png" title="Soda Light"><img src="http://bcs.duapp.com/sinosky-blog/2013/09/29/Soda-Light.png" srcset="/img/loading.gif" lazyload alt="Soda Light"></a></p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/09/29/Soda-Dark.png" title="Soda Dark"><img src="http://bcs.duapp.com/sinosky-blog/2013/09/29/Soda-Dark.png" srcset="/img/loading.gif" lazyload alt="Soda Dark"></a></p>
+<p>安装后你还需要在你的配置文件（菜单 <code>Preferences -&gt; Settings - User</code>）中加入 <code>&quot;theme&quot;: &quot;Soda Light.sublime-theme&quot;</code> 或 <code>&quot;theme&quot;: &quot;Soda Dark.sublime-theme&quot;</code>。要达到图中的效果，你还需要下载与之搭配的 <a target="_blank" rel="noopener" href="http://buymeasoda.github.io/soda-theme/extras/colour-schemes.zip">color scheme</a>。</p>
+<p>如果你喜欢 Soda Dark 和 Monokai，我建议你使用 <a target="_blank" rel="noopener" href="https://sublime.wbond.net/packages/Monokai%20Extended">Monokai Extended</a> (<a target="_blank" rel="noopener" href="https://github.com/jonschlinkert/sublime-monokai-extended">GitHub</a>)。这个 color scheme 是 Monokai Soda 的增强，如果再配合 <a target="_blank" rel="noopener" href="https://sublime.wbond.net/packages/Markdown%20Extended">Markdown Extended</a> (<a target="_blank" rel="noopener" href="https://github.com/jonschlinkert/sublime-markdown-extended">GitHub</a>)，将大大改善 Markdown 的语法高亮。</p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/09/29/Monokai-Extended+Markdown-Extended.png" title="Monokai Extended+Markdown Extended"><img src="http://bcs.duapp.com/sinosky-blog/2013/09/29/Monokai-Extended+Markdown-Extended.png" srcset="/img/loading.gif" lazyload alt="Monokai Extended+Markdown Extended"></a></p>
+<p>&nbsp;</p>
+<h4 id="No-03-SublimeLinter-GitHub"><a href="#No-03-SublimeLinter-GitHub" class="headerlink" title="No.03 - SublimeLinter (GitHub)"></a>No.03 - <strong><a target="_blank" rel="noopener" href="https://sublime.wbond.net/packages/SublimeLinter">SublimeLinter</a></strong> (<a target="_blank" rel="noopener" href="https://github.com/SublimeLinter/SublimeLinter">GitHub</a>)</h4><p><strong>注意</strong>：此插件需要<a href="#manual">手动安装</a>并切换到 <a target="_blank" rel="noopener" href="https://github.com/SublimeLinter/SublimeLinter/tree/sublime-text-3">sublime-text-3</a> 分支。</p>
+<p>SublimeLinter 是一个代码校验插件，它可以帮你找出错误或编写不规范的代码，支持 C/C++、CoffeeScript、CSS、Git Commit Messages、Haml、HTML、Java、JavaScript、Lua、Objective-J、Perl、PHP、Puppet、Python、Ruby 和 XML 语言。</p>
+<p>在使用 SublimeLinter 之前，你要安装相应的程序，详见<a target="_blank" rel="noopener" href="https://github.com/SublimeLinter/SublimeLinter/blob/sublime-text-3/README.md">README</a>。如果要校验 JavaScript 或 CSS，你还要安装 <a target="_blank" rel="noopener" href="http://nodejs.org/">Node.js</a>。</p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/09/30/SublimeLinter.jpg" title="SublimeLinter"><img src="http://bcs.duapp.com/sinosky-blog/2013/09/30/SublimeLinter.jpg" srcset="/img/loading.gif" lazyload alt="SublimeLinter"></a></p>
+<p>SublimeLinter 默认以 background 模式运行，在用户输入的同时即时校验，如果你想要 Sublime Text 运行得更流畅，可以改为 load-save 模式或 save-only 模式，在读取和保存是校验或只在保存时校验。</p>
+<p>打开 SublimeLinter 的配置文件：菜单 <code>Preferences -&gt; Package Settings -&gt; SublimeLinter -&gt; Settings - User</code>，加入 <code>&quot;sublimelinter&quot;: &quot;load-save&quot;</code> 或 <code>&quot;sublimelinter&quot;: &quot;save-only&quot;</code></p>
+<p>&nbsp;</p>
+<h4 id="No-04-SideBarEnhancements-GitHub"><a href="#No-04-SideBarEnhancements-GitHub" class="headerlink" title="No.04 - SideBarEnhancements (GitHub)"></a>No.04 - <strong><a target="_blank" rel="noopener" href="https://sublime.wbond.net/packages/SideBarEnhancements">SideBarEnhancements</a></strong> (<a target="_blank" rel="noopener" href="https://github.com/titoBouzout/SideBarEnhancements">GitHub</a>)</h4><p>SideBarEnhancements 是一款很实用的右键菜单增强插件，有以 diff 形式显示未保存的修改、在文件管理器中显示该文件、复制文件路径、在侧边栏中定位该文件等功能，也有基础的诸如新建文件/目录，编辑，打开/运行，显示，在选择中/上级目录/项目中查找，剪切，复制，粘贴，重命名，删除，刷新等常见功能。</p>
+<p>SideBarEnhancements 还有一个功能就是自定义打开文件的程序，在侧边栏中右键点击一个文件（夹），选择 <code>Open With -&gt; Edit Applications</code> 就可以修改关联了，配置文件自带示例，可以很方便地套用。</p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/10/02/SideBarEnhancements-OpenWith.png" title="SideBarEnhancements OpenWith"><img src="http://bcs.duapp.com/sinosky-blog/2013/10/02/SideBarEnhancements-OpenWith.png" srcset="/img/loading.gif" lazyload alt="SideBarEnhancements - OpenWith"></a></p>
+<p><code>Copy as Text...</code> 是 SideBarEnhancements 的又一个特色功能，可以复制包含各种形式的路径、URL（甚至包括 base64 的 data:uri）、转码后的文件名、各种 HTML Tag（a、img、script、style）等。</p>
+<p><a target="_blank" rel="noopener" href="http://bcs.duapp.com/sinosky-blog/2013/10/02/SideBarEnhancements-CopyAsText.jpg" title="SideBarEnhancements - Copy As Text"><img src="http://bcs.duapp.com/sinosky-blog/2013/10/02/SideBarEnhancements-CopyAsText.jpg" srcset="/img/loading.gif" lazyload alt="SideBarEnhancements - Copy As Text"></a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/software/">应用软件</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Sublime-Text/">Sublime Text</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Code-Editor/">Code Editor</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/compile-nginx-with-a-custom-openssl-library.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用自定义 OpenSSL 库编译 nginx</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/deny-the-ip-address-of-wordpress-spam-comment.html">
+                        <span class="hidden-mobile">屏蔽 WordPress 垃圾评论的 IP</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

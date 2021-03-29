@@ -1,0 +1,490 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>百度 BAE 系列教程之申请篇 - SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="百度 BAE 系列教程之申请篇">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2012-12-18 19:37" pubdate>
+        2012年12月18日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      850 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">百度 BAE 系列教程之申请篇</h1>
+            
+            <div class="markdown-body">
+              <p><span style="font-size: small;">随着国内云概念的兴起，各种各样的 xAE 也开始出现，从第一个吃螃蟹的 SAE 到 盛大云 、 阿里云，再到国内搜索引擎老大——百度推出的 BAE，国内的云市场可谓是鱼龙混杂。随着 SAE 的成熟，早先免费的 SAE 现在已经开始收费，而 盛大云 与 阿里云 则根本就没打算免费，目前国内唯一真正免费的云平台就是 BAE 了。</span></p>
+<p><span style="font-size: small;">现在网络上关于 BAE 的教程还不多，所以我决定写几篇关于 BAE 的系列教程，主要是面向刚接触云平台的初学者。如果您是开发者或者能熟练使用各种云平台，那么请无视这些文章。如果您信不过国内的云平台而想找个国外的云平台的话，不妨看看我以前写的关于<a href="http://www.sinosky.org/paas.html">国外云平台的推荐</a>。</span></p>
+<p><span style="font-size: small;"><a href="//www.sinosky.org/uploads/2012/baidu%20yun%20logo.jpg" title="百度云"><img src="//www.sinosky.org/uploads/2012/baidu%20yun%20logo.jpg" srcset="/img/loading.gif" lazyload alt="百度云"></a></span></p>
+<p><span style="font-size: small;">目前 BAE 处于公测阶段，需要邀请码才能使用，不过获得邀请码的方式很简单，发送邮件到 <a href="mailto:dev_support@baidu.com">dev_support@baidu.com</a> 申请即可，格式如下：</span></p>
+<blockquote>
+<p><span style="font-size: small;">标题：申请开放云平台邀请码 </span></p>
+<p><span style="font-size: small;">内容：</span></p>
+<p><span style="font-size: small;"> 1.详细描述团队信息</span></p>
+<p><span style="font-size: small;"> 2.详细描述已发布的产品介绍（暂不对没有线上产品的开发者开放）</span></p>
+<p><span style="font-size: small;"> 3.申请使用的原因</span></p>
+<p><span style="font-size: small;"> 另外，请附上您的百度账号</span></p>
+</blockquote>
+<p><span style="font-size: small;">说明：</span></p>
+<p><span style="font-size: small;">1. 团队信息可以随便填写，最好是真实的，写个人开发者也可以通过。</span></p>
+<p><span style="font-size: small;">2. 如果没有没有已发布的产品就随便找个项目（有项目主页的最好），然后说自己参与过这个项目的开发。</span></p>
+<p><span style="font-size: small;">3. 原因随便写点什么就行，最好是说“BAE 比 SAE 好，自己想试试”之类的。</span></p>
+<p><span style="font-size: small;">附上我以前的申请邮件供参考（注：本人小白一个，半行代码都不懂，跟 B3log 团队没有一毛钱关系，邮件内容纯属扯淡）。</span></p>
+<p><span style="font-size: small;"><a href="//www.sinosky.org/uploads/2012/201212140501.png" title="邮件"><img src="//www.sinosky.org/uploads/2012/201212140501.png" srcset="/img/loading.gif" lazyload alt="邮件"></a></span></p>
+<p><span style="font-size: small;">一般发送邮件后第二天就能收到邀请码了，如果是周末请耐心等到下个星期一，人家也要休息嘛。</span></p>
+<p><span style="font-size: small;">收到邀请码以后，进入<a target="_blank" rel="noopener" href="http://developer.baidu.com/">百度开发者中心</a>，点击 开始使用百度应用引擎 BAE，输入邀请码后完成激活。</span></p>
+<p><span style="font-size: small;"><a href="//www.sinosky.org/uploads/2012/201212140511.png" title="开始使用"><img src="//www.sinosky.org/uploads/2012/201212140511.png" srcset="/img/loading.gif" lazyload alt="开始使用"></a></span></p>
+<p><span style="font-size: small;">激活后你就进入 BAE 的 管理中心 了，这些东西现在我们用不到，先无视吧。</span></p>
+<p><span style="font-size: small;"><a href="//www.sinosky.org/uploads/2012/snap000.png" title="管理中心"><img src="//www.sinosky.org/uploads/2012/snap000.png" srcset="/img/loading.gif" lazyload alt="管理中心"></a></span></p>
+<p><span style="font-size: small;">点击右上方的 创建应用 ，选择 Web应用 ，接入方式为 托管到BAE 。默认只能创建 PHP 应用，如果要使用 Python/Java 环境，继续发邮件申请吧。</span></p>
+<p><span style="font-size: small;"><a href="//www.sinosky.org/uploads/2012/snap001.png" title="创建应用"><img src="//www.sinosky.org/uploads/2012/snap001.png" srcset="/img/loading.gif" lazyload alt="创建应用"></a></span></p>
+<p><span style="font-size: small;">创建好应用后就会进入到应用的管理中心，进入 云环境管理 ，点击 托管管理 中的 版本管理 ，创建一个新的版本。</span></p>
+<p><span style="font-size: small;"><a href="//www.sinosky.org/uploads/2012/snap002.png" title="创建版本"><img src="//www.sinosky.org/uploads/2012/snap002.png" srcset="/img/loading.gif" lazyload alt="创建版本"></a></span></p>
+<p><span style="font-size: small;">接下来就是创建数据库了，点击 服务管理 下的 云数据库 ，选择 创建数据库 。数据库只能创建一个，描述可以随便写，图中我已经创建好了。</span></p>
+<p><span style="font-size: small;"><a href="//www.sinosky.org/uploads/2012/snap003.png" title="创建数据库"><img src="//www.sinosky.org/uploads/2012/snap003.png" srcset="/img/loading.gif" lazyload alt="创建数据库"></a></span></p>
+<p><span style="font-size: small;">如果需要绑定域名的话，只需<span>点击 托管管理 下的 域名绑定 ， 选择 新增绑定 即可。</span></span></p>
+<p><span style="font-size: small;"><span><a href="//www.sinosky.org/uploads/2012/snap004.png" title="域名绑定"><img src="//www.sinosky.org/uploads/2012/snap004.png" srcset="/img/loading.gif" lazyload alt="域名绑定"></a></span></span></p>
+<p><span style="font-size: small;"><span>在此之前，不要忘了做CNAME解析哦，记录值就是你的百度域名。</span></span></p>
+<p><span style="font-size: small;"><a href="//www.sinosky.org/uploads/2012/snap005.png" title="CNAME"><img src="//www.sinosky.org/uploads/2012/snap005.png" srcset="/img/loading.gif" lazyload alt="CNAME"></a></span></p>
+<p><span style="font-size: small;">至此，我们在 BAE 上的第一个应用就创建好了，接下来就是上传代码了，敬请关注后续教程。</span></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/cloud-platform/">云平台</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/BAE/">BAE</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%91%E5%B9%B3%E5%8F%B0/">云平台</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%99%BE%E5%BA%A6/">百度</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/bae-youbbs.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">百度 BAE 系列教程之部署 YouBBS 篇</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/bae-svn.html">
+                        <span class="hidden-mobile">百度 BAE 系列教程之SVN篇</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

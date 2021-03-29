@@ -1,0 +1,856 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="学习新知，记录心得，分享成果，发现未知。">
+  <meta name="author" content="Jat">
+  <meta name="keywords" content="">
+  
+  <title>SinoSky</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="An elegant Material-Design theme for Hexo">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/mongodb-and-mysql-compared.html">&lt;译&gt; MongoDB 与 MySQL 对比</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/mongodb-and-mysql-compared.html">
+          
+          
+            
+          
+          原文：MongoDB and MySQL Compared
+概述关系数据库在企业级应用中使用已有数十年的历史，自从 MySQL 在 1995 年发布之后，它成为其中最受欢迎且成本较低的选择之一。然而，随着近年来数据爆炸及储存成本降低，像 MongoDB 这样的非关系数据库开始出现，以解决新型应用的需求。对于传统应用，MongoDB 同样能增强甚至是替代已有的关系数据库。
+MySQL 是什么？MyS
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2016-09-29 17:28" pubdate>
+              2016-09-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/programmer-and-it/">码农与 IT</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/MySQL/">MySQL</a>
+            
+              <a href="/tags/MongoDB/">MongoDB</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/discuss-software-design-pattern.html">浅谈设计模式和面向重构编程</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/discuss-software-design-pattern.html">
+          
+          
+            
+          
+          这两天面试被问到了什么是“设计模式”，作为野路子码农，我不知道什么是设计模式，只知道 MVC 等软件架构，既然被问到了，那就了解一下吧。看了几个模式后我发现，其实在平时写代码的时候已经用到过部分模式了，只是当时并不知道而已。
+关于设计模式，已经有各种专业书籍和文章了，我就不在这里献丑了，只谈谈对于“什么时候应该学习设计模式”的看法。
+初学编程你根本不需要知道什么设计模式，甚至连 OOP 是什么都不
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2016-09-28 20:08" pubdate>
+              2016-09-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/programmer/">程序员</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/20160923.html">不忘初心，方得始终——写在开博四周年之际</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/20160923.html">
+          
+          
+            
+          
+          其实究竟什么时间开始写博客的，我也记不清了，只是前几天查到 sinosky.org 这个域名是四年前的今天注册的，便打算写些东西以作纪念。
+前两天在 V2EX 发了一求职帖，没啥效果，有人说我简历没有写清楚“做过什么”。说实话，我真不会写简历，没做过什么牛逼的事情，吹逼也不会，写详细了又担心泄漏公司业务（后来发现其实根本没人关心）。那我这两年在究竟工作中做了什么？总结一下，四个字——CRUD，写各
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2016-09-23 20:43" pubdate>
+              2016-09-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/essay/">杂文</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/the-secret-of-character-encoding.html">字符编码的奥秘</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/the-secret-of-character-encoding.html">
+          
+          
+            
+          
+          谨以本文献给所有被编码问题坑过的程序猿。
+
+&nbsp;
+起因前段时间整理散落在各处博文图片，有几个中文文件名的图片要上传，便像平常一样，用 Sublime SFTP 插件直接上传，没想到直接报错了。
+
+我十分确定服务器上使用的编码是 UTF-8，配置文件也没有错，那到底是什么原因呢，只有看代码了。由于这个插件不开源，只好使用反编译工具 uncompyle6。
+debug 过程省略……
+最终我找到
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2016-09-17 23:18" pubdate>
+              2016-09-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/programmer-and-it/">码农与 IT</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E9%9B%86/">字符集</a>
+            
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">字符编码</a>
+            
+              <a href="/tags/Character-Set/">Character Set</a>
+            
+              <a href="/tags/Character-Encoding/">Character Encoding</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/let-utf-8-as-default-code-page-on-windows.html">让 CMD 默认使用 UTF-8 编码</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/let-utf-8-as-default-code-page-on-windows.html">
+          
+          
+            
+          
+          使用 Windows 开发的小伙伴们（不要问我为什么不用 Mac……）应该都知道，中文版 Windows 上的 CMD 默认使用 cp936（你用记事本另存为 ANSI 编码其实跟这个编码是一样的），根据巨硬的定义（其实是 IBM 定的，有兴趣的可以去看维基百科），它代表 gb2312（话说巨硬自己都知道应该使用 Unicode，为什么还不改 CMD 的默认编码……）。
+可能有些小伙伴也知道，使用
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2016-09-12 00:02" pubdate>
+              2016-09-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/tips/">小技巧</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Windows/">Windows</a>
+            
+              <a href="/tags/CMD/">CMD</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/netdata-introduction.html">实时性能监测工具 netdata 简介</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/netdata-introduction.html">
+          
+          
+            
+          
+          作为半个运维，我用过和了解过很多基于 web 的服务器监控软件，但很多软件要么配置复杂、文档不全（以各种“企业级”监控为代表），要么对用户不友好、画出来的图很难看（以各种开源软件为代表），要么资源占用比服务器上的其他软件还高（各种全家桶）。
+直到我遇到了 netdata，才发现原来开源的监控软件也能做得这么好看，而且是 ajax 实时渲染的，比那些隔一会儿刷个图片的软件不知道高到哪里去了。
+
+安装
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2016-09-06 10:52" pubdate>
+              2016-09-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/software/">应用软件</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">Linux</a>
+            
+              <a href="/tags/netdata/">netdata</a>
+            
+              <a href="/tags/%E8%BF%90%E7%BB%B4/">运维</a>
+            
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%91%E6%8E%A7/">服务器监控</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/nordic-model-socialism-and-communism.html">北欧模式、社会主义与共产主义</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/nordic-model-socialism-and-communism.html">
+          
+          
+            
+          
+          本文来自于今天与同事的一次讨论，我原本只想批判共产主义是不可能实现的乌托邦，以及在中共统治下的言论自由问题。而同事却拿出北欧模式说事，说“北欧模式接近于共产主义”，在我质疑并请他拿出证据的时候，他竟提出“质疑很容易、成本很低，质疑者应该先拿出证据”的可笑论调。
+&nbsp;
+友情提示：鄙人非重点院校政治或哲学系出身的高材生，相关知识均来自于由西方敌对势力所支持的维基百科和屈指可数的几本并不专业、也
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2016-01-07 01:09" pubdate>
+              2016-01-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/essay/">杂文</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/some-tips-of-php-1.html">PHP 小技巧（一）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/some-tips-of-php-1.html">
+          
+          
+            
+          
+          曾经我以为 PHP 很简单，但后来发现我错了，不是 PHP 简单，而是 PHP 容易入门；不是 PHP 写不出好代码，而是很多 PHP 程序员只关心如何实现，却不关心如何优雅地实现。
+弱类型也有类型PHP 是弱类型的语言，但不代表没有类型，PHP 会隐式转换类型，你也可以强制转换。
+像 $_GET $_POST 这样的外部变量，初始类型都是字符串。
+当判断一个有可能被转换为 FALSE 的变量是否
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2015-10-29 22:18" pubdate>
+              2015-10-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/programmer/">程序员</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/PHP/">PHP</a>
+            
+              <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/">小技巧</a>
+            
+              <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/the-war-of-bus.html">巴士之乱</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/the-war-of-bus.html">
+          
+          
+            
+          
+          近日，打车行业的巨头滴滴快的公司也推出了巴士服务——滴滴巴士，加入了火热的定制巴士市场的竞争。这是即嗒嗒巴士、嘟嘟巴士和小猪巴士等公司后，又一家推出定制巴士服务的公司。但是同前几家公司一样，滴滴巴士一上线，也遇到了很多问题。
+&nbsp;
+宣传力度不够
+滴滴巴士在线下并没有做任何推广和宣传，甚至在滴滴打车的官网上，也找不到任何关于滴滴巴士的信息。从能找到的新闻来看，滴滴巴士只在微信上有过推广。而其
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2015-08-27 21:53" pubdate>
+              2015-08-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/internet/">互联网</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BA%92%E8%81%94%E7%BD%91/">互联网</a>
+            
+              <a href="/tags/%E5%88%9B%E4%B8%9A/">创业</a>
+            
+              <a href="/tags/%E5%97%92%E5%97%92%E5%B7%B4%E5%A3%AB/">嗒嗒巴士</a>
+            
+              <a href="/tags/%E5%98%9F%E5%98%9F%E5%B7%B4%E5%A3%AB/">嘟嘟巴士</a>
+            
+              <a href="/tags/%E5%AE%9A%E5%88%B6%E5%B7%B4%E5%A3%AB/">定制巴士</a>
+            
+              <a href="/tags/%E5%B0%8F%E7%8C%AA%E5%B7%B4%E5%A3%AB/">小猪巴士</a>
+            
+              <a href="/tags/%E6%BB%B4%E6%BB%B4%E5%B7%B4%E5%A3%AB/">滴滴巴士</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/20150703.html">随笔</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/20150703.html">
+          
+          
+            
+          
+          今日老板约我谈话，谈及我最近工作状态不好，感慨良多，但我不擅长面对面的交流，而且是老板找我谈话，总不能打老板的脸吧，遂有此文。
+从去年年底，公司开始转型做基因检测，而直到今年春节过后，我才真正接触到了这个项目，期间还走了一个比较谈得来的同事，自此，去年招的四个人只剩下我一个了。
+刚入职的时候，我主动做了一个在社区呼声比较高的功能，因为功能比较简单的，也没多少代码，就没跟老板说，可是刚提交上去就被砍
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2015-07-03 23:28" pubdate>
+              2015-07-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/essay/">杂文</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/#board">16</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
