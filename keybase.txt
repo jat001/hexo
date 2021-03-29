@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/jat
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.sinosky.org
+  * I am jat (https://keybase.io/jat) on keybase.
+  * I have a public key with fingerprint B2EE 8B75 21A3 A2CC 3B6D  D45F 5800 C6E0 11A0 C293
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01204adb89323e64eba2fffeeb9d99c27d8ea05c95159d77e3e69d2e1036875eb5780a",
+      "fingerprint": "b2ee8b7521a3a2cc3b6dd45f5800c6e011a0c293",
+      "host": "keybase.io",
+      "key_id": "5800c6e011a0c293",
+      "kid": "0101a08ec6efcf4d40d482a509372e2690e42b9bc2a962c09774d0da22440fc8880f0a",
+      "uid": "80f06bfbfcfdd11dfe423f31ecffd219",
+      "username": "jat"
+    },
+    "service": {
+      "hostname": "www.sinosky.org",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1617054568,
+  "expire_in": 157680000,
+  "prev": "ccd00574c407d2373431e7ccbee49e58cb31bedf0cc60ee9028b9f0e5bb4c4fc",
+  "seqno": 37,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMNxAnicbVJtUFRlFF6QRdiJVqyYTMzhzjgIAb73+96VaUgITaSA/EEhu9x73/fu
+Lmy7691dFkRkafAjpDCaIU0qAq1lRsMYzK8mcluk7IcfKWGJkKSDgBqFSCXUXUb/
+9eudc87zPOc55z3BmAUaXVih5sxwbGvgvbAfTjd7NCVijqUKEx2wEjNUYWVo/kE2
+iFxuU5kVYgYM4ASgBChyPEmQiKGQKBCyLCMk8pDnJYKFHBIALfE0TvOQZZEK4iGB
+cEAyHEsjkWY5IGApmGy1m5HiVKx2tyorEghxIksTuEAKhCSRIgMhRcs0B4DEIIDj
+ApAInlSJFocrxFDNiYILpVkdak4NTPP2/gf/yDdQUxxSi7IkU5ACkOIIgQY8yRKI
+YHiAKELkRYkQeIaQAM+yFARQIAiKArLEcRyQ53175uVCESPKoqoFIY5DWWWTMokj
+SZYhgfMhoAspduENpKJLBTdWnYKpiXKrhEI7DQ3xsOj1etNcVrvDVVaZ5lDMKtOp
+ONwOyWFTixa32+kyhMjuSuc8Gommhzom0WqH6hZVRjlSXFaHHTPgKlJyW0PCOIOz
+gKZohkvBUIXTqiCTNYSgWUZdEgChPqhclZQkCADNUhIFWEiQLEmpc7CSJCJE8Yjm
+JJHERQRlIEkMQIgHBCfyMkC0KKocWcJCk222OzADyao+BbOq6bKa7YLboyCsOnB6
+U4QmTKeJ1IaHzkuji1706Oju3F+kaQ4Odr51YCCrrl/7lyd/7mzb07PGhkGjKTbr
+6lnDhD+iP+rkdKczub5FrFiCRvXlVS+d/7Mg29g9s4/8ZejX7fTepurI1j/CO6Z+
+L23I7K5noze3f51cMx2coYeNcVnBZb5X175/7Na6FrT2A8VQuLrq1v7JrcttF3tr
+rwe7D0/vqfhxuGf3K6ty70z0eR7Trbxwzf9m07al50+WahMGsBtpyobfdL0vHqZa
+nvnnuOVE1sRGrWDbu2DpjndyTOPoekxG4v2fdmjOGGvglq8iz625OtIT+53+Qe8n
+xlM3whJjMtT/m/G1b9xyyafPs0tHr40sW27xQ+JeuqegMyn4IL7rRMuFgvVRbw90
+fQbaHq+sLUme7ZlrH5vMVxbOroyKO9SydfemaNnrTW1E+2ytH9sye/MPff9hXMmp
+1YX/hk81jUbejjje8e2MTBwsS7+0c/14zjpm7EhiQ/jPWm5F4oHo8tTnsueKFtZE
+9+fl+XYdUxTfE+6wgfT4y7nM4nj9tPnmGnvHkxmzufaLSWNtumpyvGd08shNffvr
+Lwz33nUleBVxKrNOv79tdHDP3bpvKmqLivu+3F4ayGQ7k599NxAUgpnaKwP+v2+/
+nFTkX9L16UdPvZY6ssrXnJ52LjvvygZLY6BxtmGbbQgWD5IHPy/uoOIS6o+aF/f5
+a2ciVgTYL3Zd3vn8vaH/AL1ExWU=
+=+2vb
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jat
+
+==================================================================
