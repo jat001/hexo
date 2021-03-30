@@ -1,0 +1,43 @@
+@media (min-width: 575px) {
+  .flex-center {
+    background-image: url("/images/logo_full.svg");
+    background-position: 50% 25%;
+    background-repeat: no-repeat;
+    background-size: auto 200px;
+  }
+
+  .page-header {
+    margin-top: 150px;
+  }
+}
+
+@media (min-width: 575px) and (max-width: 767px) {
+  .flex-center {
+    background-position: 50% 30%;
+    background-size: auto 150px;
+  }
+
+  .page-header {
+    margin-top: 180px;
+  }
+}
+
+.index-excerpt {
+  letter-spacing: 0.06rem;
+  line-height: 2.5;
+  max-height: calc(2.5rem * 3);
+}
+
+.markdown-body {
+  letter-spacing: 0.06rem;
+  line-height: 2.5;
+}
+
+.toc-header {
+  margin-bottom: 1.5rem;
+}
+
+.toc-body {
+  letter-spacing: 0.06rem;
+  line-height: 2;
+}

@@ -56,13 +56,14 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/custom.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"dbedd4391f49ab646c50cfd841d1f74e","google":null,"gtag":"UA-30004427-10","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"www.sinosky.org","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"dbedd4391f49ab646c50cfd841d1f74e","google":null,"gtag":"UA-30004427-10","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -71,7 +72,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 50vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -254,12 +255,12 @@
 <p>6. “天气情况发生变化”似乎还不够详细，默认为“将要下雨”，用户可以也可以指定“下雪”、“阴天”或“晴朗”作为“条件”。随后点击 “Create Trigger” 完成“触发器”设置：</p>
 <p><a href="/uploads/2014/01/IFTTT-rain.jpg"><img src="/uploads/2014/01/IFTTT-rain.jpg" srcset="/img/loading.gif" lazyload alt="教程图片"></a></p>
 <p>&nbsp;</p>
-<p>7. 接下来要设置的是“动作”，点击 “that” 并选中 “Email” 将“发邮件”作为“将要下雨”时执行的内容。“发邮件”分类里只有“给我发送邮件”的选项，点击 “Send me an email”，设置好主题、内容后 “create action” 就会看到最后确认页面，上面很清楚地叙述了这个任务的目的：如果当前天气状况将改变为“下雨”，向 <a href="mailto:&#x78;&#120;&#120;&#64;&#x78;&#120;&#x78;&#x2e;&#x78;&#x78;&#120;">&#x78;&#120;&#120;&#64;&#x78;&#120;&#x78;&#x2e;&#x78;&#x78;&#120;</a> 发送邮件。</p>
+<p>7. 接下来要设置的是“动作”，点击 “that” 并选中 “Email” 将“发邮件”作为“将要下雨”时执行的内容。“发邮件”分类里只有“给我发送邮件”的选项，点击 “Send me an email”，设置好主题、内容后 “create action” 就会看到最后确认页面，上面很清楚地叙述了这个任务的目的：如果当前天气状况将改变为“下雨”，向 <a href="mailto:&#x78;&#120;&#x78;&#x40;&#x78;&#120;&#x78;&#x2e;&#120;&#120;&#x78;">&#x78;&#120;&#x78;&#x40;&#x78;&#120;&#x78;&#x2e;&#120;&#120;&#x78;</a> 发送邮件。</p>
 <p><a href="/uploads/2014/01/IFTTT-finish.jpg"><img src="/uploads/2014/01/IFTTT-finish.jpg" srcset="/img/loading.gif" lazyload alt="教程图片"></a></p>
 <p>&nbsp;</p>
 <p>8. 至此，点击 “Create Recipe” 就可以在以后当地将要下雨时得到邮件通知。IFTTT 的天气检测时间为未来 24 小时，完全不存在雨点砸下来时才收到邮件的尴尬……</p>
 <p>&nbsp;</p>
-<p>哎，一个天气任务竟然折腾了 500 字……其实恶劣天气推送只是 IFTTT 最基本的功能，像动漫等更 (RSS)、出门关灯 (iOS Location) 都可以通过 IFTTT 设置好相应任务，也不复杂。再高级的使用方法就要灵活结合各种服务和添加标签、通配符，比如有些网站允许用户发送邮件命令，通过 IFTTT 建立任务并将“动作”设置为“发送 Gmail 给 <a href="mailto:&#120;&#120;&#x78;&#x40;&#120;&#120;&#120;&#x2e;&#120;&#120;&#x78;">&#120;&#120;&#x78;&#x40;&#120;&#120;&#120;&#x2e;&#120;&#120;&#x78;</a>”就可以形成一环扣一环的连锁反应，从而大大减轻用户的压力。</p>
+<p>哎，一个天气任务竟然折腾了 500 字……其实恶劣天气推送只是 IFTTT 最基本的功能，像动漫等更 (RSS)、出门关灯 (iOS Location) 都可以通过 IFTTT 设置好相应任务，也不复杂。再高级的使用方法就要灵活结合各种服务和添加标签、通配符，比如有些网站允许用户发送邮件命令，通过 IFTTT 建立任务并将“动作”设置为“发送 Gmail 给 <a href="mailto:&#120;&#x78;&#120;&#64;&#x78;&#x78;&#120;&#x2e;&#120;&#120;&#120;">&#120;&#x78;&#120;&#64;&#x78;&#x78;&#120;&#x2e;&#120;&#120;&#120;</a>”就可以形成一环扣一环的连锁反应，从而大大减轻用户的压力。</p>
 <p>IFTTT 目前仍在测试，且拥有很大发展空间，随着与诸如 App.net / GitHub 等知名产品的整合，相信未来的 IFTTT 真的能够实现它宣传语中所说——“让互联网为我们服务”。</p>
 <p>&nbsp;</p>
 <p>PS: “轻松下”要不要增加个“通过邮件建立离线下载”的功能，这样结合 IFTTT 对 Gmail 和 Dropbox 的控制，就是完全无人值守“离线”下载了。</p>
@@ -290,7 +291,7 @@
               
                 <p class="note note-warning">
                   
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                    本站所有文章除特别声明外，均以 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-NC-SA 4.0 协议</a> 授权，转载请注明出处！
                   
                 </p>
               
