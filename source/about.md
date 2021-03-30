@@ -1,14 +1,9 @@
 ---
 title: 关于
 date: 2013-08-27 01:19:21
+layout: about
+comment: true
 ---
-
-学习新知，记录心得，分享成果，发现未知。
-
-
-**联系我**
-
-Github：[https://github.com/jat001](https://github.com/jat001)
 
 PGP key ID：11A0C293
 

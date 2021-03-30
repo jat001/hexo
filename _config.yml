@@ -119,10 +119,6 @@ deploy:
   type: git
   repo: git@github.com:sinosky-org/blog.git
 
-search:
-  path: search.xml
-  field: all
-
 feed:
   type: atom
   path: atom.xml
